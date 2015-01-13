@@ -1,11 +1,8 @@
 package br.com.schumaker.managedbean;
 
 import br.com.schumaker.dao.DensidadeDao;
-import br.com.schumaker.dao.MercadoDao;
-import br.com.schumaker.dao.ProdutoDao;
 import br.com.schumaker.dao.impl.DensidadeDaoImpl;
 import br.com.schumaker.dao.impl.MercadoDaoImpl;
-import br.com.schumaker.dao.impl.ProdutoDaoImpl;
 import br.com.schumaker.model.Densidade;
 import br.com.schumaker.model.Mercado;
 import java.io.Serializable;

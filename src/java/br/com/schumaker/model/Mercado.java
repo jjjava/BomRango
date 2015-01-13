@@ -12,9 +12,9 @@ public class Mercado {
     private Integer idDensidade;
     private String nome;
     private String endereco;
-    private String cidade;
+    private Cidade cidade;
     private String bairro;
-    private String estado;
+    private Estado estado;
     private String telefone;
     private String site;
     private String cartoes;
@@ -119,11 +119,15 @@ public class Mercado {
         this.sobre = sobre;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCidadeStr() {
+        return cidade.getNome();
     }
 
-    public void setCidade(String cidade) {
+    public int getCidade() {
+        return cidade.getId();
+    }
+
+    public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
 
@@ -135,11 +139,15 @@ public class Mercado {
         this.bairro = bairro;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getEstadoStr() {
+        return estado.getNome();
     }
 
-    public void setEstado(String estado) {
+    public int getEstado() {
+        return estado.getId();
+    }
+
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 
