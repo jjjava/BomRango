@@ -32,12 +32,12 @@ public class FabricanteDaoImpl implements FabricanteDao {
                 fabricante.setSite(rs.getString("site"));
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return fabricante;
@@ -60,12 +60,12 @@ public class FabricanteDaoImpl implements FabricanteDao {
                 fabricantes.add(fabricante);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return fabricantes;
@@ -74,7 +74,7 @@ public class FabricanteDaoImpl implements FabricanteDao {
     @Override
     public List<Fabricante> like(String s) {
         List<Fabricante> fabricantes = new ArrayList<Fabricante>();
-        String sql = "select * from compras.fabricante where nome like '%" + s + "%'";
+        String sql = "select * from compras.fabricante where fabricante.nome like '%" + s + "%'";
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -88,12 +88,12 @@ public class FabricanteDaoImpl implements FabricanteDao {
                 fabricantes.add(fabricante);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return fabricantes;
