@@ -22,6 +22,7 @@ public class Mercado {
     private String horarioFunc;
     private String fundacao;
     private String sobre;
+    private int ativo;
 
     public Mercado() {
     }
@@ -140,5 +141,13 @@ public class Mercado {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public int getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(int ativo) {
+        this.ativo = ativo;
     }
 }
