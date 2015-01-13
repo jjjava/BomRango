@@ -40,7 +40,8 @@ public class MercadoManegedBean implements Serializable {
             DefaultSubMenu dsm = new DefaultSubMenu(d.getNome());
             List<Mercado> mTmp = mercadoDao.listarByDensidade(d.getId());
             for (Mercado m : mTmp) {
-                dsm.addElement(new DefaultMenuItem(m.getNome(), null, m.getSite()));
+                DefaultMenuItem dmi = new DefaultMenuItem(m.getNome(), null, "/faces/mercadohome.xhtml?m="+m.getId());
+                dsm.addElement(dmi);
             }
             model.addElement(dsm);
         }
@@ -49,5 +50,4 @@ public class MercadoManegedBean implements Serializable {
     public MenuModel getModel() {
         return model;
     }
-
 }
