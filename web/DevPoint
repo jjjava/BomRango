@@ -1,5 +1,5 @@
 Bugs menu OK
-home menu encartes
+home menu encartes 
 
     perfil mercado:
         nome
@@ -25,6 +25,6 @@ MercadoModel colocar ativo/inativoe perfil ok
 MarcadoDAO acertar ativo/inativo e perfil ok
 
 Normalizar sql nos DAO ok
-Model Cidade
+Model Cidade ok
 Alterar campos das tabelas mercado
 Criar novas tabelas
