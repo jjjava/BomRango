@@ -16,10 +16,6 @@
     <h:body>
         <h:form> 
             <p:growl id="messages"/>
-            <style type="text/css">
-                .ui-menubar   {mouseover: #ff0000; background-color: #FF4500 !important; background: red; font-size: 14px; }
-                .ui-menuitem-text {color: white;}
-            </style>
             <p:menubar styleClass="ui-menubar">
                 <f:facet name="options" >
                     <p:remoteCommand name="search" actionListener="#{inputSearchMangedBean.doSearch()}"/>
@@ -35,9 +31,9 @@
                     <p:menuitem value="Gerenciar" url="/faces/gerenciar.xhtml" />
                 </p:submenu>
                 <p:menuitem value="@BomRango" url="/faces/index.xhtml" />
-                <p:menuitem value="Encartes" url="#" />
+                <p:menuitem value="Encartes" url="/faces/" />
                 <p:menuitem value="Região" url="/faces/regiao.xhtml" />
-                <p:menuitem value="Setores" url="/faces/categorias.xhtml" />
+                <p:menuitem value="Setores" url="/faces/setores.xhtml" />
                 <p:menuitem value="Mercados" url="/faces/mercados.xhtml" />
             </p:menubar>
             <br/><br/>

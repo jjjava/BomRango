@@ -15,19 +15,26 @@
     </h:head>
     <h:body>
         <h:form id="form"> 
-            <p:growl id="messages"/>
-            <p:menubar styleClass="menubar">
+           <p:growl id="messages"/>
+            <p:menubar styleClass="ui-menubar">
+                <f:facet name="options" >
+                    <p:remoteCommand name="search" actionListener="#{inputSearchMangedBean.doSearch()}"/>
+                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMangedBean.valueStr}" onkeypress="if (event.keyCode == 13) {
+                                search();
+                                return false;
+                            }"/>
+                </f:facet>
                 <p:submenu >
                     <p:menuitem value="Sobre @BomRango" url="/faces/sobre.xhtml" />
                     <p:menuitem value="Contato" url="/faces/contato.xhtml" />
                     <p:menuitem value="Termo de uso" url="/faces/termodeuso.xhtml" />
+                    <p:menuitem value="Gerenciar" url="/faces/gerenciar.xhtml" />
                 </p:submenu>
-                <p:menuitem value="@Bom Rango" url="/faces/index.xhtml" />
-                <p:menuitem value="Produtos" url="/faces/produtos.xhtml" />
-                <p:menuitem value="Categorias" url="/faces/categorias.xhtml" />
-                <p:menuitem value="Marcas" url="/faces/marcas.xhtml" />
+                <p:menuitem value="@BomRango" url="/faces/index.xhtml" />
+                <p:menuitem value="Encartes" url="/faces/" />
+                <p:menuitem value="Região" url="/faces/regiao.xhtml" />
+                <p:menuitem value="Setores" url="/faces/categorias.xhtml" />
                 <p:menuitem value="Mercados" url="/faces/mercados.xhtml" />
-                <p:menuitem value="Cesta Básica" url="/faces/cestabasica.xhtml" />
             </p:menubar>
             <p:panel header="Digite um produto" style="margin-bottom:10px;" styleClass="searchbutton">
                 <h:panelGrid columns="3" style="margin:10px 0" >

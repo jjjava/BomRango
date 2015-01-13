@@ -3,12 +3,15 @@
     Author     : hudson schumaker
 */
 
-.menubar{
-    font-size: 14px;
-    background-color: orange;
+.ui-menubar   {
+    mouseover: #ff0000; 
+    background-color: #FF4500 !important; 
+    background: red; 
+    font-size: 14px; 
 }
-.grid{
-    font-size: 14px;
+
+.ui-menuitem-text {
+    color: white;
 }
 .searchbutton{
     font-size: 14px;

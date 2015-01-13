@@ -16,7 +16,7 @@
     <h:body onload="getLocation()">
         <h:form> 
             <p:growl id="messages"/>
-            <p:menubar styleClass="menubar">
+            <p:menubar styleClass="ui-menubar">
                 <f:facet name="options" >
                     <p:remoteCommand name="search" actionListener="#{inputSearchMangedBean.doSearch()}"/>
                     <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMangedBean.valueStr}" onkeypress="if (event.keyCode == 13) {
@@ -31,7 +31,7 @@
                     <p:menuitem value="Gerenciar" url="/faces/gerenciar.xhtml" />
                 </p:submenu>
                 <p:menuitem value="@BomRango" url="/faces/index.xhtml" />
-                <p:menuitem value="Encartes" url="#" />
+                <p:menuitem value="Encartes" url="/faces/" />
                 <p:menuitem value="Região" url="/faces/regiao.xhtml" />
                 <p:menuitem value="Setores" url="/faces/categorias.xhtml" />
                 <p:menuitem value="Mercados" url="/faces/mercados.xhtml" />
