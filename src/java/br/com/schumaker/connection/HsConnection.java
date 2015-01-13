@@ -17,8 +17,8 @@ public class HsConnection {
         Connection conn = null;
         try {
             Driver drv = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String URL = "jdbc:mysql://xx:3306/compras";
-            conn = DriverManager.getConnection(URL, "xx", "xx");
+            String URL = "jdbc:mysql://x:3306/compras";
+            conn = DriverManager.getConnection(URL, "x", "x");
 
         } catch (ClassNotFoundException ex) {
             System.err.println(ex);
