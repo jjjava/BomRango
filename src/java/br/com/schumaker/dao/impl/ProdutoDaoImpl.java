@@ -250,8 +250,8 @@ public class ProdutoDaoImpl implements ProdutoDao {
 
     public void atualiza(Produto produto) {
         String sql = "update compras.produto set produto.nome=?, produto.descricao=?,"
-                + " produto.preco=?, produto.quantidade=?,"
-                + " produto.imagem=?,produto.ativo=? "
+                + " produto.preco=?, produto.quantidade=? ,produto.categoria=?"
+                + " produto.imagem=?, produto.ativo=? "
                 + " where produto.id=?";
         Connection conn = HsConnection.getConnection();
         PreparedStatement pst = null;
@@ -261,10 +261,11 @@ public class ProdutoDaoImpl implements ProdutoDao {
             pst.setString(2, produto.getDescricao());
             pst.setDouble(3, produto.getPreco());
             pst.setDouble(4, produto.getQuantidade());
-            pst.setString(5, produto.getImagem());
-            pst.setInt(6, produto.getAtivo());
-            pst.setInt(7, produto.getId());
-
+            pst.setInt(5, produto.getIdSetor());
+            pst.setString(6, produto.getImagem());
+            pst.setInt(7, produto.getAtivo());
+            //where
+            pst.setInt(8, produto.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
