@@ -23,6 +23,7 @@ public class Mercado {
     private String fundacao;
     private String sobre;
     private int ativo;
+    private int estacionamento;
 
     public Mercado() {
     }
@@ -157,5 +158,13 @@ public class Mercado {
 
     public void setAtivo(int ativo) {
         this.ativo = ativo;
+    }
+
+    public int getEstacionamento() {
+        return estacionamento;
+    }
+
+    public void setEstacionamento(int estacionamento) {
+        this.estacionamento = estacionamento;
     }
 }

@@ -40,6 +40,7 @@ public class MercadoDaoImpl implements MercadoDao {
                 mercado.setHorarioFunc(rs.getString("horariofunc"));
                 mercado.setFundacao(rs.getString("fundacao"));
                 mercado.setSobre(rs.getString("sobre"));
+                mercado.setEstacionamento(rs.getInt("estacionamento"));
                 //ojbetos
                 mercado.setCidade(getMyCidade(rs.getInt("idcidade")));
                 mercado.setEstado(getMyEstado(rs.getInt("idestado")));
@@ -77,6 +78,7 @@ public class MercadoDaoImpl implements MercadoDao {
                 mercado.setHorarioFunc(rs.getString("horariofunc"));
                 mercado.setFundacao(rs.getString("fundacao"));
                 mercado.setSobre(rs.getString("sobre"));
+                mercado.setEstacionamento(rs.getInt("estacionamento"));
                 //ojbetos
                 mercado.setCidade(getMyCidade(rs.getInt("idcidade")));
                 mercado.setEstado(getMyEstado(rs.getInt("idestado")));
@@ -116,6 +118,7 @@ public class MercadoDaoImpl implements MercadoDao {
                 mercado.setHorarioFunc(rs.getString("horariofunc"));
                 mercado.setFundacao(rs.getString("fundacao"));
                 mercado.setSobre(rs.getString("sobre"));
+                mercado.setEstacionamento(rs.getInt("estacionamento"));
                 //ojbetos
                 mercado.setCidade(getMyCidade(rs.getInt("idcidade")));
                 mercado.setEstado(getMyEstado(rs.getInt("idestado")));
@@ -154,6 +157,7 @@ public class MercadoDaoImpl implements MercadoDao {
                 mercado.setHorarioFunc(rs.getString("horariofunc"));
                 mercado.setFundacao(rs.getString("fundacao"));
                 mercado.setSobre(rs.getString("sobre"));
+                mercado.setEstacionamento(rs.getInt("estacionamento"));
                 //ojbetos
                 mercado.setCidade(getMyCidade(rs.getInt("idcidade")));
                 mercado.setEstado(getMyEstado(rs.getInt("idestado")));
