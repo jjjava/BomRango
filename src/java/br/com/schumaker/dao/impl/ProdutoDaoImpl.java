@@ -217,6 +217,67 @@ public class ProdutoDaoImpl implements ProdutoDao {
         return produtos;
     }
 
+    public void inseri(Produto produto) {
+        String sql = "insert into compras.produtos (nome, descricao, preco, quantidade, idmercado, idfabricante, idcategoria, unidade, imagem, ativo) "
+                + " values (?,?,?,?,?,?,?,?,?,?)";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, produto.getNome());
+            pst.setString(2, produto.getDescricao());
+            pst.setDouble(3, produto.getPreco());
+            pst.setDouble(4, produto.getQuantidade());
+            pst.setInt(5, produto.getIdMercado());
+            pst.setInt(6, produto.getIdFabricante());
+            pst.setInt(7, produto.getIdSetor());
+            pst.setString(8, produto.getUnidade());
+            pst.setString(9, produto.getImagem());
+            pst.setInt(10, produto.getAtivo());
+
+            pst.execute();
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+    }
+
+    public void atualiza(Produto produto) {
+        String sql = "update compras.produto set produto.nome=?, produto.descricao=?,"
+                + " produto.preco=?, produto.quantidade=?,"
+                + " produto.imagem=?,produto.ativo=? "
+                + " where produto.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, produto.getNome());
+            pst.setString(2, produto.getDescricao());
+            pst.setDouble(3, produto.getPreco());
+            pst.setDouble(4, produto.getQuantidade());
+            pst.setString(5, produto.getImagem());
+            pst.setInt(6, produto.getAtivo());
+            pst.setInt(7, produto.getId());
+
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+    }
+
     private Setor getMyCategoria(Integer id) {
         SetorDaoImpl categoriaDaoImpl = new SetorDaoImpl();
         return categoriaDaoImpl.obter(id);

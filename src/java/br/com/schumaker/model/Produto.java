@@ -71,23 +71,23 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public String getIdmercado() {
+    public String getIdmercadoStr() {
         return idmercado.getNome();
     }
 
-    public Mercado getMercado() {
+    public Mercado getMercadoStr() {
         return idmercado;
     }
 
     public void setIdmercado(Mercado idmercado) {
         this.idmercado = idmercado;
     }
-    
-    public Fabricante getFabricante(){
+
+    public Fabricante getFabricante() {
         return idfabricante;
     }
 
-    public String getIdfabricante() {
+    public String getIdfabricanteStr() {
         return idfabricante.getNome();
     }
 
@@ -95,7 +95,7 @@ public class Produto {
         this.idfabricante = idfabricante;
     }
 
-    public String getIdcategoria() {
+    public String getIdcategoriaStr() {
         return idcategoria.getNome();
     }
 
@@ -125,5 +125,17 @@ public class Produto {
 
     public void setAtivo(int ativo) {
         this.ativo = ativo;
+    }
+
+    public int getIdMercado() {
+        return idmercado.getId();
+    }
+
+    public int getIdFabricante() {
+        return idfabricante.getId();
+    }
+
+    public int getIdSetor() {
+        return idcategoria.getId();
     }
 }
