@@ -1,6 +1,7 @@
 package br.com.schumaker.managedbean;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -12,6 +13,14 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class UsuarioManegedBean implements Serializable{
-    
+public class UsuarioManegedBean implements Serializable {
+
+    public UsuarioManegedBean() {
+
+    }
+
+    @PostConstruct
+    public void load() {
+
+    }
 }

@@ -12,8 +12,16 @@ public class Mercado {
     private Integer idDensidade;
     private String nome;
     private String endereco;
+    private String cidade;
+    private String bairro;
+    private String estado;
     private String telefone;
     private String site;
+    private String cartoes;
+    private String cnpj;
+    private String horarioFunc;
+    private String fundacao;
+    private String sobre;
 
     public Mercado() {
     }
@@ -68,5 +76,69 @@ public class Mercado {
 
     public void setIdDensidade(Integer idDensidade) {
         this.idDensidade = idDensidade;
+    }
+
+    public String getCartoes() {
+        return cartoes;
+    }
+
+    public void setCartoes(String cartoes) {
+        this.cartoes = cartoes;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getHorarioFunc() {
+        return horarioFunc;
+    }
+
+    public void setHorarioFunc(String horarioFunc) {
+        this.horarioFunc = horarioFunc;
+    }
+
+    public String getFundacao() {
+        return fundacao;
+    }
+
+    public void setFundacao(String fundacao) {
+        this.fundacao = fundacao;
+    }
+
+    public String getSobre() {
+        return sobre;
+    }
+
+    public void setSobre(String sobre) {
+        this.sobre = sobre;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
