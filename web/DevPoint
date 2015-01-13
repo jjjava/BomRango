@@ -24,7 +24,7 @@ ProdutoDao verificar queries com ativo/inativo ok
 MercadoModel colocar ativo/inativoe perfil ok
 MarcadoDAO acertar ativo/inativo e perfil ok
 
-Normalizar sql nos DAO
+Normalizar sql nos DAO ok
 Model Cidade
 Alterar campos das tabelas mercado
 Criar novas tabelas
