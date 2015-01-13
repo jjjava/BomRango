@@ -20,7 +20,7 @@ public class FabricanteDaoImpl implements FabricanteDao {
 
     @Override
     public Fabricante obter(Integer id) {
-        String sql = "select * from compras.fabricante where id = " + id;
+        String sql = "select * from compras.fabricante where fabricante.id = " + id;
         Connection conn = HsConnection.getConnection();
         Fabricante fabricante = new Fabricante();
         try {

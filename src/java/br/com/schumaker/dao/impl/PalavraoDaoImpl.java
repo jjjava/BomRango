@@ -20,7 +20,7 @@ public class PalavraoDaoImpl implements PalavraoDao {
 
     @Override
     public Palavrao obter(Integer id) {
-        String sql = "select * from compras.palavrao where id = " + id;
+        String sql = "select * from compras.palavrao where palavrao.id = " + id;
         Connection conn = HsConnection.getConnection();
         Palavrao palavrao = new Palavrao();
         try {

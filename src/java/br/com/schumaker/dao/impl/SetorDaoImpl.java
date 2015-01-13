@@ -20,7 +20,7 @@ public class SetorDaoImpl implements SetorDao {
 
     @Override
     public Setor obter(Integer id) {
-        String sql = "select * from compras.categoria where id = " + id;
+        String sql = "select * from compras.categoria where categoria.id = " + id;
         Connection conn = HsConnection.getConnection();
         Setor categoria = new Setor();
         try {
@@ -37,7 +37,7 @@ public class SetorDaoImpl implements SetorDao {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return categoria;
@@ -60,12 +60,12 @@ public class SetorDaoImpl implements SetorDao {
                 categorias.add(categoria);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return categorias;

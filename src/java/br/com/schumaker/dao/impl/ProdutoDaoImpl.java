@@ -26,7 +26,7 @@ public class ProdutoDaoImpl implements ProdutoDao {
 
     @Override
     public Produto obter(Integer id) {
-        String sql = "select * from compras.produto where id = " + id;
+        String sql = "select * from compras.produto where produto.id = " + id;
         Connection conn = HsConnection.getConnection();
         Produto produto = new Produto();
         try {

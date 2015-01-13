@@ -164,7 +164,7 @@ public class PesquisaDaoImpl implements PesquisaDao {
     public void inserir(String p) {
         Pesquisa pesquisa = obter(p);
         if (pesquisa.getId() > 0) {
-            String sql = "update compras.pesquisados set pesquisados.vezes = ? where id = ?";
+            String sql = "update compras.pesquisados set pesquisados.vezes = ? where pesquisados.id = ?";
             Connection conn = HsConnection.getConnection();
             PreparedStatement pst = null;
             try {

@@ -20,7 +20,7 @@ public class UnidadeDaoImpl implements UnidadeDao {
 
     @Override
     public Unidade obter(Integer id) {
-        String sql = "select * from compras.unidade where id = " + id;
+        String sql = "select * from compras.unidade where unidade.id = " + id;
         Connection conn = HsConnection.getConnection();
         Unidade unidade = new Unidade();
         try {
@@ -74,7 +74,7 @@ public class UnidadeDaoImpl implements UnidadeDao {
     @Override
     public List<Unidade> like(String s) {
         List<Unidade> unidades = new ArrayList<Unidade>();
-        String sql = "select * from compras.unidade where nome like '%" + s + "%'";
+        String sql = "select * from compras.unidade where unidade.nome like '%" + s + "%'";
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -88,12 +88,12 @@ public class UnidadeDaoImpl implements UnidadeDao {
                 unidades.add(unidade);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return unidades;

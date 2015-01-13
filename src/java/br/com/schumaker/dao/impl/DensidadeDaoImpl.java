@@ -20,7 +20,7 @@ public class DensidadeDaoImpl implements DensidadeDao{
 
     @Override
     public Densidade obter(Integer id) {
-        String sql = "select * from compras.densidade where id = " + id;
+        String sql = "select * from compras.densidade where densidade.id = " + id;
         Connection conn = HsConnection.getConnection();
         Densidade densidade = new Densidade();
         try {
@@ -85,12 +85,12 @@ public class DensidadeDaoImpl implements DensidadeDao{
                 densidades.add(densidade);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return densidades;

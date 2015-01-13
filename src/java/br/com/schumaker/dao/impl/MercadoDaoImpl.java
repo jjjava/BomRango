@@ -20,7 +20,7 @@ public class MercadoDaoImpl implements MercadoDao {
 
     @Override
     public Mercado obter(Integer id) {
-        String sql = "select * from compras.mercado where id = " + id;
+        String sql = "select * from compras.mercado where mercado.id = " + id;
         Connection conn = HsConnection.getConnection();
         Mercado mercado = new Mercado();
         try {
@@ -40,7 +40,7 @@ public class MercadoDaoImpl implements MercadoDao {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return mercado;
@@ -66,12 +66,12 @@ public class MercadoDaoImpl implements MercadoDao {
                 mercados.add(mercado);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return mercados;
@@ -80,7 +80,7 @@ public class MercadoDaoImpl implements MercadoDao {
     @Override
     public List<Mercado> like(String s) {
         List<Mercado> mercados = new ArrayList<Mercado>();
-        String sql = "select * from compras.mercado where nome like '%" + s + "%'";
+        String sql = "select * from compras.mercado where mercado.nome like '%" + s + "%'";
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -97,12 +97,12 @@ public class MercadoDaoImpl implements MercadoDao {
                 mercados.add(mercado);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return mercados;
@@ -127,12 +127,12 @@ public class MercadoDaoImpl implements MercadoDao {
                 mercados.add(mercado);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return mercados;
