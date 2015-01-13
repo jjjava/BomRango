@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+@author hudson schumaker HStudio - @BomRango 07/01/2015
+@version 1.0.0
+@since 1.0.0
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="css/mystyle.css"></link>
+        <title>@BomRango - Home</title>
+    </h:head>
+    <h:body>
+        <h:form> 
+            <p:growl id="messages"/>
+            <style type="text/css">
+                .ui-menubar   {mouseover: #ff0000; background-color: #FF4500 !important; background: red; font-size: 14px; }
+                .ui-menuitem-text {color: white;}
+            </style>
+            <p:menubar styleClass="ui-menubar">
+                <f:facet name="options" >
+                    <p:remoteCommand name="search" actionListener="#{inputSearchMangedBean.doSearch()}"/>
+                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMangedBean.valueStr}" onkeypress="if (event.keyCode == 13) {
+                                search();
+                                return false;
+                            }"/>
+                </f:facet>
+                <p:submenu >
+                    <p:menuitem value="Sobre @BomRango" url="/faces/sobre.xhtml" />
+                    <p:menuitem value="Contato" url="/faces/contato.xhtml" />
+                    <p:menuitem value="Termo de uso" url="/faces/termodeuso.xhtml" />
+                    <p:menuitem value="Gerenciar" url="/faces/gerenciar.xhtml" />
+                </p:submenu>
+                <p:menuitem value="@BomRango" url="/faces/index.xhtml" />
+                <p:menuitem value="Encartes" url="#" />
+                <p:menuitem value="Região" url="/faces/regiao.xhtml" />
+                <p:menuitem value="Setores" url="/faces/categorias.xhtml" />
+                <p:menuitem value="Mercados" url="/faces/mercados.xhtml" />
+            </p:menubar>
+            <br/><br/>
+            <!--
+            <p:tagCloud model="" styleClass="tagcloud">
+                <p:ajax event="select" update="messages" listener="" />
+            </p:tagCloud>
+            -->
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+@author hudson schumaker HStudio - @BomRango 07/01/2015
+@version 1.0.0
+@since 1.0.0
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="css/mystyle.css"></link>
+        <title>@BomRango - Produtos</title>
+    </h:head>
+    <h:body>
+        <h:form id="form"> 
+            <p:growl id="messages"/>
+            <p:menubar styleClass="menubar">
+                <p:submenu >
+                    <p:menuitem value="Sobre @BomRango" url="/faces/sobre.xhtml" />
+                    <p:menuitem value="Contato" url="/faces/contato.xhtml" />
+                    <p:menuitem value="Termo de uso" url="/faces/termodeuso.xhtml" />
+                </p:submenu>
+                <p:menuitem value="@Bom Rango" url="/faces/index.xhtml" />
+                <p:menuitem value="Produtos" url="/faces/produtos.xhtml" />
+                <p:menuitem value="Categorias" url="/faces/categorias.xhtml" />
+                <p:menuitem value="Marcas" url="/faces/marcas.xhtml" />
+                <p:menuitem value="Mercados" url="/faces/mercados.xhtml" />
+                <p:menuitem value="Cesta Básica" url="/faces/cestabasica.xhtml" />
+            </p:menubar>
+            <p:panel header="Digite um produto" style="margin-bottom:10px;" styleClass="searchbutton">
+                <h:panelGrid columns="3" style="margin:10px 0" >
+                    <h:outputLabel for="txt1" value="Nome: " />
+                    <p:inputText id="txt1" value="#{produtoManagedBean.query}" size="50" />
+                    <p:commandButton value="Buscar" id="ajax" process="@parent" update="produtos" actionListener="#{produtoManagedBean.onNameChange()}" />
+                </h:panelGrid>
+                <p:ajaxStatus style="width:8px;height:8px;" id="ajaxStatusPanel">  
+                    <f:facet name="start">  
+                        <h:graphicImage value="../images/ajax-loader.gif" />  
+                    </f:facet>  
+                    <f:facet name="complete">  
+                        <h:outputText value="" />  
+                    </f:facet>  
+                </p:ajaxStatus> 
+                <p:dataGrid var="produto" value="#{produtoManagedBean.produtos}" columns="4" 
+                            rows="12" paginator="true" id="produtos"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowsPerPageTemplate="6,12,16">
+                    <f:facet name="header">
+                        Produtos
+                    </f:facet>
+                    <p:panel header="#{produto.nome}" style="text-align:center">
+                        <h:panelGrid columns="1" style="width:100%">
+                            <p:graphicImage value="images/produtos/#{produto.imagem}.png" />
+                            <h:outputText value="#{produto.precoStr}" />
+                            <p:commandLink update=":form:produtoDetail" oncomplete="PF('produtoDialog').show()" title="Produto">
+                                <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                <f:setPropertyActionListener value="#{produto}" target="#{produtoManagedBean.selectedProduto}" />
+                            </p:commandLink>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:dataGrid>
+                <p:dialog header="Produto" widgetVar="produtoDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:outputPanel id="produtoDetail" style="text-align:center;">
+                        <p:panelGrid  columns="2" rendered="#{not empty produtoManagedBean.selectedProduto}" columnClasses="label,value">
+                            <f:facet name="header">
+                                <p:graphicImage value="images/produtos/#{produtoManagedBean.selectedProduto.imagem}@2.png"/>
+                            </f:facet>
+                            <h:outputText value="Nome:" />
+                            <h:outputText value="#{produtoManagedBean.selectedProduto.nome}" />
+                            <h:outputText value="Preço:" />
+                            <h:outputText value="#{produtoManagedBean.selectedProduto.precoStr}" />
+
+                            <h:outputText value="Mercado:" />
+                            <h:outputLink value="#{produtoManagedBean.selectedProduto.mercado.site}" target="blank" >
+                                <h:outputText value="#{produtoManagedBean.selectedProduto.idmercado}" />
+                            </h:outputLink>
+
+                            <h:outputText value="Fabricante:" />
+                            <h:outputLink value="#{produtoManagedBean.selectedProduto.fabricante.site}" target="blank" >
+                                <h:outputText value="#{produtoManagedBean.selectedProduto.idfabricante}" />
+                            </h:outputLink>
+
+                            <h:outputText value="Quantidade:" />
+                            <h:outputText value="#{produtoManagedBean.selectedProduto.quantidade}#{produtoManagedBean.selectedProduto.unidade}" />
+                        </p:panelGrid>
+                    </p:outputPanel>
+                </p:dialog>
+            </p:panel> 
+        </h:form>
+    </h:body>
+</html>

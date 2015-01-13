@@ -1,0 +1,26 @@
+Bugs menu 
+
+home menu encartes
+    perfil mercado:
+        nome
+        CNPJ 
+        Rua, numero bairro, cidade, estado, pais(futuro)
+        tel
+        densidade
+        cartões(sodexo, visa ...)
+        estacionamento(s/n)
+        Horario de funcionamento...
+        fundação
+        sobre
+        
+
+linkar cidades com mercados (tabela)
+
+
+UsuarioManegedBean criar
+UasuarioDAO criar
+
+ProdutoDao verificar queries com ativo/inativo
+
+MercadoModel colocar ativo/inativoe perfil
+MarcadoDAO acertar ativo/inativo e perfil
