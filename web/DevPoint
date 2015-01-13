@@ -1,6 +1,6 @@
 Bugs menu OK
-
 home menu encartes
+
     perfil mercado:
         nome
         CNPJ 
@@ -12,15 +12,19 @@ home menu encartes
         Horario de funcionamento...
         fundação
         sobre
+//ok
         
-
 linkar cidades com mercados (tabela)
 
+UsuarioManegedBean criar ok
+UasuarioDAO criar ok
 
-UsuarioManegedBean criar
-UasuarioDAO criar
+ProdutoDao verificar queries com ativo/inativo ok
 
-ProdutoDao verificar queries com ativo/inativo
+MercadoModel colocar ativo/inativoe perfil ok
+MarcadoDAO acertar ativo/inativo e perfil ok
 
-MercadoModel colocar ativo/inativoe perfil
-MarcadoDAO acertar ativo/inativo e perfil
+Normalizar sql nos DAO
+Model Cidade
+Alterar campos das tabelas mercado
+Criar novas tabelas

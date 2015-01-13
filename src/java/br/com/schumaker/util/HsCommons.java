@@ -12,4 +12,5 @@ public class HsCommons {
     public static final int DCTAGS = 40;
     public static final int PRODATIV = 1;
     public static final int PRODINATV = 0;
+    public static final String ENCRYPTKEY = "Blowfish";
 }

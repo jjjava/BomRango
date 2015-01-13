@@ -13,5 +13,5 @@ public interface ClienteDao {
     Cliente obter(Integer id);
     List<Cliente> listar();
     List<Cliente> like(String nome);
-    boolean validar(String nome, String password);
+    boolean validar(String email, String password);
 }

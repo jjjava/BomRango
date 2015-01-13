@@ -74,7 +74,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
     @Override
     public List<Categoria> like(String s) {
         List<Categoria> categorias = new ArrayList<Categoria>();
-        String sql = "select * from compras.categoria where nome like '%" + s + "%'";
+        String sql = "select * from compras.categoria where categoria.nome like '%" + s + "%' order by categoria.nome";
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -84,6 +84,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
                 categoria.setId(rs.getInt("id"));
                 categoria.setNome(rs.getString("nome"));
                 categoria.setDescricao(rs.getString("descricao"));
+                //adiciona a lista
                 categorias.add(categoria);
             }
         } catch (SQLException e) {
