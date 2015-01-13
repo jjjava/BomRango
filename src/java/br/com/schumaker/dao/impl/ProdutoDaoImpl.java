@@ -3,7 +3,7 @@ package br.com.schumaker.dao.impl;
 import br.com.schumaker.bs.PesquisaBs;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.ProdutoDao;
-import br.com.schumaker.model.Categoria;
+import br.com.schumaker.model.Setor;
 import br.com.schumaker.model.Fabricante;
 import br.com.schumaker.model.Mercado;
 import br.com.schumaker.model.Produto;
@@ -217,8 +217,8 @@ public class ProdutoDaoImpl implements ProdutoDao {
         return produtos;
     }
 
-    private Categoria getMyCategoria(Integer id) {
-        CategoriaDaoImpl categoriaDaoImpl = new CategoriaDaoImpl();
+    private Setor getMyCategoria(Integer id) {
+        SetorDaoImpl categoriaDaoImpl = new SetorDaoImpl();
         return categoriaDaoImpl.obter(id);
     }
 

@@ -15,7 +15,7 @@ public class Produto {
     private Double quantidade;
     private Mercado idmercado;
     private Fabricante idfabricante;
-    private Categoria idcategoria;
+    private Setor idcategoria;
     private Unidade unidade;
     private String imagem;
     private int ativo;
@@ -99,7 +99,7 @@ public class Produto {
         return idcategoria.getNome();
     }
 
-    public void setIdcategoria(Categoria idcategoria) {
+    public void setIdcategoria(Setor idcategoria) {
         this.idcategoria = idcategoria;
     }
 

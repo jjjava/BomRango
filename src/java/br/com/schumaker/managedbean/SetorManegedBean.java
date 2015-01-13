@@ -1,8 +1,8 @@
 package br.com.schumaker.managedbean;
 
-import br.com.schumaker.dao.impl.CategoriaDaoImpl;
+import br.com.schumaker.dao.impl.SetorDaoImpl;
 import br.com.schumaker.dao.impl.ProdutoDaoImpl;
-import br.com.schumaker.model.Categoria;
+import br.com.schumaker.model.Setor;
 import br.com.schumaker.model.Produto;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,24 +23,24 @@ import org.primefaces.model.menu.MenuModel;
  */
 @ManagedBean
 @ViewScoped
-public class CategoriaManegedBean implements Serializable {
+public class SetorManegedBean implements Serializable {
 
-    private List<Categoria> listaCategorias;
+    private List<Setor> listaCategorias;
     private final MenuModel model;
-    private final CategoriaDaoImpl categoriaDaoImpl;
+    private final SetorDaoImpl categoriaDaoImpl;
     private final ProdutoDaoImpl produtoDaoImpl;
 
-    public CategoriaManegedBean() {
+    public SetorManegedBean() {
         model = new DefaultMenuModel();
-        categoriaDaoImpl = new CategoriaDaoImpl();
+        categoriaDaoImpl = new SetorDaoImpl();
         produtoDaoImpl = new ProdutoDaoImpl();
-        listaCategorias = new ArrayList<Categoria>();
+        listaCategorias = new ArrayList<Setor>();
     }
 
     @PostConstruct
     public void loadCategorias() {
         listaCategorias = categoriaDaoImpl.listar();
-        for (Categoria c : listaCategorias) {
+        for (Setor c : listaCategorias) {
             DefaultSubMenu dsm = new DefaultSubMenu(c.getNome());
             List<Produto> tmp = produtoDaoImpl.listarByCategoria(c.getId(), 10);
             for (Produto pTmp : tmp) {
