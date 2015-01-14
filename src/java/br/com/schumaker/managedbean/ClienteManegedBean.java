@@ -1,7 +1,11 @@
 package br.com.schumaker.managedbean;
 
+import br.com.schumaker.dao.impl.ClienteDaoImpl;
+import br.com.schumaker.model.Cliente;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -9,14 +13,32 @@ import javax.annotation.PostConstruct;
  * @version 1.0.0
  * @since 1.0.0
  */
+@ManagedBean
+@ViewScoped
 public class ClienteManegedBean implements Serializable {
 
-    public ClienteManegedBean() {
+    private Cliente cliente;
 
+    public ClienteManegedBean() {
+        cliente = new Cliente();
     }
 
     @PostConstruct
     public void load() {
 
+    }
+
+    public void doLogin() {
+        ClienteDaoImpl clienteDaoImpl = new ClienteDaoImpl();
+        System.err.println(cliente.getEmail());
+        System.err.println(cliente.getSenha());
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-@author hudson schumaker HStudio - @BomRango 12/01/2015
+@author hudson schumaker HStudio - @BomRango 14/01/2015
 @version 1.0.0
 @since 1.0.0
 -->
@@ -11,11 +11,10 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <link rel="stylesheet" type="text/css" href="css/mystyle.css"></link>
-        <title>@BomRango - Gerenciar</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>@BomRango - Gerenciar Mercado</title>
     </h:head>
     <h:body>
-        <h:form id="form">
+        <h:form> 
             <p:growl id="messages"/>
             <p:menubar styleClass="ui-menubar">
                 <f:facet name="options" >
@@ -37,15 +36,15 @@
                 <p:menuitem value="Setores" url="/faces/setores.xhtml" />
                 <p:menuitem value="Mercados" url="/faces/mercados.xhtml" />
             </p:menubar>
-            <p:panel header="Login:" style="margin-bottom:10px;" styleClass="searchbutton">
-                <h:panelGrid columns="2" style="margin:10px 0" >
-                    <h:outputLabel for="txt1" value="Email: " />
-                    <p:inputText id="txt1" value="#{clienteManegedBean.cliente.email}" size="50" />
-                    <h:outputLabel for="txt2" value="Senha: " />
-                    <p:password id="txt3" value="#{clienteManegedBean.cliente.senha}" size="50" />
-                    <p:commandButton value="Logar" id="ajax" process="@parent"  actionListener="#{clienteManegedBean.doLogin()}" />
-                </h:panelGrid>
-            </p:panel>
+            <p:ajaxStatus style="width:8px;height:8px;" id="ajaxStatusPanel">  
+                <f:facet name="start">  
+                    <h:graphicImage value="../images/ajax-loader.gif" />  
+                </f:facet>  
+                <f:facet name="complete">  
+                    <h:outputText value="" />  
+                </f:facet>  
+            </p:ajaxStatus> 
+            
         </h:form>
     </h:body>
 </html>
