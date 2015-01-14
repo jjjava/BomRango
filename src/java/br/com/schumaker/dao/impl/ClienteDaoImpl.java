@@ -46,6 +46,32 @@ public class ClienteDaoImpl implements ClienteDao {
         return cliente;
     }
 
+    public Cliente obter(String email) {
+        String sql = "select * from compras.cliente where cliente.email = '" + email + "'";
+        Connection conn = HsConnection.getConnection();
+        Cliente cliente = new Cliente();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                cliente.setId(rs.getInt("id"));
+                cliente.setIdMercado(rs.getInt("idmercado"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setSenha(rs.getString("senha"));//duvida se carregar ou nao 
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return cliente;
+    }
+
     @Override
     public List<Cliente> listar() {
         String sql = "select * from compras.cliente order by cliente.nome";
