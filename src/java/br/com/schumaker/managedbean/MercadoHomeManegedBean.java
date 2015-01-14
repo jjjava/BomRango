@@ -2,7 +2,6 @@ package br.com.schumaker.managedbean;
 
 import br.com.schumaker.dao.impl.MercadoDaoImpl;
 import br.com.schumaker.model.Mercado;
-import com.sun.jmx.snmp.BerDecoder;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -40,6 +39,4 @@ public class MercadoHomeManegedBean implements Serializable {
     public void setMercado(Mercado mercado) {
         this.mercado = mercado;
     }
-    
-    
 }

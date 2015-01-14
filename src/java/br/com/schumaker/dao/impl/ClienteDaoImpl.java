@@ -130,4 +130,28 @@ public class ClienteDaoImpl implements ClienteDao {
         }
         return validado;
     }
+
+    public void inseri(Cliente cliente) {
+        String sql = "insert into compras.cliente (idmercado, nome, email, senha) "
+                + " values (?,?,?,?)";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, cliente.getIdMercado());
+            pst.setString(2, cliente.getNome());
+            pst.setString(3, cliente.getEmail());
+            pst.setString(4, cliente.getSenha());
+            pst.execute();
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+    }
 }
