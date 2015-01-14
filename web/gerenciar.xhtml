@@ -42,7 +42,7 @@
                     <h:outputLabel for="txt1" value="Email: " />
                     <p:inputText id="txt1" value="#{clienteManegedBean.cliente.email}" size="50" />
                     <h:outputLabel for="txt2" value="Senha: " />
-                    <p:password id="txt3" value="#{clienteManegedBean.cliente.senha}" size="50" />
+                    <p:password id="txt2" value="#{clienteManegedBean.cliente.senha}" size="50" />
                     <p:commandButton value="Logar" id="ajax" process="@parent"  actionListener="#{clienteManegedBean.doLogin()}" />
                 </h:panelGrid>
             </p:panel>
