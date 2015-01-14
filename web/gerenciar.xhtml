@@ -18,13 +18,6 @@
         <h:form id="form">
             <p:growl id="messages"/>
             <p:menubar styleClass="ui-menubar">
-                <f:facet name="options" >
-                    <p:remoteCommand name="search" actionListener="#{inputSearchMangedBean.doSearch()}"/>
-                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMangedBean.valueStr}" onkeypress="if (event.keyCode == 13) {
-                                search();
-                                return false;
-                            }"/>
-                </f:facet>
                 <p:submenu >
                     <p:menuitem value="Sobre @BomRango" url="/faces/sobre.xhtml" />
                     <p:menuitem value="Contato" url="/faces/contato.xhtml" />
@@ -37,30 +30,38 @@
                 <p:menuitem value="Setores" url="/faces/setores.xhtml" />
                 <p:menuitem value="Mercados" url="/faces/mercados.xhtml" />
             </p:menubar>
+            <p:ajaxStatus style="width:8px;height:8px;" id="ajaxStatusPanel">  
+                <f:facet name="start">  
+                    <h:graphicImage value="../images/ajax-loader.gif" />  
+                </f:facet>  
+                <f:facet name="complete">  
+                    <h:outputText value="" />  
+                </f:facet>  
+            </p:ajaxStatus> 
             <p:panel header="Login:" style="margin-bottom:10px;" styleClass="searchbutton">
                 <h:panelGrid columns="2" style="margin:10px 0" >
                     <h:outputLabel for="txt1" value="Email: " />
                     <p:inputText id="txt1" value="#{clienteManegedBean.cliente.email}" size="50" />
                     <h:outputLabel for="txt2" value="Senha: " />
                     <p:password id="txt2" value="#{clienteManegedBean.cliente.senha}" size="50" />
-                    <p:commandButton value="Logar" id="ajax" process="@parent"  actionListener="#{clienteManegedBean.doLogin()}" />
+                    <p:commandButton value="Logar" id="ajax" actionListener="#{clienteManegedBean.doLogin}" />
                 </h:panelGrid>
             </p:panel>
             <script>
-            (function(i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function() {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-58557358-1', 'auto');
-            ga('send', 'pageview');
-        </script>
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-58557358-1', 'auto');
+                ga('send', 'pageview');
+            </script>
         </h:form>
     </h:body>
 </html>
