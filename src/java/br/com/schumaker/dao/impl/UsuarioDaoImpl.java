@@ -127,4 +127,27 @@ public class UsuarioDaoImpl implements UsuarioDao {
         }
         return validado;
     }
+
+    public void inseri(Usuario usuario) {
+        String sql = "insert into compras.uuario (nome, email, senha) "
+                + " values (?,?,?,?)";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, usuario.getNome());
+            pst.setString(2, usuario.getEmail());
+            pst.setString(3, usuario.getSenha());
+            pst.execute();
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+    }
 }
