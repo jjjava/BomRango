@@ -1,2 +1,13 @@
-linkar cidades com mercados (tabela)
-
+Gerenciar - Mercado
+    Produto:
+    add     produto
+    alterar produto
+    remover produto
+    
+    Setor:
+    add      setor
+    alterar  setor
+    
+    Marca:
+    add      marca
+    alterar  marca
