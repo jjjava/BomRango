@@ -22,16 +22,12 @@ public class ClienteManegedBean implements Serializable {
     public ClienteManegedBean() {
         cliente = new Cliente();
     }
-
-    @PostConstruct
-    public void load() {
-
-    }
-
+    
     public void doLogin() {
         ClienteDaoImpl clienteDaoImpl = new ClienteDaoImpl();
         System.err.println(cliente.getEmail());
         System.err.println(cliente.getSenha());
+        
     }
 
     public Cliente getCliente() {
