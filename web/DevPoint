@@ -1,18 +1,18 @@
 Gerenciar - Mercado
     Produto:
-    add     produto
-    alterar produto
-    remover produto
+    add     produto view   - back-end 0K
+    alterar produto view   - back-end 0K
+    remover produto view   - back-end 0K
     
     Setor:
-    add      setor
-    alterar  setor
+    add      setor  view   - back-end 
+    alterar  setor  view   - back-end 
     
     Marca:
-    add      marca
-    alterar  marca
+    add      marca   view   - back-end
+    alterar  marca   view   - back-end 0K
 
-Tabelas Cliente
+Tabelas Cliente 0K
         Usuario
 
 Mudar Cliente para membro???
