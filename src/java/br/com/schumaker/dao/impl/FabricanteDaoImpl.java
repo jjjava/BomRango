@@ -98,4 +98,26 @@ public class FabricanteDaoImpl implements FabricanteDao {
         }
         return fabricantes;
     }
+
+    public boolean verifyName(String nome) {
+        boolean validado = false;
+        String sql = "select * from compras.fabricante where fabricante.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                validado = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return validado;
+    }
 }
