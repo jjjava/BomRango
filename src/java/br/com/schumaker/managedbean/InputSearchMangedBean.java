@@ -19,7 +19,6 @@ public class InputSearchMangedBean implements Serializable {
 
     private String valueStr;
     public InputSearchMangedBean() {
-
     }
     
     public void doSearch(){
@@ -40,5 +39,4 @@ public class InputSearchMangedBean implements Serializable {
     public void setValueStr(String valueStr) {
         this.valueStr = valueStr;
     }
-
 }

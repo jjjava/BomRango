@@ -129,7 +129,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     public void inseri(Usuario usuario) {
-        String sql = "insert into compras.uuario (nome, email, senha) "
+        String sql = "insert into compras.usuario (nome, email, senha) "
                 + " values (?,?,?,?)";
         Connection conn = HsConnection.getConnection();
         PreparedStatement pst = null;

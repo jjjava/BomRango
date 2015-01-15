@@ -16,7 +16,6 @@ import javax.faces.bean.ViewScoped;
 public class UsuarioManegedBean implements Serializable {
 
     public UsuarioManegedBean() {
-
     }
 
     @PostConstruct

@@ -141,14 +141,12 @@ public class ClienteDaoImpl implements ClienteDao {
         cryptEmail = email;
         cryptPassword = password;
         String sql = "select * from compras.cliente where cliente.email = '" + cryptEmail + "' and cliente.senha = '" + cryptPassword + "'";
-        System.out.println(sql);
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 validado = true;
-                System.out.println("entrou...");
             }
         } catch (SQLException e) {
             System.err.println(e);
