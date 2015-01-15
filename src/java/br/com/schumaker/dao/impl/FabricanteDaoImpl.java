@@ -120,4 +120,25 @@ public class FabricanteDaoImpl implements FabricanteDao {
         }
         return validado;
     }
+
+    public void inseri(Fabricante fabricante) {
+        String sql = "insert into compras.fabricante (nome, site) values (?,?)";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, fabricante.getNome());
+            pst.setString(2, fabricante.getSite());
+            pst.execute();
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+    }
 }
