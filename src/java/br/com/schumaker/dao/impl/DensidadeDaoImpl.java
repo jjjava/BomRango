@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class DensidadeDaoImpl implements DensidadeDao{
+public class DensidadeDaoImpl implements DensidadeDao {
 
     @Override
     public Densidade obter(Integer id) {
@@ -94,5 +94,27 @@ public class DensidadeDaoImpl implements DensidadeDao{
             }
         }
         return densidades;
+    }
+
+    public boolean verificarNomeDensidade(String nome) {
+        String sql = "select * from compras.densidade where densidade.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        boolean validado = false;
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+
+            }
+        } catch (SQLException e) {
+            System.err.println(e);//throw new RuntimeException(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);//throw new RuntimeException(e);
+            }
+        }
+        return validado;
     }
 }
