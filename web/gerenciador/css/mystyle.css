@@ -5,7 +5,7 @@
 
 .ui-menubar   {
     mouseover: #ff0000; 
-    background-color: #000 !important; 
+    background-color: blue !important; 
     background: red; 
     font-size: 14px; 
 }
