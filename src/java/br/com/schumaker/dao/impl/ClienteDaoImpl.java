@@ -137,18 +137,16 @@ public class ClienteDaoImpl implements ClienteDao {
         boolean validado = false;
         String cryptEmail = HsEncryption.encrypt(email);
         String cryptPassword = HsEncryption.encrypt(password);
-        
+
         cryptEmail = email;
         cryptPassword = password;
         String sql = "select * from compras.cliente where cliente.email = '" + cryptEmail + "' and cliente.senha = '" + cryptPassword + "'";
-        System.out.println(sql);
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 validado = true;
-                System.out.println("entrou...");
             }
         } catch (SQLException e) {
             System.err.println(e);
@@ -163,8 +161,7 @@ public class ClienteDaoImpl implements ClienteDao {
     }
 
     public void inseri(Cliente cliente) {
-        String sql = "insert into compras.cliente (idmercado, nome, email, senha) "
-                + " values (?,?,?,?)";
+        String sql = "insert into compras.cliente (idmercado, nome, email, senha) values (?,?,?,?)";
         Connection conn = HsConnection.getConnection();
         PreparedStatement pst = null;
         try {
@@ -184,5 +181,27 @@ public class ClienteDaoImpl implements ClienteDao {
                 System.err.println(e);
             }
         }
+    }
+
+    public boolean verifyEmail(String email) {
+        boolean validado = false;
+        String sql = "select * from compras.cliente where cliente.email = '" + email + "'";
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                validado = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return validado;
     }
 }

@@ -25,7 +25,6 @@ public class ClienteManegedBean implements Serializable {
 
     public ClienteManegedBean() {
         cliente = new Cliente();
-        System.out.println("construtor");
     }
 
     public void doLogin() {
@@ -36,7 +35,6 @@ public class ClienteManegedBean implements Serializable {
                 FacesContext fc = FacesContext.getCurrentInstance();
                 HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
                 session.setAttribute("Cliente", cliente);
-                System.err.println("validou");
                 FacesContext.getCurrentInstance().getExternalContext().redirect("gerenciador/gerenciarmercado.xhtml");
             } catch (IOException ex) {
                 System.out.println(ex);

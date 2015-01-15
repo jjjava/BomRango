@@ -3,6 +3,7 @@ package br.com.schumaker.dao.impl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.DensidadeDao;
 import br.com.schumaker.model.Densidade;
+import br.com.schumaker.model.Fabricante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
