@@ -2,9 +2,9 @@ package br.com.schumaker.managedbean;
 
 import br.com.schumaker.bs.impl.ClienteBsImpl;
 import br.com.schumaker.model.Cliente;
-import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.io.Serializable;
 
 /**
  *

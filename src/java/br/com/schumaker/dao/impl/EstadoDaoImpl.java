@@ -2,6 +2,7 @@ package br.com.schumaker.dao.impl;
 
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.EstadoDao;
+import br.com.schumaker.model.Cidade;
 import br.com.schumaker.model.Estado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -185,10 +186,10 @@ public class EstadoDaoImpl implements EstadoDao {
     }
 
     @Override
-    public boolean verificarCidadeNoEstado(int idCidade, int idEstado) {
+    public boolean verificarCidadeNoEstado(Cidade cidade) {
         boolean verificado = false;
-        String sql = "select * from compras.cidade where cidade.id = " + idCidade + " and "
-                + "cidade.idestado = " + idEstado;
+        String sql = "select * from compras.cidade where cidade.id = " + cidade.getId() + " and "
+                + "cidade.idestado = " + cidade.getIdEstado();
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

@@ -1,5 +1,6 @@
 package br.com.schumaker.dao;
 
+import br.com.schumaker.model.Cidade;
 import br.com.schumaker.model.Estado;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface EstadoDao {
     List<Estado> listar();
     List<Estado> like(String s);
     boolean verificarNome(String nome);
-    boolean verificarCidadeNoEstado(int idCidade, int idEstado);
+    boolean verificarCidadeNoEstado(Cidade cidade);
     boolean cadastar(Estado estado);
     boolean atualizar(Estado estado);
     boolean deletar(Estado estado);

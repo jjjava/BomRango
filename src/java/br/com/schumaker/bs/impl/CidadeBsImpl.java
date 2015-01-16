@@ -38,7 +38,7 @@ public class CidadeBsImpl implements CidadeBs {
 
     @Override
     public void cadastar(Cidade cidade) {
-        if (new EstadoDaoImpl().verificarCidadeNoEstado(cidade.getId(), cidade.getIdEstado())) {
+        if (new EstadoDaoImpl().verificarCidadeNoEstado(cidade)) {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Cidade", "Já existe uma cidade com esse nome no estado selecionado. ");
         } else {
             if (new CidadeDaoImpl().cadastar(cidade)) {
