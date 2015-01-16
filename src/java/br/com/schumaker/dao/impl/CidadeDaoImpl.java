@@ -18,6 +18,9 @@ import java.util.List;
  */
 public class CidadeDaoImpl implements CidadeDao {
 
+    public CidadeDaoImpl() {
+    }
+
     @Override
     public Cidade obter(Integer id) {
         String sql = "select * from compras.cidade where cidade.id = " + id;
@@ -98,10 +101,10 @@ public class CidadeDaoImpl implements CidadeDao {
         }
         return cidades;
     }
-    
+
     @Override
     public boolean verificarNome(String nome) {
-       boolean validado = false;
+        boolean validado = false;
         String sql = "select * from compras.cidade where cidade.nome = '" + nome + "'";
         Connection conn = HsConnection.getConnection();
         try {
@@ -150,7 +153,31 @@ public class CidadeDaoImpl implements CidadeDao {
 
     @Override
     public boolean atualizar(Cidade cidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean atualizado = false;
+        String sql = "update compras.cidade set cidade.idestado=?, cidade.nome=? "
+                + "where cidade.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, cidade.getIdEstado());
+            pst.setString(2, cidade.getNome());
+            //where
+            pst.setInt(3, cidade.getId());
+            pst.executeUpdate();
+            atualizado = true;
+        } catch (SQLException e) {
+            atualizado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return atualizado;
     }
 
     @Override

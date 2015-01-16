@@ -18,6 +18,9 @@ import java.util.List;
  * @since 1.0.0
  */
 public class ClienteDaoImpl implements ClienteDao {
+    
+    public ClienteDaoImpl(){
+    }
 
     @Override
     public Cliente obter(Integer id) {
@@ -133,13 +136,8 @@ public class ClienteDaoImpl implements ClienteDao {
     }
 
     @Override
-    public boolean validar(String email, String password) {
+    public boolean validar(String cryptEmail, String cryptPassword) {//recebe dados criptografados
         boolean validado = false;
-        String cryptEmail = HsEncryption.encrypt(email);
-        String cryptPassword = HsEncryption.encrypt(password);
-
-        cryptEmail = email;
-        cryptPassword = password;
         String sql = "select * from compras.cliente where cliente.email = '" + cryptEmail + "' and cliente.senha = '" + cryptPassword + "'";
         Connection conn = HsConnection.getConnection();
         try {
@@ -193,8 +191,8 @@ public class ClienteDaoImpl implements ClienteDao {
             pst = conn.prepareStatement(sql);
             pst.setInt(1, cliente.getIdMercado());
             pst.setString(2, cliente.getNome());
-            pst.setString(3, cliente.getEmail());
-            pst.setString(4, cliente.getSenha());
+            pst.setString(3, cliente.getEmail());// criptografado
+            pst.setString(4, cliente.getSenha());// criptografado
             pst.execute();
             cadastrado = true;
         } catch (SQLException e) {
@@ -213,7 +211,32 @@ public class ClienteDaoImpl implements ClienteDao {
 
     @Override
     public boolean atualizar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean atualizado = false;
+        String sql = "update compras.cliente set cliente.nome=?, cliente.email=?, cliente.senha=? "
+                + "where cliente.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(2, cliente.getNome());
+            pst.setString(2, cliente.getEmail());
+            pst.setString(2, cliente.getSenha());
+            //where
+            pst.setInt(3, cliente.getId());
+            pst.executeUpdate();
+            atualizado = true;
+        } catch (SQLException e) {
+            atualizado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return atualizado;
     }
 
     @Override

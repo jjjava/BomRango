@@ -17,8 +17,8 @@ import java.util.List;
  * @since 1.0.0
  */
 public class DensidadeDaoImpl implements DensidadeDao {
-    
-    public DensidadeDaoImpl(){
+
+    public DensidadeDaoImpl() {
     }
 
     @Override
@@ -149,7 +149,29 @@ public class DensidadeDaoImpl implements DensidadeDao {
 
     @Override
     public boolean atualizar(Densidade densiadade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean atualizado = false;
+        String sql = "update compras.densidade set densidade.nome=? where densidade.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, densiadade.getNome());
+            //where
+            pst.setInt(2, densiadade.getId());
+            pst.executeUpdate();
+            atualizado = true;
+        } catch (SQLException e) {
+            atualizado = false;
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return atualizado;
     }
 
     @Override

@@ -303,7 +303,7 @@ public class ProdutoDaoImpl implements ProdutoDao {
             cadastrado = true;
         } catch (SQLException e) {
             cadastrado = false;
-            throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 pst.close();

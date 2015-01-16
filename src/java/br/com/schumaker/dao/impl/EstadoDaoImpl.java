@@ -18,6 +18,9 @@ import java.util.List;
  */
 public class EstadoDaoImpl implements EstadoDao {
 
+    public EstadoDaoImpl() {
+    }
+
     @Override
     public Estado obter(Integer id) {
         String sql = "select * from compras.estado where estado.id = " + id;
@@ -127,7 +130,30 @@ public class EstadoDaoImpl implements EstadoDao {
 
     @Override
     public boolean atualizar(Estado estado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean atualizado = false;
+        String sql = "update compras.estado set estado.nome=?, estado.uf=? where estado.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, estado.getNome());
+            pst.setString(2, estado.getUf());
+            //where
+            pst.setInt(3, estado.getId());
+            pst.executeUpdate();
+            atualizado = true;
+        } catch (SQLException e) {
+            atualizado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return atualizado;
     }
 
     @Override
