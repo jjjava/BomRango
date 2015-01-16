@@ -178,7 +178,43 @@ public class MercadoDaoImpl implements MercadoDao {
 
     @Override
     public boolean cadastrar(Mercado mercado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean cadastrado = false;
+        String sql = "insert into compras.mercado (iddensidade, nome, endereco, idcidade, bairro, idestado, telefone, "
+                + "site, cartoes, cnpj, horariofunc, fundacao, sobre, ativo, estacionamento) "
+                + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, mercado.getIdDensidade());
+            pst.setString(2, mercado.getNome());
+            pst.setString(3, mercado.getEndereco());
+            pst.setInt(4, mercado.getCidade());
+            pst.setString(5, mercado.getBairro());
+            pst.setInt(6, mercado.getEstado());
+            pst.setString(7, mercado.getTelefone());
+            pst.setString(8, mercado.getSite());
+            pst.setString(9, mercado.getCartoes());
+            pst.setString(10, mercado.getCnpj());
+            pst.setString(11, mercado.getHorarioFunc());
+            pst.setString(12, mercado.getFundacao());
+            pst.setString(13, mercado.getSobre());
+            pst.setInt(14, mercado.getAtivo());
+            pst.setInt(15, mercado.getEstacionamento());
+            pst.execute();
+            cadastrado = true;
+        } catch (SQLException e) {
+            cadastrado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return cadastrado;
     }
 
     @Override

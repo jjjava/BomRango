@@ -121,10 +121,6 @@ public class FabricanteDaoImpl implements FabricanteDao {
         return validado;
     }
 
-    public void inseri(Fabricante fabricante) {
-
-    }
-
     @Override
     public boolean cadastrar(Fabricante fabricante) {
         boolean cadastrado = false;

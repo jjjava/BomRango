@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class EstadoDaoImpl implements EstadoDao{
+public class EstadoDaoImpl implements EstadoDao {
 
     @Override
     public Estado obter(Integer id) {
@@ -100,8 +100,29 @@ public class EstadoDaoImpl implements EstadoDao{
     }
 
     @Override
-    public boolean cadastar(Estado estdado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean cadastar(Estado estado) {
+        boolean cadastrado = false;
+        String sql = "insert into compras.estado ( nome, uf ) values (?,?)";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(2, estado.getNome());
+            pst.setString(3, estado.getUf());
+            pst.execute();
+            cadastrado = true;
+        } catch (SQLException e) {
+            cadastrado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return cadastrado;
     }
 
     @Override

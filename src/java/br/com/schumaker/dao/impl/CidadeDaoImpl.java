@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class CidadeDaoImpl implements CidadeDao{
+public class CidadeDaoImpl implements CidadeDao {
 
     @Override
     public Cidade obter(Integer id) {
@@ -32,12 +32,12 @@ public class CidadeDaoImpl implements CidadeDao{
                 cidade.setNome(rs.getString("nome"));
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return cidade;
@@ -101,7 +101,28 @@ public class CidadeDaoImpl implements CidadeDao{
 
     @Override
     public boolean cadastar(Cidade cidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean cadastrado = false;
+        String sql = "insert into compras.cliente ( idestado, nome ) values (?,?)";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, cidade.getIdEstado());
+            pst.setString(2, cidade.getNome());
+            pst.execute();
+            cadastrado = true;
+        } catch (SQLException e) {
+            cadastrado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return cadastrado;
     }
 
     @Override
