@@ -12,6 +12,7 @@ import java.util.List;
 public interface CidadeDao {
     Cidade obter(Integer id);
     List<Cidade> listar();
+    List<Cidade> like(String s);
     boolean cadastar(Cidade cidade);
     boolean atualizar(Cidade cidade);
     boolean deletar(Cidade cidade);

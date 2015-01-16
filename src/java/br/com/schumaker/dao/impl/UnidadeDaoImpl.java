@@ -98,4 +98,19 @@ public class UnidadeDaoImpl implements UnidadeDao {
         }
         return unidades;
     }
+
+    @Override
+    public boolean cadastrar(Unidade unidade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atulizar(Unidade unidade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletar(Unidade unidade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

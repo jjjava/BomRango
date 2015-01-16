@@ -17,7 +17,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class DensidadeDaoImpl implements DensidadeDao{
+public class DensidadeDaoImpl implements DensidadeDao {
 
     @Override
     public Densidade obter(Integer id) {
@@ -96,8 +96,8 @@ public class DensidadeDaoImpl implements DensidadeDao{
         }
         return densidades;
     }
-    
-     public boolean verifyName(String nome) {
+
+    public boolean verifyName(String nome) {
         boolean validado = false;
         String sql = "select * from compras.densidade where densidade.nome = '" + nome + "'";
         Connection conn = HsConnection.getConnection();
@@ -119,7 +119,9 @@ public class DensidadeDaoImpl implements DensidadeDao{
         return validado;
     }
 
-    public void inseri(Densidade densidade) {
+    @Override
+    public boolean cadastrar(Densidade densidade) {
+        boolean cadastrado = false;
         String sql = "insert into compras.densidade (nome) values (?)";
         Connection conn = HsConnection.getConnection();
         PreparedStatement pst = null;
@@ -127,7 +129,9 @@ public class DensidadeDaoImpl implements DensidadeDao{
             pst = conn.prepareStatement(sql);
             pst.setString(1, densidade.getNome());
             pst.execute();
+            cadastrado = true;
         } catch (SQLException e) {
+            cadastrado = false;
             System.err.println(e);
         } finally {
             try {
@@ -137,5 +141,16 @@ public class DensidadeDaoImpl implements DensidadeDao{
                 System.err.println(e);
             }
         }
+        return cadastrado;
+    }
+
+    @Override
+    public boolean atualizar(Densidade densiadade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletar(Densidade densidade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

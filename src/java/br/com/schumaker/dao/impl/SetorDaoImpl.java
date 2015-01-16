@@ -98,4 +98,19 @@ public class SetorDaoImpl implements SetorDao {
         }
         return categorias;
     }
+
+    @Override
+    public boolean cadastrar(Setor setor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizar(Setor setor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletar(Setor setor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

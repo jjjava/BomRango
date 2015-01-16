@@ -70,63 +70,7 @@ public class PesquisaDaoImpl implements PesquisaDao {
         }
         return pesquisas;
     }
-    
-    @Override
-    public List<Pesquisa> listarTop5() {
-        List<Pesquisa> pesquisas = new ArrayList<Pesquisa>();
-        String sql = "select * from compras.pesquisados limit 5 order by pesquisados.vezes desc";
-        Connection conn = HsConnection.getConnection();
-        try {
-            PreparedStatement pst = conn.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                Pesquisa pesquisa = new Pesquisa();
-                pesquisa.setId(rs.getInt("id"));
-                pesquisa.setNome(rs.getString("nome"));
-                pesquisa.setVezes(rs.getInt("vezes"));
-                //---add na lista
-                pesquisas.add(pesquisa);
-            }
-        } catch (SQLException e) {
-            System.err.println(e);
-        } finally {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
-            }
-        }
-        return pesquisas;
-    }
-    
-    @Override
-    public List<Pesquisa> listarTop40() {
-        List<Pesquisa> pesquisas = new ArrayList<Pesquisa>();
-        String sql = "select * from compras.pesquisados order by pesquisados.vezes desc limit 40";
-        Connection conn = HsConnection.getConnection();
-        try {
-            PreparedStatement pst = conn.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-            while (rs.next()) {
-                Pesquisa pesquisa = new Pesquisa();
-                pesquisa.setId(rs.getInt("id"));
-                pesquisa.setNome(rs.getString("nome"));
-                pesquisa.setVezes(rs.getInt("vezes"));
-                //---add na lista
-                pesquisas.add(pesquisa);
-            }
-        } catch (SQLException e) {
-            System.err.println(e);
-        } finally {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
-            }
-        }
-        return pesquisas;
-    }
-    
+        
     @Override
     public List<Pesquisa> listarTopXX(int x) {
         List<Pesquisa> pesquisas = new ArrayList<Pesquisa>();

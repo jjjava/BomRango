@@ -32,13 +32,13 @@ public class MercadoManegedBean implements Serializable {
     }
 
     @PostConstruct
-    public void loadMercados() {
+    public void carregaMercados() {
         DensidadeDao densidadeDao = new DensidadeDaoImpl();
         MercadoDaoImpl mercadoDao = new MercadoDaoImpl();
         List<Densidade> listDensidade = densidadeDao.listar();
         for (Densidade d : listDensidade) {
             DefaultSubMenu dsm = new DefaultSubMenu(d.getNome());
-            List<Mercado> mTmp = mercadoDao.listarByDensidade(d.getId());
+            List<Mercado> mTmp = mercadoDao.listarPorDensidade(d.getId());
             for (Mercado m : mTmp) {
                 DefaultMenuItem dmi = new DefaultMenuItem(m.getNome(), null, "/faces/mercadohome.xhtml?m="+m.getId());
                 dsm.addElement(dmi);

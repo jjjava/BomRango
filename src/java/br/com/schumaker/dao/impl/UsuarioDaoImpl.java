@@ -128,7 +128,9 @@ public class UsuarioDaoImpl implements UsuarioDao {
         return validado;
     }
 
-    public void inseri(Usuario usuario) {
+    @Override
+    public boolean cadastrar(Usuario usuario) {
+        boolean cadastrado = false;
         String sql = "insert into compras.usuario (nome, email, senha) "
                 + " values (?,?,?,?)";
         Connection conn = HsConnection.getConnection();
@@ -139,7 +141,9 @@ public class UsuarioDaoImpl implements UsuarioDao {
             pst.setString(2, usuario.getEmail());
             pst.setString(3, usuario.getSenha());
             pst.execute();
+            cadastrado = true;
         } catch (SQLException e) {
+            cadastrado = false;
             System.err.println(e);
         } finally {
             try {
@@ -149,5 +153,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
                 System.err.println(e);
             }
         }
+        return cadastrado;
+    }
+
+    @Override
+    public boolean atualizar(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletar(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

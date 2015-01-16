@@ -14,7 +14,7 @@ public interface ProdutoDao {
     List<Produto> listar();
     List<Produto> listar(int limite);
     List<Produto> like(String s);
-    boolean cadastar(Produto produto);
-    boolean atulizar(Produto produto);
+    boolean cadastrar(Produto produto);
+    boolean atualizar(Produto produto);
     boolean deletar(Produto produto);
 }

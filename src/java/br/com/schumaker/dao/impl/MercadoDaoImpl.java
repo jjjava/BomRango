@@ -107,7 +107,7 @@ public class MercadoDaoImpl implements MercadoDao {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Mercado mercado = new Mercado();
-               mercado.setId(rs.getInt("id"));
+                mercado.setId(rs.getInt("id"));
                 mercado.setIdDensidade(rs.getInt("iddensidade"));
                 mercado.setNome(rs.getString("nome"));
                 mercado.setEndereco(rs.getString("endereco"));
@@ -137,7 +137,7 @@ public class MercadoDaoImpl implements MercadoDao {
         return mercados;
     }
 
-    public List<Mercado> listarByDensidade(int idDensidade) {
+    public List<Mercado> listarPorDensidade(int idDensidade) {
         List<Mercado> mercados = new ArrayList<Mercado>();
         String sql = "select * from compras.mercado where mercado.iddensidade =" + idDensidade + " order by mercado.nome";
         Connection conn = HsConnection.getConnection();
@@ -146,7 +146,7 @@ public class MercadoDaoImpl implements MercadoDao {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Mercado mercado = new Mercado();
-               mercado.setId(rs.getInt("id"));
+                mercado.setId(rs.getInt("id"));
                 mercado.setIdDensidade(rs.getInt("iddensidade"));
                 mercado.setNome(rs.getString("nome"));
                 mercado.setEndereco(rs.getString("endereco"));
@@ -174,6 +174,21 @@ public class MercadoDaoImpl implements MercadoDao {
             }
         }
         return mercados;
+    }
+
+    @Override
+    public boolean cadastrar(Mercado mercado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizar(Mercado mercado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletar(Mercado mercado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private Estado getMyEstado(Integer id) {

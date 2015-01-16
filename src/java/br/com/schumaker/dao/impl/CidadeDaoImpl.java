@@ -98,4 +98,19 @@ public class CidadeDaoImpl implements CidadeDao{
         }
         return cidades;
     }
+
+    @Override
+    public boolean cadastar(Cidade cidade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean atualizar(Cidade cidade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletar(Cidade cidade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

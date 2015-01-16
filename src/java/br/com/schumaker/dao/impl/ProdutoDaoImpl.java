@@ -180,7 +180,7 @@ public class ProdutoDaoImpl implements ProdutoDao {
         return produtos;
     }
 
-    public List<Produto> listarByCategoria(int idCategoria, int limite) {
+    public List<Produto> listarPorCategoria(int idCategoria, int limite) {
         List<Produto> produtos = new ArrayList<Produto>();
         String sql = "select * from compras.produto where produto.idcategoria=" + idCategoria + " and produto.ativo=" + HsCommons.PRODATIV + "  order by produto.preco limit " + limite;
         Connection conn = HsConnection.getConnection();
@@ -217,7 +217,9 @@ public class ProdutoDaoImpl implements ProdutoDao {
         return produtos;
     }
 
-    public void inseri(Produto produto) {
+    @Override
+    public boolean cadastrar(Produto produto) {
+        boolean cadastrado = false;
         String sql = "insert into compras.produtos (nome, descricao, preco, quantidade, idmercado, idfabricante, idcategoria, unidade, imagem, ativo) "
                 + " values (?,?,?,?,?,?,?,?,?,?)";
         Connection conn = HsConnection.getConnection();
@@ -236,7 +238,9 @@ public class ProdutoDaoImpl implements ProdutoDao {
             pst.setInt(10, produto.getAtivo());
 
             pst.execute();
+            cadastrado = true;
         } catch (SQLException e) {
+            cadastrado = false;
             System.err.println(e);
         } finally {
             try {
@@ -246,9 +250,12 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 System.err.println(e);
             }
         }
+        return cadastrado;
     }
 
-    public void atualiza(Produto produto) {
+    @Override
+    public boolean atualizar(Produto produto) {
+        boolean cadastrado = false;
         String sql = "update compras.produto set produto.nome=?, produto.descricao=?,"
                 + " produto.preco=?, produto.quantidade=? ,produto.categoria=?"
                 + " produto.imagem=?, produto.ativo=? "
@@ -267,7 +274,9 @@ public class ProdutoDaoImpl implements ProdutoDao {
             //where
             pst.setInt(8, produto.getId());
             pst.executeUpdate();
+            cadastrado = true;
         } catch (SQLException e) {
+            cadastrado = false;
             throw new RuntimeException(e);
         } finally {
             try {
@@ -277,6 +286,12 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 System.err.println(e);
             }
         }
+        return cadastrado;
+    }
+
+    @Override
+    public boolean deletar(Produto produto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private Setor getMyCategoria(Integer id) {

@@ -42,7 +42,7 @@ public class SetorManegedBean implements Serializable {
         listaCategorias = categoriaDaoImpl.listar();
         for (Setor c : listaCategorias) {
             DefaultSubMenu dsm = new DefaultSubMenu(c.getNome());
-            List<Produto> tmp = produtoDaoImpl.listarByCategoria(c.getId(), 10);
+            List<Produto> tmp = produtoDaoImpl.listarPorCategoria(c.getId(), 10);
             for (Produto pTmp : tmp) {
                 dsm.addElement(new DefaultMenuItem(pTmp.getNome(), null, pTmp.getPrecoStr()));
             }

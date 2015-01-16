@@ -122,6 +122,12 @@ public class FabricanteDaoImpl implements FabricanteDao {
     }
 
     public void inseri(Fabricante fabricante) {
+
+    }
+
+    @Override
+    public boolean cadastrar(Fabricante fabricante) {
+        boolean cadastrado = false;
         String sql = "insert into compras.fabricante (nome, site) values (?,?)";
         Connection conn = HsConnection.getConnection();
         PreparedStatement pst = null;
@@ -130,7 +136,9 @@ public class FabricanteDaoImpl implements FabricanteDao {
             pst.setString(1, fabricante.getNome());
             pst.setString(2, fabricante.getSite());
             pst.execute();
+            cadastrado = true;
         } catch (SQLException e) {
+            cadastrado = false;
             System.err.println(e);
         } finally {
             try {
@@ -140,5 +148,16 @@ public class FabricanteDaoImpl implements FabricanteDao {
                 System.err.println(e);
             }
         }
+        return cadastrado;
+    }
+
+    @Override
+    public boolean atualizar(Fabricante fabricante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean deletar(Fabricante fabricante) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
