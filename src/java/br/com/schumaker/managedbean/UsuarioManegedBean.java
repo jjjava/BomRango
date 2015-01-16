@@ -20,6 +20,5 @@ public class UsuarioManegedBean implements Serializable {
 
     @PostConstruct
     public void load() {
-
     }
 }

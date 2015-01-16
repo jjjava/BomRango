@@ -182,6 +182,6 @@ public class CidadeDaoImpl implements CidadeDao {
 
     @Override
     public boolean deletar(Cidade cidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported.");
     }
 }

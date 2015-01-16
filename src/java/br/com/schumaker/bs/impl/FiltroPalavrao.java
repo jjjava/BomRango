@@ -1,4 +1,4 @@
-package br.com.schumaker.bs;
+package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.dao.impl.PalavraoDaoImpl;
 import br.com.schumaker.model.Palavrao;
