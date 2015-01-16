@@ -137,6 +137,7 @@ public class MercadoDaoImpl implements MercadoDao {
         return mercados;
     }
 
+    @Override
     public List<Mercado> listarPorDensidade(int idDensidade) {
         List<Mercado> mercados = new ArrayList<Mercado>();
         String sql = "select * from compras.mercado where mercado.iddensidade =" + idDensidade + " order by mercado.nome";
@@ -174,6 +175,11 @@ public class MercadoDaoImpl implements MercadoDao {
             }
         }
         return mercados;
+    }
+
+    @Override
+    public boolean verificarNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

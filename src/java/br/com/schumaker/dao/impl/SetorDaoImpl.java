@@ -17,6 +17,9 @@ import java.util.List;
  * @since 1.0.0
  */
 public class SetorDaoImpl implements SetorDao {
+    
+    public SetorDaoImpl(){
+    }
 
     @Override
     public Setor obter(Integer id) {
@@ -97,6 +100,11 @@ public class SetorDaoImpl implements SetorDao {
             }
         }
         return categorias;
+    }
+
+    @Override
+    public boolean verificarNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

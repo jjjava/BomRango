@@ -129,6 +129,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
+    public boolean verificarNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public boolean cadastrar(Usuario usuario) {
         boolean cadastrado = false;
         String sql = "insert into compras.usuario (nome, email, senha) "

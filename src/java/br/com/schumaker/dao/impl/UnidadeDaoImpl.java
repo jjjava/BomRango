@@ -100,6 +100,11 @@ public class UnidadeDaoImpl implements UnidadeDao {
     }
 
     @Override
+    public boolean verificarNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public boolean cadastrar(Unidade unidade) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

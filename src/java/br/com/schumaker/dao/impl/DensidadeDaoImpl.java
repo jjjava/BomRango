@@ -3,7 +3,6 @@ package br.com.schumaker.dao.impl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.DensidadeDao;
 import br.com.schumaker.model.Densidade;
-import br.com.schumaker.model.Fabricante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -151,6 +150,11 @@ public class DensidadeDaoImpl implements DensidadeDao {
 
     @Override
     public boolean deletar(Densidade densidade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean verificarNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

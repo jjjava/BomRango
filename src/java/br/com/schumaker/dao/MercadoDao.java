@@ -13,6 +13,7 @@ public interface MercadoDao {
     Mercado obter(Integer id);
     List<Mercado> listar();
     List<Mercado> like(String s);
+    List<Mercado> listarPorDensidade(int idDensidade);
     boolean verificarNome(String nome);
     boolean cadastrar(Mercado mercado);
     boolean atualizar(Mercado mercado);

@@ -181,4 +181,9 @@ public class PesquisaDaoImpl implements PesquisaDao {
         }
         return pesquisa;
     }
+
+    @Override
+    public void atualizar(Pesquisa p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

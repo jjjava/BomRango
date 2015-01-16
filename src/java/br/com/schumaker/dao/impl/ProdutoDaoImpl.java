@@ -23,6 +23,9 @@ import java.util.List;
  * @since 1.0.0
  */
 public class ProdutoDaoImpl implements ProdutoDao {
+    
+    public ProdutoDaoImpl(){
+    }
 
     @Override
     public Produto obter(Integer id) {
@@ -218,6 +221,11 @@ public class ProdutoDaoImpl implements ProdutoDao {
     }
 
     @Override
+    public boolean verificarNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public boolean cadastrar(Produto produto) {
         boolean cadastrado = false;
         String sql = "insert into compras.produtos (nome, descricao, preco, quantidade, idmercado, idfabricante, idcategoria, unidade, imagem, ativo) "
@@ -313,4 +321,5 @@ public class ProdutoDaoImpl implements ProdutoDao {
         UnidadeDaoImpl unidadeDaoImpl = new UnidadeDaoImpl();
         return unidadeDaoImpl.obter(id);
     }
+
 }
