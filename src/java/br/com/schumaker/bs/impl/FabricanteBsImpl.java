@@ -28,8 +28,8 @@ public class FabricanteBsImpl implements FabricanteBs {
     }
 
     @Override
-    public void verificarNome(String nome) {
-      FabricanteDaoImpl().verificarNome(nome);
+    public boolean verificarNome(String nome) {
+      return new FabricanteDaoImpl().verificarNome(nome);
     }
 
     @Override

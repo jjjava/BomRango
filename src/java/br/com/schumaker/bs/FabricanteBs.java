@@ -12,7 +12,7 @@ public interface FabricanteBs {
     Fabricante obter(Integer id);
     List<Fabricante> listar();
     List<Fabricante> like(String s);
-    void verificarNome(String nome);
+    boolean verificarNome(String nome);
     void cadastrar(Fabricante fabricante);
     void atualizar(Fabricante fabricante);
     void deletar(Fabricante fabricante); 

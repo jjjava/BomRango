@@ -1,6 +1,7 @@
 package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.bs.ProdutoBs;
+import br.com.schumaker.dao.impl.FabricanteDaoImpl;
 import br.com.schumaker.dao.impl.ProdutoDaoImpl;
 import br.com.schumaker.model.Produto;
 import java.util.List;
@@ -72,8 +73,9 @@ public class ProdutoBsImpl implements ProdutoBs {
 
     @Override
     public void cadastrar(Produto produto) {
-        Fabricante fabricante = new Fa
-        if (verificarNome(produto.getNome())&& verificarMarca(produto.)) {
+       
+        Fabricante fabricante = new FabricanteDaoImpl().obter(produto.getIdFabricante());
+        if (verificarNome(produto.getNome())&& verificarFabricante(produto.)) {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Produto", "Produto.");
         } else {
             
