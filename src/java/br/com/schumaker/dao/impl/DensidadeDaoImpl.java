@@ -17,6 +17,9 @@ import java.util.List;
  * @since 1.0.0
  */
 public class DensidadeDaoImpl implements DensidadeDao {
+    
+    public DensidadeDaoImpl(){
+    }
 
     @Override
     public Densidade obter(Integer id) {
@@ -96,7 +99,8 @@ public class DensidadeDaoImpl implements DensidadeDao {
         return densidades;
     }
 
-    public boolean verifyName(String nome) {
+    @Override
+    public boolean verificarNome(String nome) {
         boolean validado = false;
         String sql = "select * from compras.densidade where densidade.nome = '" + nome + "'";
         Connection conn = HsConnection.getConnection();
@@ -150,11 +154,6 @@ public class DensidadeDaoImpl implements DensidadeDao {
 
     @Override
     public boolean deletar(Densidade densidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean verificarNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

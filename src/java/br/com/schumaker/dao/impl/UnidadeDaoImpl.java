@@ -99,9 +99,27 @@ public class UnidadeDaoImpl implements UnidadeDao {
         return unidades;
     }
 
-    @Override
+     @Override
     public boolean verificarNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean validado = false;
+        String sql = "select * from compras.unidade where unidade.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                validado = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return validado;
     }
 
     @Override

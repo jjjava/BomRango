@@ -160,7 +160,8 @@ public class ClienteDaoImpl implements ClienteDao {
         return validado;
     }
 
-    public boolean verifyEmail(String email) {
+    @Override
+    public boolean verificarEmail(String email) {
         boolean validado = false;
         String sql = "select * from compras.cliente where cliente.email = '" + email + "'";
         Connection conn = HsConnection.getConnection();

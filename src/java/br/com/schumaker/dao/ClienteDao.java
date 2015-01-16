@@ -13,6 +13,7 @@ public interface ClienteDao {
     Cliente obter(Integer id);
     List<Cliente> listar();
     List<Cliente> like(String s);
+    boolean verificarEmail(String email);
     boolean validar(String email, String password);
     boolean verificarNome(String nome);
     boolean cadastar(Cliente cliente);
