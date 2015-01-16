@@ -127,6 +127,44 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 produtos.add(produto);
             }
         } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return produtos;
+    }
+
+    @Override
+    public List<Produto> listar(String nome) {
+        List<Produto> produtos = new ArrayList<Produto>();
+        String sql = "select * from compras.produto where produto.nome ='" + nome + " and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco";
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                //---chaves estrangeiras
+                produto.setIdcategoria(getMyCategoria(rs.getInt("idcategoria")));
+                produto.setIdfabricante(getMyFabricante(rs.getInt("idfabricante")));
+                produto.setIdmercado(getMyMercado(rs.getInt("idmercado")));
+                produto.setUnidade(getMyUnidade(rs.getInt("unidade")));
+                //---chaves estrangeiras
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setPreco(rs.getDouble("preco"));
+                produto.setQuantidade(rs.getDouble("quantidade"));
+                produto.setImagem(rs.getString("imagem"));
+                produto.setAtivo(rs.getInt("ativo"));
+                //---add na lista
+                produtos.add(produto);
+            }
+        } catch (SQLException e) {
             System.err.println(e);//throw new RuntimeException(e);
         } finally {
             try {
@@ -139,9 +177,9 @@ public class ProdutoDaoImpl implements ProdutoDao {
     }
 
     @Override
-    public List<Produto> listar(String nome) {
+    public List<Produto> listar(String nome, int limite) {
         List<Produto> produtos = new ArrayList<Produto>();
-        String sql = "select * from compras.produto where produto.nome ='" + nome + " and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco";
+        String sql = "select * from compras.produto where produto.nome ='" + nome + " and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco limit " + limite;
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -221,6 +259,50 @@ public class ProdutoDaoImpl implements ProdutoDao {
         return produtos;
     }
 
+    @Override
+    public List<Produto> like(String s, int limite) {
+        List<Produto> produtos = new ArrayList<Produto>();
+        String sql = "select * from compras.produto where produto.nome like '%" + s + "%' and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco limit " + limite;
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            int k = 0;
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                //---chaves estrangeiras
+                produto.setIdcategoria(getMyCategoria(rs.getInt("idcategoria")));
+                produto.setIdfabricante(getMyFabricante(rs.getInt("idfabricante")));
+                produto.setIdmercado(getMyMercado(rs.getInt("idmercado")));
+                produto.setUnidade(getMyUnidade(rs.getInt("unidade")));
+                //---chaves estrangeiras
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setPreco(rs.getDouble("preco"));
+                produto.setQuantidade(rs.getDouble("quantidade"));
+                produto.setImagem(rs.getString("imagem"));
+                produto.setAtivo(rs.getInt("ativo"));
+                //---add na lista
+                produtos.add(produto);
+                k++;
+            }
+            if (k > 0) {//somente adiciona na tagcloud se o produto exisitir
+                PesquisaBs pesquisaBS = new PesquisaBs(s);//fora do while para ser incrementado em 1x
+                pesquisaBS.start();
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return produtos;
+    }
+
     public List<Produto> listarPorCategoria(int idCategoria, int limite) {
         List<Produto> produtos = new ArrayList<Produto>();
         String sql = "select * from compras.produto where produto.idcategoria=" + idCategoria + " and produto.ativo=" + HsCommons.PRODATIV + "  order by produto.preco limit " + limite;
@@ -262,6 +344,29 @@ public class ProdutoDaoImpl implements ProdutoDao {
     public boolean verificarNome(String nome) {
         boolean validado = false;
         String sql = "select * from compras.produto where produto.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                validado = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return validado;
+    }
+
+    @Override
+    public boolean verificarFabricante(String nome) {
+        boolean validado = false;
+        String sql = "select * from compras.produto where produto.marca = '" + nome + "'";
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

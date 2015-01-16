@@ -15,6 +15,7 @@ public interface EstadoDao {
     List<Estado> listar();
     List<Estado> like(String s);
     boolean verificarNome(String nome);
+    boolean verificarUf(String uf);
     boolean verificarCidadeNoEstado(Cidade cidade);
     boolean cadastar(Estado estado);
     boolean atualizar(Estado estado);

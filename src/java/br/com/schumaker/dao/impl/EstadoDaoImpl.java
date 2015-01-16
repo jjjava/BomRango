@@ -186,6 +186,29 @@ public class EstadoDaoImpl implements EstadoDao {
     }
 
     @Override
+    public boolean verificarUf(String uf) {
+        boolean validado = false;
+        String sql = "select * from compras.estado where estado.uf = '" + uf + "'";
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                validado = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return validado;
+    }
+
+    @Override
     public boolean verificarCidadeNoEstado(Cidade cidade) {
         boolean verificado = false;
         String sql = "select * from compras.cidade where cidade.id = " + cidade.getId() + " and "

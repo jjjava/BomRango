@@ -43,7 +43,6 @@ public class CidadeBsImpl implements CidadeBs {
         } else {
             if (new CidadeDaoImpl().cadastar(cidade)) {
                 mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Cidade", "Cidade cadastrada.");
-
             } else {
                 mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Cidade", "Erro ao cadastrar a cidade.");
             }
