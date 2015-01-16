@@ -13,6 +13,7 @@ public interface UsuarioDao {
     Usuario obter(Integer id);
     List<Usuario> listar();
     List<Usuario> like(String nome);
+    boolean verificarNome(String nome);
     boolean validar(String nome, String password);
     boolean cadastrar(Usuario usuario);
     boolean atualizar(Usuario usuario);

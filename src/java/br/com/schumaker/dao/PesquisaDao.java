@@ -16,4 +16,5 @@ public interface PesquisaDao {
     List<Pesquisa> listarTopXX(int x);
     List<Pesquisa> like(String s);
     void inserir(String p);
+    void atualizar(Pesquisa p);
 }

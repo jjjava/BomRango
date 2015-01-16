@@ -13,6 +13,7 @@ public interface UnidadeDao {
     Unidade obter(Integer id);
     List<Unidade> listar();
     List<Unidade> like(String s);
+    boolean verificarNome(String nome);
     boolean cadastrar(Unidade unidade);
     boolean atulizar(Unidade unidade);
     boolean deletar(Unidade unidade);

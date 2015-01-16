@@ -14,6 +14,7 @@ public interface ClienteDao {
     List<Cliente> listar();
     List<Cliente> like(String s);
     boolean validar(String email, String password);
+    boolean verificarNome(String nome);
     boolean cadastar(Cliente cliente);
     boolean atualizar(Cliente cliente);
     boolean deletar(Cliente cliente);

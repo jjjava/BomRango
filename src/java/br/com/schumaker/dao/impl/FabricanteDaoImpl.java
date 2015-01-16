@@ -99,7 +99,8 @@ public class FabricanteDaoImpl implements FabricanteDao {
         return fabricantes;
     }
 
-    public boolean verifyName(String nome) {
+    @Override
+    public boolean verificarNome(String nome) {
         boolean validado = false;
         String sql = "select * from compras.fabricante where fabricante.nome = '" + nome + "'";
         Connection conn = HsConnection.getConnection();

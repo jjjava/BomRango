@@ -13,6 +13,7 @@ public interface EstadoDao {
     Estado obter(Integer id);
     List<Estado> listar();
     List<Estado> like(String s);
+    boolean verificarNome(String nome);
     boolean cadastar(Estado estado);
     boolean atualizar(Estado estado);
     boolean deletar(Estado estado);
