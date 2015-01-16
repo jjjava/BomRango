@@ -102,7 +102,6 @@ public class PesquisaDaoImpl implements PesquisaDao {
     @Override
     public List<Pesquisa> like(String s) {
         throw new UnsupportedOperationException("Not supported yet.");
-        //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override

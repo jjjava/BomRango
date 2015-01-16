@@ -150,11 +150,35 @@ public class FabricanteDaoImpl implements FabricanteDao {
 
     @Override
     public boolean atualizar(Fabricante fabricante) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        boolean atualizado = false;
+        String sql = "update compras.fabricante set fabricante.nome=?, fabricante.site=? "
+                + "where fabricante.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, fabricante.getNome());
+            pst.setString(2, fabricante.getSite());
+            //where
+            pst.setInt(3, fabricante.getId());
+            pst.executeUpdate();
+            atualizado = true;
+        } catch (SQLException e) {
+            atualizado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return atualizado;
     }
 
     @Override
     public boolean deletar(Fabricante fabricante) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

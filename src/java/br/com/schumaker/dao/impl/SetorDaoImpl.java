@@ -153,7 +153,31 @@ public class SetorDaoImpl implements SetorDao {
 
     @Override
     public boolean atualizar(Setor setor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean atualizado = false;
+        String sql = "update compras.categoria set categoria.nome=?, categoria.descricao=? "
+                + "where categoria.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, setor.getNome());
+            pst.setString(2, setor.getDescricao());
+            //where
+            pst.setInt(3, setor.getId());
+            pst.executeUpdate();
+            atualizado = true;
+        } catch (SQLException e) {
+            atualizado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return atualizado;
     }
 
     @Override

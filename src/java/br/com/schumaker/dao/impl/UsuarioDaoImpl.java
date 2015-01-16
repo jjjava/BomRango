@@ -181,7 +181,32 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
     @Override
     public boolean atualizar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean atualizado = false;
+        String sql = "update compras.usuario set usuario.nome=?, usuario.email=?, usuario.senha=? "
+                + "where usuario.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, usuario.getNome());
+            pst.setString(2, usuario.getEmail());
+            pst.setString(3, usuario.getSenha());
+            //where
+            pst.setInt(4, usuario.getId());
+            pst.executeUpdate();
+            atualizado = true;
+        } catch (SQLException e) {
+            atualizado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return atualizado;
     }
 
     @Override

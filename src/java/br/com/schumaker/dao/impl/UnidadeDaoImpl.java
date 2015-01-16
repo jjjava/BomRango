@@ -99,7 +99,7 @@ public class UnidadeDaoImpl implements UnidadeDao {
         return unidades;
     }
 
-     @Override
+    @Override
     public boolean verificarNome(String nome) {
         boolean validado = false;
         String sql = "select * from compras.unidade where unidade.nome = '" + nome + "'";
@@ -149,8 +149,32 @@ public class UnidadeDaoImpl implements UnidadeDao {
     }
 
     @Override
-    public boolean atulizar(Unidade unidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean atualizar(Unidade unidade) {
+        boolean atualizado = false;
+        String sql = "update compras.unidade set unidade.nome=?, unidade.descricao=? "
+                + "where unidade.id=?";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, unidade.getNome());
+            pst.setString(2, unidade.getDescricao());
+            //where
+            pst.setInt(3, unidade.getId());
+            pst.executeUpdate();
+            atualizado = true;
+        } catch (SQLException e) {
+            atualizado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return atualizado;
     }
 
     @Override
