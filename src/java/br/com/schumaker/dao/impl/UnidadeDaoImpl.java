@@ -124,7 +124,28 @@ public class UnidadeDaoImpl implements UnidadeDao {
 
     @Override
     public boolean cadastrar(Unidade unidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean cadastrado = false;
+        String sql = "insert into compras.unidade ( nome, descricao ) values (?,?)";
+        Connection conn = HsConnection.getConnection();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, unidade.getNome());
+            pst.setString(2, unidade.getDescricao());
+            pst.execute();
+            cadastrado = true;
+        } catch (SQLException e) {
+            cadastrado = false;
+            System.err.println(e);
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return cadastrado;
     }
 
     @Override
