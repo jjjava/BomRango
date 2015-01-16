@@ -1,6 +1,6 @@
 package br.com.schumaker.dao.impl;
 
-import br.com.schumaker.bs.impl.PesquisaBs;
+import br.com.schumaker.bs.PesquisaBs;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.ProdutoDao;
 import br.com.schumaker.model.Setor;

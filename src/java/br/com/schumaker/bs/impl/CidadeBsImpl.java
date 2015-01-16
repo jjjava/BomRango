@@ -2,12 +2,15 @@ package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.bs.CidadeBs;
 import br.com.schumaker.dao.impl.CidadeDaoImpl;
+import br.com.schumaker.dao.impl.EstadoDaoImpl;
 import br.com.schumaker.model.Cidade;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import org.primefaces.context.RequestContext;
 
 /**
  *
- * @author hudson schumaker HStudio - @BomRango 05/01/2015
+ * @author hudson schumaker HStudio - @BomRango 16/01/2015
  * @version 1.0.0
  * @since 1.0.0
  */
@@ -34,17 +37,30 @@ public class CidadeBsImpl implements CidadeBs {
     }
 
     @Override
-    public boolean cadastar(Cidade cidade) {
-        return new CidadeDaoImpl().cadastar(cidade);
+    public void cadastar(Cidade cidade) {
+        if (new EstadoDaoImpl().verificarCidadeNoEstado(cidade.getId(), cidade.getIdEstado())) {
+            mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Cidade", "Já existe uma cidade com esse nome no estado selecionado. ");
+        } else {
+            if (new CidadeDaoImpl().cadastar(cidade)) {
+                mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Cidade", "Cidade cadastrada.");
+
+            } else {
+                mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Cidade", "Erro ao cadastrar a cidade.");
+            }
+        }
     }
 
     @Override
-    public boolean atualizar(Cidade cidade) {
-        return new CidadeDaoImpl().atualizar(cidade);
+    public void atualizar(Cidade cidade) {
+        new CidadeDaoImpl().atualizar(cidade);
     }
 
     @Override
-    public boolean deletar(Cidade cidade) {
-        return new CidadeDaoImpl().deletar(cidade);
+    public void deletar(Cidade cidade) {
+        new CidadeDaoImpl().deletar(cidade);
+    }
+
+    private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
+        RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }
 }

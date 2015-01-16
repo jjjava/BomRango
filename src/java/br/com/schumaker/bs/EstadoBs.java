@@ -1,4 +1,4 @@
-package br.com.schumaker.bs.impl;
+package br.com.schumaker.bs;
 
 /**
  *
@@ -6,6 +6,5 @@ package br.com.schumaker.bs.impl;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class ProdutoBs {
-    
+public class EstadoBs {
 }
