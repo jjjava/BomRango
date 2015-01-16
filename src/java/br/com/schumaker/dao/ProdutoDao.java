@@ -13,6 +13,7 @@ public interface ProdutoDao {
     Produto obter(Integer id);
     List<Produto> listar();
     List<Produto> listar(int limite);
+    List<Produto> listar(String nome);
     List<Produto> like(String s);
     boolean verificarNome(String nome);
     boolean cadastrar(Produto produto);

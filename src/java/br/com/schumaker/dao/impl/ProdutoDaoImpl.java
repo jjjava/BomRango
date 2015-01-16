@@ -139,6 +139,44 @@ public class ProdutoDaoImpl implements ProdutoDao {
     }
 
     @Override
+    public List<Produto> listar(String nome) {
+        List<Produto> produtos = new ArrayList<Produto>();
+        String sql = "select * from compras.produto where produto.nome ='" + nome + " and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco";
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                //---chaves estrangeiras
+                produto.setIdcategoria(getMyCategoria(rs.getInt("idcategoria")));
+                produto.setIdfabricante(getMyFabricante(rs.getInt("idfabricante")));
+                produto.setIdmercado(getMyMercado(rs.getInt("idmercado")));
+                produto.setUnidade(getMyUnidade(rs.getInt("unidade")));
+                //---chaves estrangeiras
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setPreco(rs.getDouble("preco"));
+                produto.setQuantidade(rs.getDouble("quantidade"));
+                produto.setImagem(rs.getString("imagem"));
+                produto.setAtivo(rs.getInt("ativo"));
+                //---add na lista
+                produtos.add(produto);
+            }
+        } catch (SQLException e) {
+            System.err.println(e);//throw new RuntimeException(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);//throw new RuntimeException(e);
+            }
+        }
+        return produtos;
+    }
+
+    @Override
     public List<Produto> like(String s) {
         List<Produto> produtos = new ArrayList<Produto>();
         String sql = "select * from compras.produto where produto.nome like '%" + s + "%' and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco";
