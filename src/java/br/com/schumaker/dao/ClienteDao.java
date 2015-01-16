@@ -12,6 +12,9 @@ import java.util.List;
 public interface ClienteDao {
     Cliente obter(Integer id);
     List<Cliente> listar();
-    List<Cliente> like(String nome);
+    List<Cliente> like(String s);
     boolean validar(String email, String password);
+    boolean cadastar(Cliente cliente);
+    boolean atualizar(Cliente cliente);
+    boolean deletar(Cliente cliente);
 }

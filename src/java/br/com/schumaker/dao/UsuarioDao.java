@@ -14,4 +14,7 @@ public interface UsuarioDao {
     List<Usuario> listar();
     List<Usuario> like(String nome);
     boolean validar(String nome, String password);
+    boolean cadastrar(Usuario usuario);
+    boolean atualizar(Usuario usuario);
+    boolean deletar(Usuario usuario);
 }

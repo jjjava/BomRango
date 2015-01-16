@@ -13,4 +13,7 @@ public interface FabricanteDao {
     Fabricante obter(Integer id);
     List<Fabricante> listar();
     List<Fabricante> like(String s);
+    boolean cadastrar(Fabricante fabricante);
+    boolean atualizar(Fabricante fabricante);
+    boolean deletar(Fabricante fabricante);
 }

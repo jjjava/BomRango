@@ -13,4 +13,7 @@ public interface SetorDao {
     Setor obter(Integer id);
     List<Setor> listar();
     List<Setor> like(String s);
+    boolean cadastrar(Setor setor);
+    boolean atualizar(Setor setor);
+    boolean deletar(Setor setor);
 }
