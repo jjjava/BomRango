@@ -1,7 +1,6 @@
 package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.bs.DensidadeBs;
-import br.com.schumaker.dao.impl.ClienteDaoImpl;
 import br.com.schumaker.dao.impl.DensidadeDaoImpl;
 import br.com.schumaker.model.Densidade;
 import java.util.List;
