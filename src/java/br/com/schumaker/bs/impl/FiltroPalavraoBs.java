@@ -1,4 +1,4 @@
-package br.com.schumaker.bs;
+package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.dao.impl.PalavraoDaoImpl;
 import br.com.schumaker.model.Palavrao;
@@ -10,19 +10,19 @@ import java.util.ArrayList;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class FiltroPalavrao {
+public class FiltroPalavraoBs {
 
-    private static final FiltroPalavrao INSTANCE = new FiltroPalavrao();
+    private static final FiltroPalavraoBs INSTANCE = new FiltroPalavraoBs();
     private ArrayList<Palavrao> listPalavrao;
     private final PalavraoDaoImpl palavraoDAO;
 
-    private FiltroPalavrao() {
+    private FiltroPalavraoBs() {
         palavraoDAO = new PalavraoDaoImpl();
         listPalavrao = new ArrayList<Palavrao>();
         listPalavrao = (ArrayList<Palavrao>) palavraoDAO.listar();
     }
 
-    public static FiltroPalavrao getInstance() {
+    public static FiltroPalavraoBs getInstance() {
         return INSTANCE;
     }
 

@@ -1,4 +1,4 @@
-package br.com.schumaker.bs;
+package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.dao.impl.PesquisaDaoImpl;
 
@@ -17,7 +17,7 @@ public class PesquisaBs implements Runnable {
     }
 
     private void verifyAndSave() {
-        if (!FiltroPalavrao.getInstance().checkWord(search)) {
+        if (!FiltroPalavraoBs.getInstance().checkWord(search)) {
             PesquisaDaoImpl pesquisaDaoImpl = new PesquisaDaoImpl();
             pesquisaDaoImpl.inserir(search);
         }

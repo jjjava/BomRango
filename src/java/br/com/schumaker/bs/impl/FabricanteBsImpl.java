@@ -4,6 +4,8 @@ import br.com.schumaker.bs.FabricanteBs;
 import br.com.schumaker.dao.impl.FabricanteDaoImpl;
 import br.com.schumaker.model.Fabricante;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -45,5 +47,9 @@ public class FabricanteBsImpl implements FabricanteBs {
     @Override
     public void deletar(Fabricante fabricante) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
+        RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }
 }

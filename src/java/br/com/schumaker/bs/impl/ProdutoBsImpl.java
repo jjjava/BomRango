@@ -3,6 +3,7 @@ package br.com.schumaker.bs.impl;
 import br.com.schumaker.bs.ProdutoBs;
 import br.com.schumaker.dao.impl.FabricanteDaoImpl;
 import br.com.schumaker.dao.impl.ProdutoDaoImpl;
+import br.com.schumaker.model.Fabricante;
 import br.com.schumaker.model.Produto;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -73,23 +74,27 @@ public class ProdutoBsImpl implements ProdutoBs {
 
     @Override
     public void cadastrar(Produto produto) {
-       
         Fabricante fabricante = new FabricanteDaoImpl().obter(produto.getIdFabricante());
-        if (verificarNome(produto.getNome())&& verificarFabricante(produto.)) {
-            mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Produto", "Produto.");
+        if (verificarNome(produto.getNome()) && verificarFabricante(fabricante.getNome())) {
+            mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Produto", "Produto já existente.");
         } else {
-            
+            if(new ProdutoDaoImpl().cadastrar(produto)){
+                mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Produto", "Produto cadastrado com sucesso.");
+            }
+            else{
+                mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Produto", "Erro ao cadastrar produto.");
+            }
         }
     }
 
     @Override
     public void atualizar(Produto produto) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Produto", "Não suportado ainda");
     }
 
     @Override
     public void deletar(Produto produto) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Produto", "Não suportado ainda");
     }
 
     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
