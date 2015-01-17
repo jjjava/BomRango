@@ -26,7 +26,7 @@
                 <p:menuitem value="@BomRango" url="/faces/index.xhtml" />
                 <p:menuitem value="Produtos" url="/faces/gerenciador/gproduto.xhtml" />
                 <p:menuitem value="Encartes" url="/faces/gerenciador/gencarte.xhtml" />
-                <p:menuitem value="Setores" url="/faces/gerenciador/gsetores.xhtml" />
+                <p:menuitem value="Setores" url="/faces/gerenciador/gsetor.xhtml" />
                 <p:menuitem value="Marcas" url="/faces/gerenciador/gmarcas.xhtml" />
                 <p:menuitem value="Medidas" url="/faces/gerenciador/gmedidas.xhtml" />
                 <p:menuitem value="Logout" url="/faces/gerenciador/glogout.xhtml" />
@@ -40,6 +40,7 @@
                 </f:facet>  
             </p:ajaxStatus> 
               <h:outputText value="gproduto..." />  
+              <h:outputText value="Olá, #{mercadoGerenciarManegedBean.cliente.nome}" /> 
             <script>
                 (function(i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
