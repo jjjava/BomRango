@@ -10,19 +10,19 @@ import java.util.ArrayList;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class FiltroPalavraoBs {
+public class FiltroPalavraoBsImpl {
 
-    private static final FiltroPalavraoBs INSTANCE = new FiltroPalavraoBs();
+    private static final FiltroPalavraoBsImpl INSTANCE = new FiltroPalavraoBsImpl();
     private ArrayList<Palavrao> listPalavrao;
     private final PalavraoDaoImpl palavraoDAO;
 
-    private FiltroPalavraoBs() {
+    private FiltroPalavraoBsImpl() {
         palavraoDAO = new PalavraoDaoImpl();
         listPalavrao = new ArrayList<Palavrao>();
         listPalavrao = (ArrayList<Palavrao>) palavraoDAO.listar();
     }
 
-    public static FiltroPalavraoBs getInstance() {
+    public static FiltroPalavraoBsImpl getInstance() {
         return INSTANCE;
     }
 

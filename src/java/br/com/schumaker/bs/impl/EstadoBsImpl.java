@@ -71,7 +71,7 @@ public class EstadoBsImpl implements EstadoBs {
 
     @Override
     public void deletar(Estado estado) {
-        throw new UnsupportedOperationException("não suportado.");
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Estado", "Ação não suportada.");
     }
 
     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {

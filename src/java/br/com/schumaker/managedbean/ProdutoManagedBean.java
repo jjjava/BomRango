@@ -1,6 +1,6 @@
 package br.com.schumaker.managedbean;
 
-import br.com.schumaker.dao.impl.ProdutoDaoImpl;
+import br.com.schumaker.bs.impl.ProdutoBsImpl;
 import br.com.schumaker.model.Produto;
 import br.com.schumaker.util.HsCommons;
 import java.io.Serializable;
@@ -21,13 +21,13 @@ import javax.servlet.http.HttpSession;
 @ViewScoped
 public class ProdutoManagedBean implements Serializable {
 
-    private final ProdutoDaoImpl produtoDAO;
+    private final ProdutoBsImpl produtoBs;
     private List<Produto> produtos;
     private Produto selectedProduto;
     private String query;
 
     public ProdutoManagedBean() {
-        produtoDAO = new ProdutoDaoImpl();
+        produtoBs = new ProdutoBsImpl();
         produtos = new ArrayList<Produto>();
         this.checkParameter();
     }
@@ -45,9 +45,9 @@ public class ProdutoManagedBean implements Serializable {
 
     public void onNameChange() {
         if (query == null || query.equalsIgnoreCase("")) {
-            produtos = produtoDAO.listar(HsCommons.DAOPRODES);
+            produtos = produtoBs.listar(HsCommons.DAOPRODES);
         } else {
-            produtos = produtoDAO.like(query);
+            produtos = produtoBs.listarELike(query);
         }
     }
 

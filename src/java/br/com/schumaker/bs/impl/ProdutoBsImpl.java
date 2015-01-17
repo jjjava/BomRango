@@ -44,12 +44,22 @@ public class ProdutoBsImpl implements ProdutoBs {
 
     @Override
     public List<Produto> listarELike(String nome) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<Produto> listaNome = new ProdutoDaoImpl().listar(nome);
+        List<Produto> listaLike = new ProdutoDaoImpl().like(nome);
+        for (Produto p : listaLike) {
+            listaNome.add(p);
+        }
+        return listaNome;
     }
 
     @Override
     public List<Produto> listarELike(String nome, int limite) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<Produto> listaNome = new ProdutoDaoImpl().listar(nome, limite);
+        List<Produto> listaLike = new ProdutoDaoImpl().like(nome, limite);
+        for (Produto p : listaLike) {
+            listaNome.add(p);
+        }
+        return listaNome;
     }
 
     @Override
@@ -78,10 +88,9 @@ public class ProdutoBsImpl implements ProdutoBs {
         if (verificarNome(produto.getNome()) && verificarFabricante(fabricante.getNome())) {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Produto", "Produto já existente.");
         } else {
-            if(new ProdutoDaoImpl().cadastrar(produto)){
+            if (new ProdutoDaoImpl().cadastrar(produto)) {
                 mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Produto", "Produto cadastrado com sucesso.");
-            }
-            else{
+            } else {
                 mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Produto", "Erro ao cadastrar produto.");
             }
         }

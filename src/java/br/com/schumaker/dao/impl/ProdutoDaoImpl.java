@@ -1,6 +1,6 @@
 package br.com.schumaker.dao.impl;
 
-import br.com.schumaker.bs.impl.PesquisaBs;
+import br.com.schumaker.bs.impl.PesquisaBsImpl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.ProdutoDao;
 import br.com.schumaker.model.Setor;
@@ -243,7 +243,7 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 k++;
             }
             if (k > 0) {//somente adiciona na tagcloud se o produto exisitir
-                PesquisaBs pesquisaBS = new PesquisaBs(s);//fora do while para ser incrementado em 1x
+                PesquisaBsImpl pesquisaBS = new PesquisaBsImpl(s);//fora do while para ser incrementado em 1x
                 pesquisaBS.start();
             }
 
@@ -288,7 +288,7 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 k++;
             }
             if (k > 0) {//somente adiciona na tagcloud se o produto exisitir
-                PesquisaBs pesquisaBS = new PesquisaBs(s);//fora do while para ser incrementado em 1x
+                PesquisaBsImpl pesquisaBS = new PesquisaBsImpl(s);//fora do while para ser incrementado em 1x
                 pesquisaBS.start();
             }
         } catch (SQLException e) {

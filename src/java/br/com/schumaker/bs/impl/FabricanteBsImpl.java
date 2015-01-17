@@ -36,17 +36,25 @@ public class FabricanteBsImpl implements FabricanteBs {
 
     @Override
     public void cadastrar(Fabricante fabricante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(verificarNome(fabricante.getNome())){
+           mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Fabricante", "Fabricante já cadastrado.");
+       }else{
+           if(new FabricanteDaoImpl().cadastrar(fabricante)){
+               mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Fabricante", "Fabricante cadastrado com sucesso.");
+           }else{
+               mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Fabricante", "Erro ao cadastrar fabricante.");
+           }
+       }
     }
 
     @Override
     public void atualizar(Fabricante fabricante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Fabricante", "Ação não suportada.");
     }
 
     @Override
     public void deletar(Fabricante fabricante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Fabricante", "Ação não suportada.");
     }
     
     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {

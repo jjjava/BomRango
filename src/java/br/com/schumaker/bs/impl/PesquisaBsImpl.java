@@ -8,16 +8,16 @@ import br.com.schumaker.dao.impl.PesquisaDaoImpl;
  * @version 1.0.1
  * @since 1.0.0
  */
-public class PesquisaBs implements Runnable {
+public class PesquisaBsImpl implements Runnable {
 
     private final String search;
 
-    public PesquisaBs(String search) {
+    public PesquisaBsImpl(String search) {
         this.search = search;
     }
 
     private void verifyAndSave() {
-        if (!FiltroPalavraoBs.getInstance().checkWord(search)) {
+        if (!FiltroPalavraoBsImpl.getInstance().checkWord(search)) {
             PesquisaDaoImpl pesquisaDaoImpl = new PesquisaDaoImpl();
             pesquisaDaoImpl.inserir(search);
         }
