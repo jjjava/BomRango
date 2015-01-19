@@ -16,7 +16,7 @@ public interface ClienteDao {
     boolean verificarEmail(String email);
     boolean validar(String email, String password);
     boolean verificarNome(String nome);
-    boolean cadastar(Cliente cliente);
+    boolean cadastrar(Cliente cliente);
     boolean atualizar(Cliente cliente);
     boolean deletar(Cliente cliente);
 }

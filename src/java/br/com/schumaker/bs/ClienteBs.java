@@ -17,7 +17,7 @@ public interface ClienteBs {
     boolean verificarEmail(String email);
     void validar(Cliente cliente);
     boolean verificarNome(String nome);
-    void cadastar(Cliente cliente);
+    void cadastrar(Cliente cliente);
     void atualizar(Cliente cliente);
     void deletar(Cliente cliente);
 }

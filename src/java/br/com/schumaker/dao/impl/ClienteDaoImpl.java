@@ -182,7 +182,7 @@ public class ClienteDaoImpl implements ClienteDao {
     }
 
     @Override
-    public boolean cadastar(Cliente cliente) {
+    public boolean cadastrar(Cliente cliente) {
         boolean cadastrado = false;
         String sql = "insert into compras.cliente (idmercado, nome, email, senha) values (?,?,?,?)";
         Connection conn = HsConnection.getConnection();

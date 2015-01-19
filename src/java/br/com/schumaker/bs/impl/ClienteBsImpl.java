@@ -70,8 +70,8 @@ public class ClienteBsImpl implements ClienteBs {
     }
 
     @Override
-    public void cadastar(Cliente cliente) {
-        if (new ClienteDaoImpl().cadastar(cliente)) {
+    public void cadastrar(Cliente cliente) {
+        if (new ClienteDaoImpl().cadastrar(cliente)) {
             mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastrar - Cliente", "Cliente cadastrado com sucesso.");
         } else {
             mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastrar - Cliente", "Erro ao cadastrar cliente.");
