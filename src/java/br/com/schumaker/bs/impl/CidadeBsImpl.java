@@ -37,11 +37,11 @@ public class CidadeBsImpl implements CidadeBs {
     }
 
     @Override
-    public void cadastar(Cidade cidade) {
+    public void cadastrar(Cidade cidade) {
         if (new EstadoDaoImpl().verificarCidadeNoEstado(cidade)) {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Cidade", "Já existe uma cidade com esse nome no estado selecionado. ");
         } else {
-            if (new CidadeDaoImpl().cadastar(cidade)) {
+            if (new CidadeDaoImpl().cadastrar(cidade)) {
                 mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Cidade", "Cidade cadastrada.");
             } else {
                 mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Cidade", "Erro ao cadastrar a cidade.");

@@ -17,7 +17,7 @@ public interface EstadoDao {
     boolean verificarNome(String nome);
     boolean verificarUf(String uf);
     boolean verificarCidadeNoEstado(Cidade cidade);
-    boolean cadastar(Estado estado);
+    boolean cadastrar(Estado estado);
     boolean atualizar(Estado estado);
     boolean deletar(Estado estado);
 }

@@ -126,7 +126,7 @@ public class CidadeDaoImpl implements CidadeDao {
     }
 
     @Override
-    public boolean cadastar(Cidade cidade) {
+    public boolean cadastrar(Cidade cidade) {
         boolean cadastrado = false;
         String sql = "insert into compras.cliente ( idestado, nome ) values (?,?)";
         Connection conn = HsConnection.getConnection();

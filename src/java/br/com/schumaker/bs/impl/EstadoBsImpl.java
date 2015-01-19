@@ -42,11 +42,11 @@ public class EstadoBsImpl implements EstadoBs {
     }
 
     @Override
-    public void cadastar(Estado estado) {
+    public void cadastrar(Estado estado) {
         if (verificarNome(estado.getNome())) {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Estado", "Já existe um estado com esse nome.");
         } else {
-            if (new EstadoDaoImpl().cadastar(estado)) {
+            if (new EstadoDaoImpl().cadastrar(estado)) {
                 mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Estado", "Estado cadastrado com sucesso.");
             } else {
                 mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Estado", "Erro ao cadastrar o estado.");

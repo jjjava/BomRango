@@ -14,7 +14,7 @@ public interface CidadeDao {
     List<Cidade> listar();
     List<Cidade> like(String s);
     boolean verificarNome(String nome);
-    boolean cadastar(Cidade cidade);
+    boolean cadastrar(Cidade cidade);
     boolean atualizar(Cidade cidade);
     boolean deletar(Cidade cidade);
 }

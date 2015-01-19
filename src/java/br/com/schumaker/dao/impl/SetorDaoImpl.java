@@ -35,7 +35,7 @@ public class SetorDaoImpl implements SetorDao {
                 categoria.setDescricao(rs.getString("descricao"));
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
@@ -182,6 +182,6 @@ public class SetorDaoImpl implements SetorDao {
 
     @Override
     public boolean deletar(Setor setor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

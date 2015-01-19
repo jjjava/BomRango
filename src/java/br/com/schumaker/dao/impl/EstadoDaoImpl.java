@@ -104,7 +104,7 @@ public class EstadoDaoImpl implements EstadoDao {
     }
 
     @Override
-    public boolean cadastar(Estado estado) {
+    public boolean cadastrar(Estado estado) {
         boolean cadastrado = false;
         String sql = "insert into compras.estado ( nome, uf ) values (?,?)";
         Connection conn = HsConnection.getConnection();

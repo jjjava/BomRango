@@ -16,7 +16,7 @@ public interface EstadoBs {
     List<Estado> like(String s);
     boolean verificarNome(String nome);
     boolean verificarCidadeNoEstado(Cidade cidade);
-    void cadastar(Estado estado);
+    void cadastrar(Estado estado);
     void atualizar(Estado estado);
     void deletar(Estado estado);
 }
