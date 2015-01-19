@@ -62,7 +62,6 @@ public class UsuarioBsImpl implements UsuarioBs {
         } else {
             mostrarMensagem(FacesMessage.SEVERITY_INFO, "Login", "Email ou Senha incorretos.");
         }
-
     }
 
     @Override
@@ -72,12 +71,12 @@ public class UsuarioBsImpl implements UsuarioBs {
 
     @Override
     public void atualizar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Setor", "Não suportado ainda");
     }
 
     @Override
     public void deletar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Setor", "Não suportado ainda");
     }
 
     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
