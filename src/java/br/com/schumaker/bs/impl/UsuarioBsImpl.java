@@ -66,7 +66,15 @@ public class UsuarioBsImpl implements UsuarioBs {
 
     @Override
     public void cadastrar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (new UsuarioDaoImpl().verificarEmail(usuario.getEmail())) {
+            mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Usuário", "Já existe um ususário com esse email cadastrado.");
+        } else {
+            if (new UsuarioDaoImpl().cadastrar(usuario)) {
+                mostrarMensagem(FacesMessage.SEVERITY_INFO, "Usuário", "Usuário cadastrada.");
+            } else {
+                mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Usuário", "Erro ao cadastrar a usuário.");
+            }
+        }
     }
 
     @Override
