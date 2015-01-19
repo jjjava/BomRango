@@ -49,7 +49,7 @@ public class ClienteBsImpl implements ClienteBs {
         //
         //criptografar aqui
         //
-        if (clienteDaoImpl.validar(cliente.getEmail(), cliente.getSenha())) {
+        if (clienteDaoImpl.validar(cliente.getEmail(), cliente.getSenha())) {//usar senha criptografada
             try {
                 cliente = clienteDaoImpl.obter(cliente.getEmail());
                 FacesContext fc = FacesContext.getCurrentInstance();

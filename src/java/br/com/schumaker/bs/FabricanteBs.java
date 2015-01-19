@@ -5,8 +5,9 @@ import java.util.List;
 
 /**
  *
- * @author hudson.sales
- * @verison 1.0.0
+ * @author hudson schumaker HStudio - @BomRango 17/01/2015
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public interface FabricanteBs {
     Fabricante obter(Integer id);

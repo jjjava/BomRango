@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface UsuarioDao {
     Usuario obter(Integer id);
+    Usuario obter(String email);
     List<Usuario> listar();
     List<Usuario> like(String nome);
     boolean verificarEmail(String email);

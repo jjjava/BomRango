@@ -46,6 +46,32 @@ public class UsuarioDaoImpl implements UsuarioDao {
     }
 
     @Override
+    public Usuario obter(String email) {
+        String sql = "select * from compras.usuario where usuario.email = '" + email + "'";
+        Connection conn = HsConnection.getConnection();
+        Usuario usuario = new Usuario();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));//duvida se carregar ou nao 
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return usuario;
+    }
+
+    @Override
     public List<Usuario> listar() {
         String sql = "select * from compras.usuario order by usuario.nome";
         Connection conn = HsConnection.getConnection();
