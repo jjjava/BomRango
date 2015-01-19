@@ -70,9 +70,9 @@ public class UsuarioBsImpl implements UsuarioBs {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Usuário", "Já existe um ususário com esse email cadastrado.");
         } else {
             if (new UsuarioDaoImpl().cadastrar(usuario)) {
-                mostrarMensagem(FacesMessage.SEVERITY_INFO, "Usuário", "Usuário cadastrada.");
+                mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Usuário", "Usuário cadastraso.");
             } else {
-                mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Usuário", "Erro ao cadastrar a usuário.");
+                mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Usuário", "Erro ao cadastrar a usuário.");
             }
         }
     }
