@@ -37,7 +37,7 @@ public class SetorBsImpl implements SetorBs {
 
     @Override
     public void cadastrar(Setor setor) {
-         if (verificarNome(setor.getNome())) {
+        if (verificarNome(setor.getNome())) {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Setor", "Já existe um setor com esse nome.");
         } else {
             if (new SetorDaoImpl().cadastrar(setor)) {
@@ -50,14 +50,14 @@ public class SetorBsImpl implements SetorBs {
 
     @Override
     public void atualizar(Setor setor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Setor", "Não suportado ainda");
     }
 
     @Override
     public void deletar(Setor setor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Setor", "Não suportado ainda");
     }
-    
+
     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }
