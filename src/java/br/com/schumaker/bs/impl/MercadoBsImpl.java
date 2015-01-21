@@ -2,6 +2,7 @@ package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.bs.MercadoBs;
 import br.com.schumaker.dao.impl.MercadoDaoImpl;
+import br.com.schumaker.hsfiles.HsFiles;
 import br.com.schumaker.model.Mercado;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -41,7 +42,11 @@ public class MercadoBsImpl implements MercadoBs {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Já existe um mercado com esse nome.");
         } else {
             if (new MercadoDaoImpl().cadastrar(mercado)) {
-                mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Mercado cadastrado do sucesso.");
+                if(new HsFiles().criarDirMercado(mercado.getNome())){//cria pasta para arquivos do mercado
+                     mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Mercado cadastrado do sucesso.");
+                }else{
+                    mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Erro ao cadastrar mercado.");
+                }
             } else {
                 mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Erro ao cadastrar mercado.");
             }

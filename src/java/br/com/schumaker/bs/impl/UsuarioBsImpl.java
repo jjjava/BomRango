@@ -2,6 +2,7 @@ package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.bs.UsuarioBs;
 import br.com.schumaker.dao.impl.UsuarioDaoImpl;
+import br.com.schumaker.hsfiles.HsFiles;
 import br.com.schumaker.model.Usuario;
 import java.io.IOException;
 import java.util.List;
@@ -70,7 +71,11 @@ public class UsuarioBsImpl implements UsuarioBs {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Usuário", "Já existe um ususário com esse email cadastrado.");
         } else {
             if (new UsuarioDaoImpl().cadastrar(usuario)) {
-                mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Usuário", "Usuário cadastraso.");
+                if(new HsFiles().criarDirUsuario(usuario.getEmail())){
+                     mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Usuário", "Usuário cadastraso.");
+                }else{
+                     mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Usuário", "Erro ao cadastrar a usuário.");
+                }
             } else {
                 mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Usuário", "Erro ao cadastrar a usuário.");
             }
