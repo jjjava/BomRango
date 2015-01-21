@@ -66,4 +66,14 @@ public class MercadoBsImpl implements MercadoBs {
     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }
+
+    @Override
+    public void mostrarPerfil(String action) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void gerenciarSessao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

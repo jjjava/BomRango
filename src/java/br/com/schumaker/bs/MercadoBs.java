@@ -13,6 +13,8 @@ public interface MercadoBs {
     Mercado obter(Integer id);
     List<Mercado> listar();
     List<Mercado> like(String s);
+    void mostrarPerfil(String action);
+    void gerenciarSessao();
     boolean verificarNome(String nome);
     void cadastrar(Mercado mercado);
     void atualizar(Mercado mercado);

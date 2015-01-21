@@ -15,7 +15,7 @@ public class HsFiles {
     private final String rootDirUnix = "/Hstudio";
     private final String rootDirOsX = "/Applications/Hstudio";
     private final String mercado = "mercado";
-    private final String usuario = "ususario";
+    private final String usuario = "usuario";
 
     public boolean criarDirMercado(String nome) {
         if (isWindows()) {
