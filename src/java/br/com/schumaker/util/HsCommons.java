@@ -13,4 +13,5 @@ public class HsCommons {
     public static final int PRODATIV = 1;
     public static final int PRODINATV = 0;
     public static final String ENCRYPTKEY = "Blowfish";
+    public static final String EMAIL = "hudson@schumaker.com.br";
 }
