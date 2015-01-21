@@ -1,6 +1,7 @@
 package br.com.schumaker.bs.impl;
 
 import br.com.schumaker.bs.SinonimoBs;
+import br.com.schumaker.dao.impl.SinonimoDaoImpl;
 import br.com.schumaker.model.Sinonimo;
 import java.util.List;
 
@@ -14,38 +15,38 @@ public class SinonimoBsImpl implements SinonimoBs {
 
     @Override
     public Sinonimo obter(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new SinonimoDaoImpl().obter(id);
     }
     
 
     @Override
     public Sinonimo obter(String nome) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new SinonimoDaoImpl().obter(nome);
     }
 
     @Override
     public List<Sinonimo> listar() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return new SinonimoDaoImpl().listar();
     }
 
     @Override
     public List<Sinonimo> listar(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return new SinonimoDaoImpl().listar(id);
     }
 
     @Override
     public List<Sinonimo> listar(String nome) {
-        throw new UnsupportedOperationException("Not supported yet.");
+         return new SinonimoDaoImpl().listar(nome);
     }
 
     @Override
     public List<Sinonimo> like(String s) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new SinonimoDaoImpl().like(s);
     }
 
     @Override
     public boolean verificarNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet.");
+         return new SinonimoDaoImpl().verificarNome(nome);
     }
 
     @Override
