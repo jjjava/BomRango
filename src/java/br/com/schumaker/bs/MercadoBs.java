@@ -1,5 +1,8 @@
 package br.com.schumaker.bs;
 
+import br.com.schumaker.model.Mercado;
+import java.util.List;
+
 /**
  *
  * @author hudson schumaker HStudio - @BomRango 05/01/2015
@@ -7,4 +10,11 @@ package br.com.schumaker.bs;
  * @since 1.0.0
  */
 public interface MercadoBs {
+    Mercado obter(Integer id);
+    List<Mercado> listar();
+    List<Mercado> like(String s);
+    boolean verificarNome(String nome);
+    void cadastrar(Mercado mercado);
+    void atualizar(Mercado mercado);
+    void deletar(Mercado mercado); 
 }
