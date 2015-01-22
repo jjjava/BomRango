@@ -1,5 +1,6 @@
 package br.com.schumaker.managedbean;
 
+import br.com.schumaker.bs.impl.MercadoBsImpl;
 import br.com.schumaker.dao.impl.MercadoDaoImpl;
 import br.com.schumaker.model.Cliente;
 import br.com.schumaker.model.Mercado;
@@ -24,9 +25,8 @@ public class MercadoGerenciarManegedBean implements Serializable {
     private Cliente cliente;
 
     public MercadoGerenciarManegedBean() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-        cliente = (Cliente) session.getAttribute("Cliente");
+        MercadoBsImpl mercadoBsImpl = new MercadoBsImpl();        
+        cliente = mercadoBsImpl.getClienteSessao();
         if (cliente == null) {
             try {
                 System.out.println("sessão vazia redirecionando...");

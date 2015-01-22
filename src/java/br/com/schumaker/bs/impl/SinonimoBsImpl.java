@@ -4,6 +4,8 @@ import br.com.schumaker.bs.SinonimoBs;
 import br.com.schumaker.dao.impl.SinonimoDaoImpl;
 import br.com.schumaker.model.Sinonimo;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -18,7 +20,6 @@ public class SinonimoBsImpl implements SinonimoBs {
         return new SinonimoDaoImpl().obter(id);
     }
     
-
     @Override
     public Sinonimo obter(String nome) {
         return new SinonimoDaoImpl().obter(nome);
@@ -41,16 +42,20 @@ public class SinonimoBsImpl implements SinonimoBs {
 
     @Override
     public void cadastrar(Sinonimo sin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Sinonimo", "Não suportado ainda");
     }
 
     @Override
     public void atualizar(Sinonimo sin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        mostrarMensagem(FacesMessage.SEVERITY_WARN, "Sinonimo", "Não suportado ainda");
     }
 
     @Override
     public void deletar(Sinonimo sin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+       mostrarMensagem(FacesMessage.SEVERITY_WARN, "Sinonimo", "Não suportado ainda");
+    }
+    
+    private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
+        RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }
 }

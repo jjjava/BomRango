@@ -3,9 +3,13 @@ package br.com.schumaker.bs.impl;
 import br.com.schumaker.bs.MercadoBs;
 import br.com.schumaker.dao.impl.MercadoDaoImpl;
 import br.com.schumaker.hsfiles.HsFiles;
+import br.com.schumaker.model.Cliente;
 import br.com.schumaker.model.Mercado;
+import java.io.IOException;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -42,9 +46,9 @@ public class MercadoBsImpl implements MercadoBs {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Já existe um mercado com esse nome.");
         } else {
             if (new MercadoDaoImpl().cadastrar(mercado)) {
-                if(new HsFiles().criarDirMercado(mercado.getNome())){//cria pasta para arquivos do mercado
-                     mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Mercado cadastrado do sucesso.");
-                }else{
+                if (new HsFiles().criarDirMercado(mercado.getNome())) {//cria pasta para arquivos do mercado
+                    mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Mercado cadastrado do sucesso.");
+                } else {
                     mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Mercado", "Erro ao cadastrar mercado.");
                 }
             } else {
@@ -74,6 +78,32 @@ public class MercadoBsImpl implements MercadoBs {
 
     @Override
     public void gerenciarSessao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        Cliente cliente = (Cliente) session.getAttribute("Cliente");
+        if (cliente == null) {
+            try {
+                System.out.println("sessão vazia redirecionando...");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("../gerenciar.xhtml");
+            } catch (IOException ex) {
+                System.err.println(ex);
+            }
+        } 
+    }
+
+    @Override
+    public Cliente getClienteSessao() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        return (Cliente) session.getAttribute("Cliente");
+    }
+
+    @Override
+    public Mercado getMercadoSessao() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        Cliente cliente = (Cliente) session.getAttribute("Cliente");
+        MercadoDaoImpl mercadoDaoImpl = new MercadoDaoImpl();
+        return mercadoDaoImpl.obter(cliente.getIdMercado());
     }
 }

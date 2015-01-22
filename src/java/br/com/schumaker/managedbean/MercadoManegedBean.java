@@ -25,7 +25,7 @@ import org.primefaces.model.menu.MenuModel;
 @ViewScoped
 public class MercadoManegedBean implements Serializable {
 
-    private final MenuModel model;
+    private MenuModel model;
 
     public MercadoManegedBean() {
         model = new DefaultMenuModel();
