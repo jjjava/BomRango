@@ -1,7 +1,13 @@
 package br.com.schumaker.dao.impl;
 
+import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.SinonimoDao;
 import br.com.schumaker.model.Sinonimo;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,55 +16,153 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class SinonimoDaoImpl implements SinonimoDao{
+public class SinonimoDaoImpl implements SinonimoDao {
 
     @Override
     public Sinonimo obter(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from compras.sinonimo where sinonimo.id = " + id;
+        Connection conn = HsConnection.getConnection();
+        Sinonimo sinonimo = new Sinonimo();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                sinonimo.setId(rs.getInt("id"));
+                sinonimo.setNome(rs.getString("nome"));
+                sinonimo.add(rs.getString("sin1"));
+                sinonimo.add(rs.getString("sin2"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return sinonimo;
     }
 
     @Override
     public Sinonimo obter(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from compras.sinonimo where sinonimo.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        Sinonimo sinonimo = new Sinonimo();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                sinonimo.setId(rs.getInt("id"));
+                sinonimo.setNome(rs.getString("nome"));
+                sinonimo.add(rs.getString("sin1"));
+                sinonimo.add(rs.getString("sin2"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return sinonimo;
     }
 
     @Override
     public List<Sinonimo> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Sinonimo> listar(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Sinonimo> listar(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from compras.sinonimo";
+        Connection conn = HsConnection.getConnection();
+        List<Sinonimo> lista = new ArrayList<Sinonimo>();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Sinonimo sinonimo = new Sinonimo();
+                sinonimo.setId(rs.getInt("id"));
+                sinonimo.setNome(rs.getString("nome"));
+                sinonimo.add(rs.getString("sin1"));
+                sinonimo.add(rs.getString("sin2"));
+                //add na lsita
+                lista.add(sinonimo);
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return lista;
     }
 
     @Override
     public List<Sinonimo> like(String s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select * from compras.sinonimo where sinonimo.none like '%" + s + "%'";
+        Connection conn = HsConnection.getConnection();
+        List<Sinonimo> lista = new ArrayList<Sinonimo>();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Sinonimo sinonimo = new Sinonimo();
+                sinonimo.setId(rs.getInt("id"));
+                sinonimo.setNome(rs.getString("nome"));
+                sinonimo.add(rs.getString("sin1"));
+                sinonimo.add(rs.getString("sin2"));
+                //add na lsita
+                lista.add(sinonimo);
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return lista;
     }
 
     @Override
     public boolean verificarNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean validado = false;
+        String sql = "select * from compras.sinonimo where sinonimo.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                validado = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return validado;
     }
 
     @Override
     public boolean cadastrar(Sinonimo sin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public boolean atualizar(Sinonimo sin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public boolean deletar(Sinonimo sin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

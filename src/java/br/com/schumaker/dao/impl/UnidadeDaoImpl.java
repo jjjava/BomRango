@@ -32,12 +32,12 @@ public class UnidadeDaoImpl implements UnidadeDao {
                 unidade.setDescricao(rs.getString("descricao"));
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return unidade;

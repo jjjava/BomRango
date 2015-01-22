@@ -12,12 +12,12 @@ public class Sinonimo {
 
     private int id;
     private String nome;
-    private ArrayList<Sinonimo> lista;
+    private ArrayList<String> lista;
 
     public Sinonimo() {
     }
 
-    public void add(Sinonimo sin) {
+    public void add(String sin) {
         lista.add(sin);
     }
 
@@ -29,12 +29,8 @@ public class Sinonimo {
         this.nome = nome;
     }
 
-    public ArrayList<Sinonimo> getLista() {
+    public ArrayList<String> getLista() {
         return lista;
-    }
-
-    public void setLista(ArrayList<Sinonimo> lista) {
-        this.lista = lista;
     }
 
     public int getId() {

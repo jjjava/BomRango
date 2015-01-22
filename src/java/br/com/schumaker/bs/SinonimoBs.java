@@ -13,8 +13,6 @@ public interface SinonimoBs {
     Sinonimo obter(Integer id);
     Sinonimo obter(String nome);
     List<Sinonimo> listar();
-    List<Sinonimo> listar(Integer id);
-    List<Sinonimo> listar(String nome);
     List<Sinonimo> like(String s);
     boolean verificarNome(String nome); 
     void cadastrar(Sinonimo sin);

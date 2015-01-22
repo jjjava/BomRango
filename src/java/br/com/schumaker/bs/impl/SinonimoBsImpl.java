@@ -30,16 +30,6 @@ public class SinonimoBsImpl implements SinonimoBs {
     }
 
     @Override
-    public List<Sinonimo> listar(Integer id) {
-       return new SinonimoDaoImpl().listar(id);
-    }
-
-    @Override
-    public List<Sinonimo> listar(String nome) {
-         return new SinonimoDaoImpl().listar(nome);
-    }
-
-    @Override
     public List<Sinonimo> like(String s) {
         return new SinonimoDaoImpl().like(s);
     }
