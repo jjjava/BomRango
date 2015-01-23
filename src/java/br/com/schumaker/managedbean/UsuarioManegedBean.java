@@ -1,7 +1,8 @@
 package br.com.schumaker.managedbean;
 
+import br.com.schumaker.bs.impl.UsuarioBsImpl;
+import br.com.schumaker.model.Usuario;
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -13,12 +14,22 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
+
 public class UsuarioManegedBean implements Serializable {
 
+    private Usuario usuario;
     public UsuarioManegedBean() {
     }
 
-    @PostConstruct
-    public void load() {
+    public void doLogin() {
+        new UsuarioBsImpl().validar(usuario);
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

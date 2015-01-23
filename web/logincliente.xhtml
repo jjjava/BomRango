@@ -39,17 +39,18 @@
                 </f:facet>  
             </p:ajaxStatus> 
             <p:panel header="Login:" style="margin-bottom:10px;" styleClass="searchbutton">
-                <p:button outcome="logincliente" value="Usuário" icon="ui-icon-star">
-                </p:button>
-                <br />
-                <br />
-                <p:button outcome="logincliente" value="Cliente" icon="ui-icon-star">
-                </p:button>
+                <h:panelGrid columns="2" style="margin:10px 0" >
+                    <h:outputLabel for="txt1" value="Email: " />
+                    <p:inputText id="txt1" value="#{clienteManegedBean.cliente.email}" size="50" />
+                    <h:outputLabel for="txt2" value="Senha: " />
+                    <p:password id="txt2" value="#{clienteManegedBean.cliente.senha}" size="50" />
+                    <p:commandButton value="Logar" id="ajax" actionListener="#{clienteManegedBean.doLogin}" />
+                </h:panelGrid>
             </p:panel>
             <script>
-                (function(i, s, o, g, r, a, m) {
+                (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
-                    i[r] = i[r] || function() {
+                    i[r] = i[r] || function () {
                         (i[r].q = i[r].q || []).push(arguments)
                     }, i[r].l = 1 * new Date();
                     a = s.createElement(o),

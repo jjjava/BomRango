@@ -1,28 +1,10 @@
-Gerenciar - Mercado
-    Produto:
-    add     produto view   - back-end 0K
-    alterar produto view   - back-end 0K
-    remover produto view   - back-end 0K
-    
-    Setor:
-    add      setor  view   - back-end ok
-    alterar  setor  view   - back-end ok
-    
-    Marca:
-    add      marca   view   - back-end ok
-    alterar  marca   view   - back-end 0K
-
 Tabelas Cliente 0K
         Usuario
 
 Mudar Cliente para membro???
 Revisar DAOs ok
 Conteúdo Home? 
-Classes BS
-Implantar DaoImpl
 revisar Manegedbeans
-melhor busca com termo exato OK
-BsImpl
 sinonimos
 auto completar cadastro de produtro e busca
 Export database

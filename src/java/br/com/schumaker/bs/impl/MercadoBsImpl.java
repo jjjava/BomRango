@@ -100,8 +100,7 @@ public class MercadoBsImpl implements MercadoBs {
 
     @Override
     public Mercado getMercadoSessao() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         Cliente cliente = (Cliente) session.getAttribute("Cliente");
         MercadoDaoImpl mercadoDaoImpl = new MercadoDaoImpl();
         return mercadoDaoImpl.obter(cliente.getIdMercado());
