@@ -56,7 +56,7 @@ public class UsuarioBsImpl implements UsuarioBs {
                 FacesContext fc = FacesContext.getCurrentInstance();
                 HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
                 session.setAttribute("Usuario", usuario);
-                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+                fc.getExternalContext().redirect("index.xhtml");
             } catch (IOException ex) {
                 System.out.println(ex);
             }
