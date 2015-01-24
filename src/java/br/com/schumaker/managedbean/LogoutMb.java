@@ -16,9 +16,9 @@ import javax.servlet.http.HttpSession;
  */
 @ManagedBean
 @ViewScoped
-public class LogoutManegedBean implements Serializable {
+public class LogoutMb implements Serializable {
     
-    public LogoutManegedBean() {
+    public LogoutMb() {
     }
     
     @PostConstruct

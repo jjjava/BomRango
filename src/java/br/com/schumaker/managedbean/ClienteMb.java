@@ -14,11 +14,11 @@ import java.io.Serializable;
  */
 @ManagedBean
 @ViewScoped
-public class ClienteManegedBean implements Serializable {
+public class ClienteMb implements Serializable {
 
     private Cliente cliente;
 
-    public ClienteManegedBean() {
+    public ClienteMb() {
         cliente = new Cliente();
     }
 

@@ -23,14 +23,14 @@ import org.primefaces.model.menu.MenuModel;
  */
 @ManagedBean
 @ViewScoped
-public class SetorManegedBean implements Serializable {
+public class SetorMb implements Serializable {
 
     private List<Setor> listaCategorias;
     private final MenuModel model;
     private final SetorDaoImpl categoriaDaoImpl;
     private final ProdutoDaoImpl produtoDaoImpl;
 
-    public SetorManegedBean() {
+    public SetorMb() {
         model = new DefaultMenuModel();
         categoriaDaoImpl = new SetorDaoImpl();
         produtoDaoImpl = new ProdutoDaoImpl();

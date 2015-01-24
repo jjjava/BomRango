@@ -15,11 +15,11 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class MercadoHomeManegedBean implements Serializable {
+public class MercadoHomeMb implements Serializable {
 
     private String action;
     private Mercado mercado;
-    public MercadoHomeManegedBean() {
+    public MercadoHomeMb() {
     }
 
     public String getAction() {

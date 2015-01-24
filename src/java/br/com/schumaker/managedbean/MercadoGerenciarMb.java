@@ -19,12 +19,12 @@ import javax.servlet.http.HttpSession;
  */
 @ManagedBean
 @ViewScoped
-public class MercadoGerenciarManegedBean implements Serializable {
+public class MercadoGerenciarMb implements Serializable {
 
     private Mercado mercado;
     private Cliente cliente;
 
-    public MercadoGerenciarManegedBean() {
+    public MercadoGerenciarMb() {
         MercadoBsImpl mercadoBsImpl = new MercadoBsImpl();        
         cliente = mercadoBsImpl.getClienteSessao();
         if (cliente == null) {

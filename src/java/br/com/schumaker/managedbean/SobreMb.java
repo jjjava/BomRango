@@ -12,7 +12,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class SobreManegedBean implements Serializable {
+public class SobreMb implements Serializable {
 
     private String osName;
     private String osVersion;
@@ -20,7 +20,7 @@ public class SobreManegedBean implements Serializable {
     private String hostName;
     private String ip;
 
-    public SobreManegedBean() {
+    public SobreMb() {
         osName = System.getProperty("os.name");
         osVersion = System.getProperty("os.version");
         osArch = System.getProperty("os.arch");      

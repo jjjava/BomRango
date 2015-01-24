@@ -18,8 +18,8 @@
             <p:growl id="messages"/>
             <p:menubar styleClass="ui-menubar">
                 <f:facet name="options" >
-                    <p:remoteCommand name="search" actionListener="#{inputSearchMangedBean.doSearch()}"/>
-                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMangedBean.valueStr}" onkeypress="if (event.keyCode == 13) {
+                    <p:remoteCommand name="search" actionListener="#{inputSearchMb.doSearch()}"/>
+                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMb.valueStr}" onkeypress="if (event.keyCode == 13) {
                                 search();
                                 return false;
                             }"/>
@@ -49,21 +49,21 @@
             <p:panel id="panel" header="Formulário de Contato:" style="margin-bottom:10px;" styleClass="searchbutton">
                 <h:outputLabel for="name" value="Nome: " />
                 <br/>
-                <p:inputText id="name" value="#{mensagemContatoManegedBean.getmContato().nome}" size="50" />
+                <p:inputText id="name" value="#{mensagemContatoMb.getmContato().nome}" size="50" />
                 <br/>
                 <h:outputLabel for="email" value="E-Mail: " />
                 <br/>
-                <p:inputText id="email" value="#{mensagemContatoManegedBean.getmContato().email}" size="50" />
+                <p:inputText id="email" value="#{mensagemContatoMb.getmContato().email}" size="50" />
                 <br/>
                 <h:outputLabel for="subject" value="Assunto: " />
                 <br/>
-                <p:inputText id="subject" value="#{mensagemContatoManegedBean.getmContato().assunto}" size="50" />
+                <p:inputText id="subject" value="#{mensagemContatoMb.getmContato().assunto}" size="50" />
                 <br/>
                 <h:outputLabel for="sms" value="Mensagem: " />
                 <br/>
-                <p:inputTextarea id="sms" rows="6" cols="50" value="#{mensagemContatoManegedBean.getmContato().message}"/>
+                <p:inputTextarea id="sms" rows="6" cols="50" value="#{mensagemContatoMb.getmContato().message}"/>
                 <br/><br/>
-                <p:commandButton id="ajax" value="Enviar"  actionListener="#{mensagemContatoManegedBean.onSend()}"  update="form" styleClass="searchbutton"/>
+                <p:commandButton id="ajax" value="Enviar"  actionListener="#{mensagemContatoMb.onSend()}"  update="form" styleClass="searchbutton"/>
             </p:panel>
             
             <p:dialog  id="envio" header="Envio" widgetVar="envioDialog" modal="true" showEffect="explode" hideEffect="fade" resizable="false">

@@ -18,8 +18,8 @@
            <p:growl id="messages"/>
             <p:menubar styleClass="ui-menubar">
                 <f:facet name="options" >
-                    <p:remoteCommand name="search" actionListener="#{inputSearchMangedBean.doSearch()}"/>
-                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMangedBean.valueStr}" onkeypress="if (event.keyCode == 13) {
+                    <p:remoteCommand name="search" actionListener="#{inputSearchMb.doSearch()}"/>
+                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSeainputSearchMbr}" onkeypress="if (event.keyCode == 13) {
                                 search();
                                 return false;
                             }"/>
@@ -39,8 +39,8 @@
             <p:panel header="Digite um produto" style="margin-bottom:10px;" styleClass="searchbutton">
                 <h:panelGrid columns="3" style="margin:10px 0" >
                     <h:outputLabel for="txt1" value="Nome: " />
-                    <p:inputText id="txt1" value="#{produtoManagedBean.query}" size="50" />
-                    <p:commandButton value="Buscar" id="ajax" process="@parent" update="produtos" actionListener="#{produtoManagedBean.onNameChange()}" />
+                    <p:inputText id="txt1" value="#{produtoMb.query}" size="50" />
+                    <p:commandButton value="Buscar" id="ajax" process="@parent" update="produtos" actionListener="#{produtoMb.onNameChange()}" />
                 </h:panelGrid>
                 <p:ajaxStatus style="width:8px;height:8px;" id="ajaxStatusPanel">  
                     <f:facet name="start">  
@@ -50,7 +50,7 @@
                         <h:outputText value="" />  
                     </f:facet>  
                 </p:ajaxStatus> 
-                <p:dataGrid var="produto" value="#{produtoManagedBean.produtos}" columns="4" 
+                <p:dataGrid var="produto" value="#{produtoMb.produtos}" columns="4" 
                             rows="12" paginator="true" id="produtos"
                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                             rowsPerPageTemplate="6,12,16">
@@ -63,34 +63,34 @@
                             <h:outputText value="#{produto.precoStr}" />
                             <p:commandLink update=":form:produtoDetail" oncomplete="PF('produtoDialog').show()" title="Produto">
                                 <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-                                <f:setPropertyActionListener value="#{produto}" target="#{produtoManagedBean.selectedProduto}" />
+                                <f:setPropertyActionListener value="#{produto}" target="#{produtoMb.selectedProduto}" />
                             </p:commandLink>
                         </h:panelGrid>
                     </p:panel>
                 </p:dataGrid>
                 <p:dialog header="Produto" widgetVar="produtoDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                     <p:outputPanel id="produtoDetail" style="text-align:center;">
-                        <p:panelGrid  columns="2" rendered="#{not empty produtoManagedBean.selectedProduto}" columnClasses="label,value">
+                        <p:panelGrid  columns="2" rendered="#{not empty produtoMb.selectedProduto}" columnClasses="label,value">
                             <f:facet name="header">
-                                <p:graphicImage value="images/produtos/#{produtoManagedBean.selectedProduto.imagem}@2.png"/>
+                                <p:graphicImage value="images/produtos/#{produtoMb.selectedProduto.imagem}@2.png"/>
                             </f:facet>
                             <h:outputText value="Nome:" />
-                            <h:outputText value="#{produtoManagedBean.selectedProduto.nome}" />
+                            <h:outputText value="#{produtoMb.selectedProduto.nome}" />
                             <h:outputText value="Preço:" />
-                            <h:outputText value="#{produtoManagedBean.selectedProduto.precoStr}" />
+                            <h:outputText value="#{produtoMb.selectedProduto.precoStr}" />
 
                             <h:outputText value="Mercado:" />
-                            <h:outputLink value="#{produtoManagedBean.selectedProduto.mercadoStr.site}" target="blank" >
-                                <h:outputText value="#{produtoManagedBean.selectedProduto.idmercadoStr}" />
+                            <h:outputLink value="#{produtoMb.selectedProduto.mercadoStr.site}" target="blank" >
+                                <h:outputText value="#{produtoMb.selectedProduto.idmercadoStr}" />
                             </h:outputLink>
 
                             <h:outputText value="Fabricante:" />
-                            <h:outputLink value="#{produtoManagedBean.selectedProduto.fabricante.site}" target="blank" >
-                                <h:outputText value="#{produtoManagedBean.selectedProduto.idfabricanteStr}" />
+                            <h:outputLink value="#{produtoMb.selectedProduto.fabricante.site}" target="blank" >
+                                <h:outputText value="#{produtoMb.selectedProduto.idfabricanteStr}" />
                             </h:outputLink>
 
                             <h:outputText value="Quantidade:" />
-                            <h:outputText value="#{produtoManagedBean.selectedProduto.quantidade}#{produtoManagedBean.selectedProduto.unidade}" />
+                            <h:outputText value="#{produtoMb.selectedProduto.quantidade}#{produtoMb.selectedProduto.unidade}" />
                         </p:panelGrid>
                     </p:outputPanel>
                 </p:dialog>

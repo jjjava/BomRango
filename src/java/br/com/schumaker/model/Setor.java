@@ -42,4 +42,9 @@ public class Setor {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    
+    @Override
+    public String toString(){//para aparecer no combobox
+        return getNome();
+    }
 }

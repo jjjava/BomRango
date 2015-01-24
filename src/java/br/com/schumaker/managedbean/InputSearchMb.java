@@ -15,10 +15,10 @@ import javax.servlet.http.HttpSession;
  */
 @ManagedBean
 @ViewScoped
-public class InputSearchMangedBean implements Serializable {
+public class InputSearchMb implements Serializable {
 
     private String valueStr;
-    public InputSearchMangedBean() {
+    public InputSearchMb() {
     }
     
     public void doSearch(){

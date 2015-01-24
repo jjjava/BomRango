@@ -23,11 +23,11 @@ import org.primefaces.model.menu.MenuModel;
  */
 @ManagedBean
 @ViewScoped
-public class MercadoManegedBean implements Serializable {
+public class MercadoMb implements Serializable {
 
     private MenuModel model;
 
-    public MercadoManegedBean() {
+    public MercadoMb() {
         model = new DefaultMenuModel();
     }
 

@@ -18,8 +18,8 @@
             <p:growl id="messages"/>
             <p:menubar styleClass="ui-menubar">
                 <f:facet name="options" >
-                    <p:remoteCommand name="search" actionListener="#{inputSearchMangedBean.doSearch()}"/>
-                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMangedBean.valueStr}" onkeypress="if (event.keyCode == 13) {
+                    <p:remoteCommand name="search" actionListener="#{inputSearchMb.doSearch()}"/>
+                    <p:inputText style="margin-right:10px" size="60" placeholder="Pesquisar..." value="#{inputSearchMb.valueStr}" onkeypress="if (event.keyCode == 13) {
                                 search();
                                 return false;
                             }"/>
@@ -45,7 +45,7 @@
                 </f:facet>  
             </p:ajaxStatus> 
             <p:panel id="panel" header="Categorias:" style="margin-bottom:10px;" styleClass="searchbutton">
-                <p:panelMenu style="width:300px" model="#{setorManegedBean.model}" >
+                <p:panelMenu style="width:300px" model="#{setorMb.model}" >
                 </p:panelMenu>
             </p:panel>
             <script>

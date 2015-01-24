@@ -14,11 +14,11 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class MensagemContatoManegedBean implements Serializable {
+public class MensagemContatoMb implements Serializable {
 
     private MensagemContato mContato;
 
-    public MensagemContatoManegedBean() {
+    public MensagemContatoMb() {
         mContato = new MensagemContato();
     }
 

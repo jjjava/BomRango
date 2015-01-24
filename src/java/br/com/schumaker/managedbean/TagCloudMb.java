@@ -26,13 +26,13 @@ import org.primefaces.model.tagcloud.TagCloudModel;
  */
 @ManagedBean
 @ViewScoped
-public class TagCloudManagedBean implements Serializable {
+public class TagCloudMb implements Serializable {
     
     private final PesquisaDaoImpl pesquisaDaoImpl;
     private List<Pesquisa> pesquisas;
     private final TagCloudModel model;
     
-    public TagCloudManagedBean() {
+    public TagCloudMb() {
         pesquisaDaoImpl = new PesquisaDaoImpl();
         pesquisas = new ArrayList<Pesquisa>();
         model = new DefaultTagCloudModel();

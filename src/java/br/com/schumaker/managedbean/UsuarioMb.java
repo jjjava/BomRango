@@ -15,10 +15,10 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 
-public class UsuarioManegedBean implements Serializable {
+public class UsuarioMb implements Serializable {
 
     private Usuario usuario;
-    public UsuarioManegedBean() {
+    public UsuarioMb() {
     }
 
     public void doLogin() {
