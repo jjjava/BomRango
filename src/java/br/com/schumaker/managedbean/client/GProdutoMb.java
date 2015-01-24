@@ -1,8 +1,12 @@
 package br.com.schumaker.managedbean.client;
 
+import br.com.schumaker.bs.impl.FabricanteBsImpl;
 import br.com.schumaker.bs.impl.SetorBsImpl;
+import br.com.schumaker.bs.impl.UnidadeBsImpl;
+import br.com.schumaker.model.Fabricante;
 import br.com.schumaker.model.Produto;
 import br.com.schumaker.model.Setor;
+import br.com.schumaker.model.Unidade;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -21,10 +25,17 @@ public class GProdutoMb implements Serializable {
     private Produto produto;
     private Setor setor;
     private List<Setor> setores;
+    private Fabricante marca;
+    private List<Fabricante> marcas;
+    private Unidade unidade;
+    private List<Unidade> unidades;
     
     public GProdutoMb(){
         produto = new Produto();
+        
         setores = new SetorBsImpl().listar();
+        marcas = new FabricanteBsImpl().listar();
+        unidades = new UnidadeBsImpl().listar();
     }
 
     public Produto getProduto() {
@@ -49,5 +60,37 @@ public class GProdutoMb implements Serializable {
 
     public void setSetores(List<Setor> setores) {
         this.setores = setores;
+    }
+
+    public Fabricante getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Fabricante marca) {
+        this.marca = marca;
+    }
+
+    public List<Fabricante> getMarcas() {
+        return marcas;
+    }
+
+    public void setMarcas(List<Fabricante> marcas) {
+        this.marcas = marcas;
+    }
+
+    public Unidade getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(Unidade unidade) {
+        this.unidade = unidade;
+    }
+
+    public List<Unidade> getUnidades() {
+        return unidades;
+    }
+
+    public void setUnidades(List<Unidade> unidades) {
+        this.unidades = unidades;
     }
 }

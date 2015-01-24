@@ -42,4 +42,9 @@ public class Fabricante {
     public void setSite(String site) {
         this.site = site;
     }
+
+    @Override
+    public String toString() {//para aparecer no combobox
+        return getNome();
+    }
 }

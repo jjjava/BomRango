@@ -52,11 +52,38 @@
                 <br/>
                 <p:outputLabel for="setores" value="Setor: " />
                 <br/>
-                <p:selectOneMenu id="setores" value="#{gProdutoMb.setor}" style="width:150px">
+                <p:selectOneMenu id="setores" value="#{gProdutoMb.setor}" style="width:170px">
                     <f:selectItem itemLabel="Selecione o setor" itemValue=""  />
                     <f:selectItems value="#{gProdutoMb.setores}" />
                 </p:selectOneMenu>
+                <br/>
+                <p:outputLabel for="fabricantes" value="Fabricante: " />
+                <br/>
+                <p:selectOneMenu id="fabricantes" value="#{gProdutoMb.marca}" style="width:170px">
+                    <f:selectItem itemLabel="Selecione o fabricante" itemValue=""  />
+                    <f:selectItems value="#{gProdutoMb.marcas}" />
+                </p:selectOneMenu>
+                <br />
+                <p:outputLabel for="unidades" value="Fabricante: " />
+                <br/>
+                <p:selectOneMenu id="unidades" value="#{gProdutoMb.unidade}" style="width:170px">
+                    <f:selectItem itemLabel="Selecione a unidade" itemValue=""  />
+                    <f:selectItems value="#{gProdutoMb.unidades}" />
+                </p:selectOneMenu>
+                <br/>
+                <h:outputLabel for="qtd" value="Quantidade: " />
+                <br/>
+                <p:inputText id="qtd" value="#{gProdutoMb.produto.quantidade}" size="50" />
             </p:panel>
+            
+            //UPAR FOTO
+            
+            
+            
+            
+            
+            
+            
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -75,4 +102,3 @@
         </h:form>
     </h:body>
 </html>
-
