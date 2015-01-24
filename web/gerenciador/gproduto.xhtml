@@ -44,17 +44,17 @@
             <p:panel id="panel" header="Produto:" style="margin-bottom:10px;" styleClass="searchbutton">
                 <h:outputLabel for="name" value="Nome: " />
                 <br/>
-                <p:inputText id="name" value="#{produtoMb.selectedProduto.nome}" size="50" />
+                <p:inputText id="name" value="#{gProdutoMb.produto.nome}" size="50" />
                 <br />
                 <h:outputLabel for="description" value="Descrição: " />
                 <br/>
-                <p:inputText id="description" value="#{produtoMb.selectedProduto.descricao}" size="50" />
+                <p:inputText id="description" value="#{gProdutoMb.produto.descricao}" size="50" />
                 <br/>
                 <p:outputLabel for="setores" value="Setor: " />
                 <br/>
-                <p:selectOneMenu id="setores" value="#{produtoMb.setor}" style="width:150px">
+                <p:selectOneMenu id="setores" value="#{gProdutoMb.setor}" style="width:150px">
                     <f:selectItem itemLabel="Selecione o setor" itemValue=""  />
-                    <f:selectItems value="#{produtoMb.setores}" />
+                    <f:selectItems value="#{gProdutoMb.setores}" />
                 </p:selectOneMenu>
             </p:panel>
             <script>

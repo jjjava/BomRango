@@ -141,7 +141,7 @@ public class ProdutoDaoImpl implements ProdutoDao {
     @Override
     public List<Produto> listar(String nome) {
         List<Produto> produtos = new ArrayList<Produto>();
-        String sql = "select * from compras.produto where produto.nome ='" + nome + " and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco";
+        String sql = "select * from compras.produto where produto.nome = '" + nome + "' and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco";
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
@@ -179,7 +179,7 @@ public class ProdutoDaoImpl implements ProdutoDao {
     @Override
     public List<Produto> listar(String nome, int limite) {
         List<Produto> produtos = new ArrayList<Produto>();
-        String sql = "select * from compras.produto where produto.nome ='" + nome + " and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco limit " + limite;
+        String sql = "select * from compras.produto where produto.nome ='" + nome + "' and produto.ativo=" + HsCommons.PRODATIV + " order by produto.preco limit " + limite;
         Connection conn = HsConnection.getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(sql);

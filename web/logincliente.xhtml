@@ -41,10 +41,10 @@
             <p:panel header="Login:" style="margin-bottom:10px;" styleClass="searchbutton">
                 <h:panelGrid columns="2" style="margin:10px 0" >
                     <h:outputLabel for="txt1" value="Email: " />
-                    <p:inputText id="txt1" value="#{clienteManegedBean.cliente.email}" size="50" />
+                    <p:inputText id="txt1" value="#{clienteMb.cliente.email}" size="50" />
                     <h:outputLabel for="txt2" value="Senha: " />
-                    <p:password id="txt2" value="#{clienteManegedBean.cliente.senha}" size="50" />
-                    <p:commandButton value="Logar" id="ajax" actionListener="#{clienteManegedBean.doLogin}" />
+                    <p:password id="txt2" value="#{clienteMb.cliente.senha}" size="50" />
+                    <p:commandButton value="Logar" id="ajax" actionListener="#{clienteMb.doLogin}" />
                 </h:panelGrid>
             </p:panel>
             <script>

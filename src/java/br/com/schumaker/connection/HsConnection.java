@@ -16,7 +16,7 @@ public class HsConnection {
     public static synchronized Connection getConnection() {
         Connection conn = null;
         try {
-         
+            
         } catch (ClassNotFoundException ex) {
             System.err.println(ex);
         } catch (SQLException ex) {

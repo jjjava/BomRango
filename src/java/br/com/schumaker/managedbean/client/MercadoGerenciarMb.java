@@ -1,4 +1,4 @@
-package br.com.schumaker.managedbean;
+package br.com.schumaker.managedbean.client;
 
 import br.com.schumaker.bs.impl.MercadoBsImpl;
 import br.com.schumaker.dao.impl.MercadoDaoImpl;

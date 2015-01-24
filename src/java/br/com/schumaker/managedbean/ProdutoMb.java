@@ -1,14 +1,11 @@
 package br.com.schumaker.managedbean;
 
 import br.com.schumaker.bs.impl.ProdutoBsImpl;
-import br.com.schumaker.bs.impl.SetorBsImpl;
 import br.com.schumaker.model.Produto;
-import br.com.schumaker.model.Setor;
 import br.com.schumaker.util.HsCommons;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -29,20 +26,10 @@ public class ProdutoMb implements Serializable {
     private Produto selectedProduto;
     private String query;
 
-    private String option;
-    private Setor setor;
-    private List<Setor> setores;
-
     public ProdutoMb() {
         produtoBs = new ProdutoBsImpl();
         produtos = new ArrayList<Produto>();
-        setores = new ArrayList<Setor>();
         this.checkParameter();
-    }
-    
-    @PostConstruct
-    private void carregaSetores(){
-        setores = new SetorBsImpl().listar();
     }
 
     private void checkParameter() {
@@ -82,29 +69,5 @@ public class ProdutoMb implements Serializable {
 
     public void setSelectedProduto(Produto selectedProduto) {
         this.selectedProduto = selectedProduto;
-    }
-
-    public String getOption() {
-        return option;
-    }
-
-    public void setOption(String option) {
-        this.option = option;
-    }
-
-    public Setor getSetor() {
-        return setor;
-    }
-
-    public void setSetor(Setor setor) {
-        this.setor = setor;
-    }
-
-    public List<Setor> getSetores() {
-        return setores;
-    }
-
-    public void setSetores(List<Setor> setore) {
-        this.setores = setore;
     }
 }
