@@ -3,6 +3,7 @@ package br.com.schumaker.bs.impl;
 import br.com.schumaker.bs.ClienteBs;
 import br.com.schumaker.dao.impl.ClienteDaoImpl;
 import br.com.schumaker.model.Cliente;
+import br.com.schumaker.model.Mercado;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -103,23 +104,27 @@ public class ClienteBsImpl implements ClienteBs {
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         Cliente cliente = (Cliente) session.getAttribute("Cliente");
-        if(cliente!= null){
+        if (cliente != null) {
             try {
                 session.removeAttribute("Cliente");
+                Mercado mercado = (Mercado) session.getAttribute("Mercado");
+                if (mercado != null) {
+                    session.removeAttribute("Mercado");
+                }
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../gerenciar.xhtml");
             } catch (IOException ex) {
                 System.err.println(ex);
             }
-        }else{
+        } else {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/index.xhtml");
             } catch (IOException ex) {
                 System.err.println(ex);
             }
         }
     }
-    
-     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
+
+    private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }
 }

@@ -32,5 +32,6 @@ public class LogoutMb implements Serializable {
         if (cliente != null) {
             session.removeAttribute("Cliente");
         }
+        
     }
 }
