@@ -16,6 +16,7 @@ public interface ClienteBs {
     List<Cliente> like(String s);
     boolean verificarEmail(String email);
     void validar(Cliente cliente);
+    void invalidarSessao();
     boolean verificarNome(String nome);
     void cadastrar(Cliente cliente);
     void atualizar(Cliente cliente);

@@ -62,6 +62,15 @@ public class Produto {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
+    
+    public void setPrecoSrtToDouble(String preco) {
+        this.preco = Double.parseDouble(preco);
+    }
+    
+    public String getPrecoSrtToDouble(){
+        preco= 0.0;
+        return preco.toString();
+    }
 
     public Double getQuantidade() {
         return quantidade;

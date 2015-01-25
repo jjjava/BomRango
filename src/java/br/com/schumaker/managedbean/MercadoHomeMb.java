@@ -1,6 +1,6 @@
 package br.com.schumaker.managedbean;
 
-import br.com.schumaker.dao.impl.MercadoDaoImpl;
+import br.com.schumaker.bs.impl.MercadoBsImpl;
 import br.com.schumaker.model.Mercado;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -28,8 +28,8 @@ public class MercadoHomeMb implements Serializable {
 
     public void setAction(String action) {
         this.action = action;
-        MercadoDaoImpl mercadoDaoImpl = new MercadoDaoImpl();
-        mercado = mercadoDaoImpl.obter(Integer.parseInt(action));
+        MercadoBsImpl mercadoBsImpl = new MercadoBsImpl();
+        mercado = mercadoBsImpl.obter(Integer.parseInt(action));
     }
 
     public Mercado getMercado() {

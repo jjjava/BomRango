@@ -5,6 +5,8 @@ import br.com.schumaker.dao.impl.ClienteDaoImpl;
 import br.com.schumaker.model.Cliente;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -96,7 +98,28 @@ public class ClienteBsImpl implements ClienteBs {
         }
     }
 
-    private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
+    @Override
+    public void invalidarSessao() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        Cliente cliente = (Cliente) session.getAttribute("Cliente");
+        if(cliente!= null){
+            try {
+                session.removeAttribute("Cliente");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("../gerenciar.xhtml");
+            } catch (IOException ex) {
+                System.err.println(ex);
+            }
+        }else{
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+            } catch (IOException ex) {
+                System.err.println(ex);
+            }
+        }
+    }
+    
+     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }
 }

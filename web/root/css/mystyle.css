@@ -1,0 +1,30 @@
+/* 
+    Created on : 25/01/2015, 17:55:36
+    Author     : hudson schumaker
+*/
+
+.ui-menubar   {
+    mouseover: #ff0000; 
+    background-color: black !important; 
+    background: red; 
+    font-size: 14px; 
+}
+
+.ui-menuitem-text {
+    color: white;
+}
+
+.searchbutton{
+    font-size: 14px;
+}
+
+.tagcloud{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width: 500px;
+    height: 500px;
+    margin-left:-250px;
+    margin-top:0px;
+    border-style: none;
+}
