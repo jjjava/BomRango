@@ -6,12 +6,9 @@ import br.com.schumaker.model.Cliente;
 import br.com.schumaker.model.Mercado;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 /**
  * @author hudson schumaker HStudio - @BomRango 14/01/2015

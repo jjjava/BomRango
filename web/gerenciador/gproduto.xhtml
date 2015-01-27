@@ -80,7 +80,8 @@
                 <p:inputText id="preco" value="#{gProdutoMb.produto.precoSrtToDouble}" size="50" />
                 <br />
                 <br />
-                           
+                <p:fileUpload fileUploadListener="#{fileUploadMb.handleFileUpload}" mode="advanced" dragDropSupport="true"
+                              update="messages" sizeLimit="300000" fileLimit="2" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
             </p:panel>
             <script>
                 (function (i, s, o, g, r, a, m) {

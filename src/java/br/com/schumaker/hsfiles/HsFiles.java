@@ -11,21 +11,21 @@ import java.io.File;
 public class HsFiles {
 
     private static String OS = System.getProperty("os.name").toLowerCase();
-    private final String rootDirWin = "C:/Hstudio";
-    private final String rootDirUnix = "/Hstudio";
-    private final String rootDirOsX = "/Applications/Hstudio";
+    public static final String rootDirWin = "C:/Hstudio/";
+    private final String rootDirUnix = "/Hstudio/";
+    private final String rootDirOsX = "/Applications/Hstudio/";
     private final String mercado = "mercado";
     private final String usuario = "usuario";
 
     public boolean criarDirMercado(String nome) {
         if (isWindows()) {
-            File f = new File(rootDirWin + "/" + mercado + "/" + nome);
+            File f = new File(rootDirWin + mercado + "/" + nome);
             return f.mkdir();
         } else if (isUnix()) {
-            File f = new File(rootDirUnix + "/" + mercado + "/" + nome);
+            File f = new File(rootDirUnix + mercado + "/" + nome);
             return f.mkdir();
         } else if (isMac()) {
-            File f = new File(rootDirOsX + "/" + mercado + "/" + nome);
+            File f = new File(rootDirOsX + mercado + "/" + nome);
             return f.mkdir();
         } else {
             return false;
