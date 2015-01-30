@@ -1,16 +1,17 @@
 package br.com.schumaker.hsfiles;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  *
- * @author hudson schumaker HStudio - @BomRango 21/01/2015
+ * @author hudsongo 21/01/2015
  * @version 1.0.0
  * @since 1.0.0
  */
 public class HsFiles {
 
-    private static String OS = System.getProperty("os.name").toLowerCase();
+    private static final String OS = System.getProperty("os.name").toLowerCase();
     public static final String rootDirWin = "C:/Hstudio/";
     private final String rootDirUnix = "/Hstudio/";
     private final String rootDirOsX = "/Applications/Hstudio/";
@@ -91,7 +92,7 @@ public class HsFiles {
             return false;
         }
     }
-
+   
     public static boolean isWindows() {
         return (OS.contains("win"));
     }

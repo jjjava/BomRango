@@ -1,6 +1,5 @@
 package br.com.schumaker.managedbean.client;
 
-import br.com.schumaker.hsfiles.HsFiles;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;

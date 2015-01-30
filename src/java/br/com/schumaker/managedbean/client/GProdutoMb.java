@@ -32,7 +32,6 @@ public class GProdutoMb implements Serializable {
     
     public GProdutoMb(){
         produto = new Produto();
-        
         setores = new SetorBsImpl().listar();
         marcas = new FabricanteBsImpl().listar();
         unidades = new UnidadeBsImpl().listar();
