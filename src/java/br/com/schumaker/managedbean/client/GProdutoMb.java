@@ -1,6 +1,7 @@
 package br.com.schumaker.managedbean.client;
 
 import br.com.schumaker.bs.impl.FabricanteBsImpl;
+import br.com.schumaker.bs.impl.ProdutoBsImpl;
 import br.com.schumaker.bs.impl.SetorBsImpl;
 import br.com.schumaker.bs.impl.UnidadeBsImpl;
 import br.com.schumaker.model.Fabricante;
@@ -9,6 +10,7 @@ import br.com.schumaker.model.Setor;
 import br.com.schumaker.model.Unidade;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -21,7 +23,7 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class GProdutoMb implements Serializable {
-    
+
     private Produto produto;
     private Setor setor;
     private List<Setor> setores;
@@ -29,12 +31,24 @@ public class GProdutoMb implements Serializable {
     private List<Fabricante> marcas;
     private Unidade unidade;
     private List<Unidade> unidades;
-    
-    public GProdutoMb(){
+
+    public GProdutoMb() {
+
+    }
+
+    @PostConstruct
+    public void load() {
         produto = new Produto();
+        setor = new Setor();
+        marca = new Fabricante();
+        unidade = new Unidade();
         setores = new SetorBsImpl().listar();
         marcas = new FabricanteBsImpl().listar();
         unidades = new UnidadeBsImpl().listar();
+    }
+
+    public void processarCadastro() {
+        new ProdutoBsImpl().primeiraEtapaCadastro(produto, setor, marca, unidade);
     }
 
     public Produto getProduto() {

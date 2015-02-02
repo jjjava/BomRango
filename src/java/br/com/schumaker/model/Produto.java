@@ -21,6 +21,7 @@ public class Produto {
     private int ativo;
 
     public Produto() {
+        preco = 0.0;
     }
 
     public Produto(Integer id) {
@@ -62,13 +63,12 @@ public class Produto {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
-    
+
     public void setPrecoSrtToDouble(String preco) {
         this.preco = Double.parseDouble(preco);
     }
-    
-    public String getPrecoSrtToDouble(){
-        preco= 0.0;
+
+    public String getPrecoSrtToDouble() {
         return preco.toString();
     }
 

@@ -44,6 +44,31 @@ public class FabricanteDaoImpl implements FabricanteDao {
     }
 
     @Override
+    public Fabricante obter(String nome) {
+        String sql = "select * from compras.fabricante where fabricante.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        Fabricante fabricante = new Fabricante();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                fabricante.setId(rs.getInt("id"));
+                fabricante.setNome(rs.getString("nome"));
+                fabricante.setSite(rs.getString("site"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return fabricante;
+    }
+
+    @Override
     public List<Fabricante> listar() {
         List<Fabricante> fabricantes = new ArrayList<Fabricante>();
         String sql = "select * from compras.fabricante";

@@ -44,6 +44,31 @@ public class UnidadeDaoImpl implements UnidadeDao {
     }
 
     @Override
+    public Unidade obter(String nome) {
+        String sql = "select * from compras.unidade where unidade.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        Unidade unidade = new Unidade();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                unidade.setId(rs.getInt("id"));
+                unidade.setNome(rs.getString("nome"));
+                unidade.setDescricao(rs.getString("descricao"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return unidade;
+    }
+
+    @Override
     public List<Unidade> listar() {
         List<Unidade> unidades = new ArrayList<Unidade>();
         String sql = "select * from compras.unidade";
@@ -60,12 +85,12 @@ public class UnidadeDaoImpl implements UnidadeDao {
                 unidades.add(unidade);
             }
         } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+            System.err.println(e);
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+                System.err.println(e);
             }
         }
         return unidades;
@@ -179,6 +204,6 @@ public class UnidadeDaoImpl implements UnidadeDao {
 
     @Override
     public boolean deletar(Unidade unidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

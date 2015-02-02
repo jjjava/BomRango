@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface UnidadeBs {
     Unidade obter(Integer id);
+    Unidade obter(String nome);
     List<Unidade> listar();
     List<Unidade> like(String s);
     boolean verificarNome(String nome); 

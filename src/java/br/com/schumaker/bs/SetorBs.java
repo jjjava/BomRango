@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface SetorBs {
     Setor obter(Integer id);
+    Setor obter(String nome);
     List<Setor> listar();
     List<Setor> like(String s);
     boolean verificarNome(String nome);

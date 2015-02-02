@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface FabricanteBs {
     Fabricante obter(Integer id);
+    Fabricante obter(String nome);
     List<Fabricante> listar();
     List<Fabricante> like(String s);
     boolean verificarNome(String nome);

@@ -4,7 +4,10 @@ import br.com.schumaker.bs.ProdutoBs;
 import br.com.schumaker.dao.impl.FabricanteDaoImpl;
 import br.com.schumaker.dao.impl.ProdutoDaoImpl;
 import br.com.schumaker.model.Fabricante;
+import br.com.schumaker.model.Mercado;
 import br.com.schumaker.model.Produto;
+import br.com.schumaker.model.Setor;
+import br.com.schumaker.model.Unidade;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import org.primefaces.context.RequestContext;
@@ -106,6 +109,15 @@ public class ProdutoBsImpl implements ProdutoBs {
         mostrarMensagem(FacesMessage.SEVERITY_WARN, "Produto", "Não suportado ainda");
     }
 
+    public void primeiraEtapaCadastro(Produto p, Setor s, Fabricante f, Unidade u, Mercado m){
+        p.setIdcategoria(new SetorBsImpl().obter(s.getNome()));
+        p.setIdfabricante(new FabricanteBsImpl().obter(f.getNome()));
+        p.setUnidade(new UnidadeBsImpl().obter(u.getNome()));
+        
+        
+        
+    }
+    
     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }

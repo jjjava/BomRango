@@ -19,6 +19,11 @@ public class FabricanteBsImpl implements FabricanteBs {
     public Fabricante obter(Integer id) {
         return new FabricanteDaoImpl().obter(id);
     }
+    
+    @Override
+    public Fabricante obter(String nome) {
+        return new FabricanteDaoImpl().obter(nome);
+    }
 
     @Override
     public List<Fabricante> listar() {

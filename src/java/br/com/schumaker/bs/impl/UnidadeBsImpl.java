@@ -19,6 +19,11 @@ public class UnidadeBsImpl implements UnidadeBs{
     public Unidade obter(Integer id) {
        return new UnidadeDaoImpl().obter(id);
     }
+    
+    @Override
+    public Unidade obter(String nome) {
+       return new UnidadeDaoImpl().obter(nome);
+    }
 
     @Override
     public List<Unidade> listar() {

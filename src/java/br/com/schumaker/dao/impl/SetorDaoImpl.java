@@ -47,6 +47,31 @@ public class SetorDaoImpl implements SetorDao {
     }
 
     @Override
+    public Setor obter(String nome) {
+        String sql = "select * from compras.categoria where categoria.nome = '" + nome + "'";
+        Connection conn = HsConnection.getConnection();
+        Setor categoria = new Setor();
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                categoria.setId(rs.getInt("id"));
+                categoria.setNome(rs.getString("nome"));
+                categoria.setDescricao(rs.getString("descricao"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                System.err.println(e);
+            }
+        }
+        return categoria;
+    }
+
+    @Override
     public List<Setor> listar() {
         List<Setor> categorias = new ArrayList<Setor>();
         String sql = "select * from compras.categoria order by categoria.nome";

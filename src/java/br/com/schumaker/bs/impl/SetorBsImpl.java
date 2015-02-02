@@ -19,6 +19,11 @@ public class SetorBsImpl implements SetorBs {
     public Setor obter(Integer id) {
         return new SetorDaoImpl().obter(id);
     }
+    
+    @Override
+    public Setor obter(String nome) {
+        return new SetorDaoImpl().obter(nome);
+    }
 
     @Override
     public List<Setor> listar() {
