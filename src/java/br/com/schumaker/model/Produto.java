@@ -147,4 +147,11 @@ public class Produto {
     public int getIdSetor() {
         return idcategoria.getId();
     }
+
+    @Override
+    public String toString() {
+        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + ", quantidade=" + quantidade + ", idmercado=" + idmercado + ", idfabricante=" + idfabricante + ", idcategoria=" + idcategoria + ", unidade=" + unidade + ", imagem=" + imagem + ", ativo=" + ativo + '}';
+    }
+    
+    
 }

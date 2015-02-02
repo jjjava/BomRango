@@ -1,33 +1,27 @@
-package br.com.schumaker.managedbean.client;
+package br.com.schumaker.bs.impl;
 
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import org.primefaces.event.FileUploadEvent;
 
 /**
  *
- * @author hudson schumaker HStudio - @BomRango 27/01/2015
+ * @author hudson schumaker HStudio - @BomRango 02/02/2015
  * @version 1.0.0
  * @since 1.0.0
  */
-@ManagedBean
-@ViewScoped
-public class FileUploadMb implements Serializable {
+public class CarregaArquivoBsImpl {
 
-    public FileUploadMb() {
-    }
-
-    public void handleFileUpload(FileUploadEvent event) {
+    public void gerenciaCargaDeArquivo(FileUploadEvent event) {
         System.out.println(event.getFile().getFileName());
         System.out.println(event.getFile().getSize());
+        
+        String uuid;
         try {
             InputStream in = new BufferedInputStream(event.getFile().getInputstream());
-            File file = new File("/Users/hudson/Pictures/teste.png");
+            File file = new File("/Volumes/Data/HStudio/Temp/");
             FileOutputStream fout = new FileOutputStream(file);
             while (in.available() != 0) {
                 fout.write(in.read());

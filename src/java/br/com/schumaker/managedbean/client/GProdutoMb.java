@@ -47,8 +47,12 @@ public class GProdutoMb implements Serializable {
         unidades = new UnidadeBsImpl().listar();
     }
 
-    public void processarCadastro() {
+    public void processarCadastroParte1() {
         new ProdutoBsImpl().primeiraEtapaCadastro(produto, setor, marca, unidade);
+    }
+
+    public void processarCadastroParte2() {
+
     }
 
     public Produto getProduto() {

@@ -4,12 +4,14 @@ import br.com.schumaker.bs.ProdutoBs;
 import br.com.schumaker.dao.impl.FabricanteDaoImpl;
 import br.com.schumaker.dao.impl.ProdutoDaoImpl;
 import br.com.schumaker.model.Fabricante;
-import br.com.schumaker.model.Mercado;
 import br.com.schumaker.model.Produto;
 import br.com.schumaker.model.Setor;
 import br.com.schumaker.model.Unidade;
+import java.io.IOException;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -109,15 +111,41 @@ public class ProdutoBsImpl implements ProdutoBs {
         mostrarMensagem(FacesMessage.SEVERITY_WARN, "Produto", "Não suportado ainda");
     }
 
-    public void primeiraEtapaCadastro(Produto p, Setor s, Fabricante f, Unidade u, Mercado m){
+    public void primeiraEtapaCadastro(Produto p, Setor s, Fabricante f, Unidade u) {
         p.setIdcategoria(new SetorBsImpl().obter(s.getNome()));
         p.setIdfabricante(new FabricanteBsImpl().obter(f.getNome()));
         p.setUnidade(new UnidadeBsImpl().obter(u.getNome()));
+        p.setIdmercado(new MercadoBsImpl().getMercadoSessao());
+        p.setAtivo(1);//validacao com inteiro
+
         
-        
-        
+        setCadProdutoSessao(p);
+
     }
     
+    public void segundaEtapaCadastro(){
+        
+        Produto p = getCadProdutoSessao();
+        System.out.println(p.toString());
+    }
+
+    private void setCadProdutoSessao(Produto produto) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        session.setAttribute("CadProduto", produto);
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("carregafotoproduto.xhtml");
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    private Produto getCadProdutoSessao() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        return (Produto) session.getAttribute("CadProduto");
+    }
+
     private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }

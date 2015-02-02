@@ -67,13 +67,9 @@ public class MercadoBsImpl implements MercadoBs {
         mostrarMensagem(FacesMessage.SEVERITY_WARN, "Mercado", "Sem suporte ainda.");
     }
 
-    private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
-        RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
-    }
-
     @Override
     public void mostrarPerfil(String action) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -88,7 +84,7 @@ public class MercadoBsImpl implements MercadoBs {
             } catch (IOException ex) {
                 System.err.println(ex);
             }
-        } 
+        }
     }
 
     @Override
@@ -104,5 +100,9 @@ public class MercadoBsImpl implements MercadoBs {
         Cliente cliente = (Cliente) session.getAttribute("Cliente");
         MercadoDaoImpl mercadoDaoImpl = new MercadoDaoImpl();
         return mercadoDaoImpl.obter(cliente.getIdMercado());
+    }
+
+    private void mostrarMensagem(FacesMessage.Severity sev, String titulo, String mensagem) {
+        RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(sev, titulo, mensagem));
     }
 }

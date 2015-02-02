@@ -167,4 +167,9 @@ public class Mercado {
     public void setEstacionamento(int estacionamento) {
         this.estacionamento = estacionamento;
     }
+    
+    @Override
+    public String toString() {//para aparecer no combobox
+        return getNome();
+    }
 }
