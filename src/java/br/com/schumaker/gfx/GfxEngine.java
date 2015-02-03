@@ -1,5 +1,6 @@
 package br.com.schumaker.gfx;
 
+import br.com.schumaker.hsfiles.HsFiles;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -33,17 +34,19 @@ public class GfxEngine implements Runnable {
         aSize.add(64);
         aSize.add(128);
         aNames = new ArrayList<String>();
-        aNames.add(name);
-        aNames.add(name + "@2");
+        aNames.add(HsFiles.getClearName(name) + "@1." + HsFiles.getFileExtension(name));
+        aNames.add(HsFiles.getClearName(name) + "@2." + HsFiles.getFileExtension(name));
     }
 
-    private void createImages(String path, String name) {
+    private void createImages(String path) {
         BufferedImage originalImage = readImageFromDisk(path);
         int type = originalImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
         for (int k = 0; k < aNames.size(); k++) {
             BufferedImage resizeImageHintPng = resizeImageWithHint(originalImage, type, aSize.get(k), aSize.get(k));
             writeImageOnDisk(resizeImageHintPng, "png", pathOut, aNames.get(k));
         }
+        File file = new File(path);
+        file.delete();
     }
 
     private BufferedImage resizeImageWithHint(BufferedImage originalImage, int type, int w, int h) {
@@ -78,7 +81,7 @@ public class GfxEngine implements Runnable {
 
     @Override
     public void run() {
-        createImages(pathOut, pathOut);
+        createImages(pathOut + "/" + name);
     }
 
     public void start() {

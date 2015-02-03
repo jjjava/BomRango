@@ -92,7 +92,22 @@ public class HsFiles {
             return false;
         }
     }
-   
+
+    public static String getFileExtension(String filename) {
+        String ext[] = filename.split("\\.");
+        int i = ext.length;
+        String result = "";
+        if (i > 1) {
+            result = ext[i - 1];
+        }
+        return result;
+    }
+
+    public static String getClearName(String fileName) {
+        String name[] = fileName.split("\\.");
+        return name[0];
+    }
+
     public static boolean isWindows() {
         return (OS.contains("win"));
     }

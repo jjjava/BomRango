@@ -124,7 +124,7 @@ public class ProdutoBsImpl implements ProdutoBs {
     }
     
     public void segundaEtapaCadastro(){
-        
+        System.out.println("parte 2");
         Produto p = getCadProdutoSessao();
         System.out.println(p.toString());
     }
@@ -140,7 +140,7 @@ public class ProdutoBsImpl implements ProdutoBs {
         }
     }
 
-    private Produto getCadProdutoSessao() {
+    public Produto getCadProdutoSessao() {
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         return (Produto) session.getAttribute("CadProduto");

@@ -14,7 +14,7 @@
         <title>@BomRango - Gerenciar Produto</title>
     </h:head>
     <h:body>
-        <h:form id="form"> 
+        <h:form id="form" enctype="multipart/form-data" > 
             <p:growl id="messages"/>
             <p:menubar styleClass="ui-menubar">
                 <p:submenu >
@@ -40,13 +40,16 @@
                 </f:facet>  
             </p:ajaxStatus> 
             <h:outputText value="Olá, #{mercadoGerenciarMb.cliente.nome}" /> 
+
             <br />
             <p:panel id="panel" header="Produto:" style="margin-bottom:10px;" styleClass="searchbutton">
-                <p:fileUpload fileUploadListener="#{carregaArquivoMb.carregaArquivo}" mode="advanced" dragDropSupport="true"
-                              update="messages" sizeLimit="300000" fileLimit="2" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />         
+                <p:fileUpload fileUploadListener="#{carregaArquivoMb.carregaArquivo}" mode="advanced" dragDropSupport="true" />
+                <br />        
                 <br />
-                <p:commandButton id="ajax" value="Cadastrar" actionListener="#{gProdutoMb.processarCadastroParte2()}" update="form" styleClass="searchbutton"/>
+                <p:commandButton id="btnSubmit" action="#{gProdutoMb.processarCadastroParte2()}" value="Save" styleClass="searchbutton" ajax="false">
+                </p:commandButton> 
             </p:panel>
+            </h:form>
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -62,6 +65,5 @@
                 ga('create', 'UA-58557358-1', 'auto');
                 ga('send', 'pageview');
             </script>
-        </h:form>
     </h:body>
 </html>

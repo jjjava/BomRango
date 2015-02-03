@@ -1,9 +1,13 @@
 package br.com.schumaker.bs.impl;
 
+import br.com.schumaker.gfx.GfxEngine;
+import br.com.schumaker.hsfiles.HsFiles;
+import br.com.schumaker.model.Produto;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.UUID;
 import org.primefaces.event.FileUploadEvent;
 
 /**
@@ -13,20 +17,29 @@ import org.primefaces.event.FileUploadEvent;
  * @since 1.0.0
  */
 public class CarregaArquivoBsImpl {
-
+    
     public void gerenciaCargaDeArquivo(FileUploadEvent event) {
-        System.out.println(event.getFile().getFileName());
-        System.out.println(event.getFile().getSize());
+
         
-        String uuid;
+        UUID uuid = UUID.randomUUID();
+        String uuidStr = uuid.toString() + "." + HsFiles.getFileExtension(event.getFile().getFileName());
+        System.out.println(uuidStr);
+        
         try {
             InputStream in = new BufferedInputStream(event.getFile().getInputstream());
-            File file = new File("/Volumes/Data/HStudio/Temp/");
+            File file = new File("/Volumes/Data/HStudio/Temp/" + uuid.toString() + "." + HsFiles.getFileExtension(event.getFile().getFileName()));
             FileOutputStream fout = new FileOutputStream(file);
             while (in.available() != 0) {
                 fout.write(in.read());
             }
             fout.close();
+            
+            GfxEngine gfxEngine = new GfxEngine("/Volumes/Data/HStudio/Temp/", uuidStr);
+            gfxEngine.start();
+            
+           Produto p =  new ProdutoBsImpl().getCadProdutoSessao();
+           p.setImagem(uuidStr);
+            
         } catch (Exception ex) {
             System.out.println(ex);
         }

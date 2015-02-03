@@ -52,7 +52,7 @@ public class GProdutoMb implements Serializable {
     }
 
     public void processarCadastroParte2() {
-
+        new ProdutoBsImpl().segundaEtapaCadastro();
     }
 
     public Produto getProduto() {
