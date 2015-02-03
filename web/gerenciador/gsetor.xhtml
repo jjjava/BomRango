@@ -14,7 +14,7 @@
         <title>@BomRango - Gerenciar Setores</title>
     </h:head>
     <h:body>
-        <h:form> 
+        <h:form id="form"> 
             <p:growl id="messages"/>
             <p:menubar styleClass="ui-menubar">
                 <p:submenu >
@@ -39,12 +39,24 @@
                     <h:outputText value="" />  
                 </f:facet>  
             </p:ajaxStatus>
-              <h:outputText value="gsetor..." />  
-              <h:outputText value="Olá, #{mercadoGerenciarMb.cliente.nome}" /> 
+            <h:outputText value="Olá, #{mercadoGerenciarMb.cliente.nome}" /> 
+            <br />
+            <p:panel id="panel" header="Setor:" style="margin-bottom:10px;" styleClass="searchbutton">
+                <h:outputLabel for="name" value="Nome: " />
+                <br/>
+                <p:inputText id="name" value="#{gSetor.setor.nome}" size="50" />
+                <br />
+                <h:outputLabel for="description" value="Descrição: " />
+                <br/>
+                <p:inputText id="description" value="#{gSetor.setor.descricao}" size="50" />
+                <br />
+                <br />
+                <p:commandButton id="ajax" value="Cadastrar" actionListener="#{gSetor.processarCadastro()}" update="form" styleClass="searchbutton"/>
+            </p:panel>
             <script>
-                (function(i, s, o, g, r, a, m) {
+                (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
-                    i[r] = i[r] || function() {
+                    i[r] = i[r] || function () {
                         (i[r].q = i[r].q || []).push(arguments)
                     }, i[r].l = 1 * new Date();
                     a = s.createElement(o),

@@ -153,7 +153,7 @@ public class SetorDaoImpl implements SetorDao {
     @Override
     public boolean cadastrar(Setor setor) {
         boolean cadastrado = false;
-        String sql = "insert into compras.categorias ( nome, descricao ) values (?,?)";
+        String sql = "insert into compras.categoria ( nome, descricao ) values (?,?)";
         Connection conn = HsConnection.getConnection();
         PreparedStatement pst = null;
         try {

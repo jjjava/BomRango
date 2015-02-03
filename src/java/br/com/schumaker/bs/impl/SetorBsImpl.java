@@ -47,8 +47,9 @@ public class SetorBsImpl implements SetorBs {
         } else {
             if (new SetorDaoImpl().cadastrar(setor)) {
                 mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Setor", "Setor cadastrado com sucesso.");
+                
             } else {
-                mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Estado", "Erro ao cadastrar o setor.");
+                mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Setor", "Erro ao cadastrar o setor.");
             }
         }
     }
