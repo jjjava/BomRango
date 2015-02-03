@@ -14,10 +14,10 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class GSetor implements Serializable{
+public class GSetorMb implements Serializable{
     private Setor setor;
 
-    public GSetor() {
+    public GSetorMb() {
         setor = new Setor();
     }
     

@@ -14,7 +14,7 @@
         <title>@BomRango - Gerenciar Marcas</title>
     </h:head>
     <h:body>
-        <h:form> 
+        <h:form id="form"> 
             <p:growl id="messages"/>
             <p:menubar styleClass="ui-menubar">
                 <p:submenu >
@@ -39,8 +39,20 @@
                     <h:outputText value="" />  
                 </f:facet>  
             </p:ajaxStatus> 
-              <h:outputText value="gmarcas..." />  
               <h:outputText value="Olá, #{mercadoGerenciarMb.cliente.nome}" /> 
+              <br />
+            <p:panel id="panel" header="Marcas:" style="margin-bottom:10px;" styleClass="searchbutton">
+                <h:outputLabel for="name" value="Nome: " />
+                <br/>
+                <p:inputText id="name" value="#{gFabricanteMb.fabtricante.nome}" size="50" />
+                <br />
+                <h:outputLabel for="site" value="Site: " />
+                <br/>
+                <p:inputText id="site" value="#{gFabricanteMb.fabtricante.site}" size="50" />
+                <br />
+                <br />
+                <p:commandButton id="ajax" value="Cadastrar" actionListener="#{gFabricanteMb.processarCadastro()}" update="form" styleClass="searchbutton"/>
+            </p:panel>
             <script>
                 (function(i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
