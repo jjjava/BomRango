@@ -14,4 +14,6 @@ public class HsCommons {
     public static final int PRODINATV = 0;
     public static final String ENCRYPTKEY = "Blowfish";
     public static final String EMAIL = "hudson@schumaker.com.br";
+    public static final String TEMPPRODIMAGFOLDER = "/Volumes /Data/HStudio/Temp/";
+    public static final String IMAGEFOLDER = "...";
 }

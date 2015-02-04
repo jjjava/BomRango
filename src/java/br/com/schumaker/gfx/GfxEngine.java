@@ -21,10 +21,18 @@ public class GfxEngine implements Runnable {
 
     private ArrayList<Integer> aSize;
     private ArrayList<String> aNames;
+    private String sourcePath;
     private String pathOut;
     private String name;
 
     public GfxEngine(String pathOut, String name) {
+        this.pathOut = pathOut;
+        this.name = name;
+        setUp();
+    }
+
+    public GfxEngine(String sourcePath, String pathOut, String name) {
+        this.sourcePath = sourcePath;
         this.pathOut = pathOut;
         this.name = name;
         setUp();
@@ -35,8 +43,8 @@ public class GfxEngine implements Runnable {
         aSize.add(64);
         aSize.add(128);
         aNames = new ArrayList<String>();
-        aNames.add(HsFiles.getClearName(name) + "@1." + HsFiles.getFileExtension(name));
-        aNames.add(HsFiles.getClearName(name) + "@2." + HsFiles.getFileExtension(name));
+        aNames.add(HsFiles.getClearName(name) + "@1");
+        aNames.add(HsFiles.getClearName(name) + "@2");
     }
 
     private void createImages(String path) {
@@ -44,7 +52,7 @@ public class GfxEngine implements Runnable {
         int type = originalImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
         for (int k = 0; k < aNames.size(); k++) {
             BufferedImage resizeImageHintPng = resizeImageWithHint(originalImage, type, aSize.get(k), aSize.get(k));
-            writeImageOnDisk(resizeImageHintPng, "png", pathOut, aNames.get(k));
+            writeImageOnDisk(resizeImageHintPng, ".png", pathOut, aNames.get(k));
         }
         File file = new File(path);
         file.delete();
@@ -73,9 +81,9 @@ public class GfxEngine implements Runnable {
         return image;
     }
 
-    private void writeImageOnDisk(BufferedImage img, String type, String path, String name) {
+    private void writeImageOnDisk(BufferedImage img, String type, String path, String clearName) {
         try {
-            ImageIO.write(img, type, new File(path + "/" + name));
+            ImageIO.write(img, type, new File(path + clearName + type));
         } catch (IOException ex) {
             System.err.println(ex);
             LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
@@ -84,7 +92,7 @@ public class GfxEngine implements Runnable {
 
     @Override
     public void run() {
-        createImages(pathOut + "/" + name);
+        createImages(sourcePath + name);
     }
 
     public void start() {
