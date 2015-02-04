@@ -1,5 +1,6 @@
 package br.com.schumaker.dao.impl;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.MercadoDao;
 import br.com.schumaker.model.Cidade;
@@ -45,13 +46,15 @@ public class MercadoDaoImpl implements MercadoDao {
                 mercado.setCidade(getMyCidade(rs.getInt("idcidade")));
                 mercado.setEstado(getMyEstado(rs.getInt("idestado")));
             }
-        } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return mercado;
@@ -85,13 +88,15 @@ public class MercadoDaoImpl implements MercadoDao {
                 //---add na lista
                 mercados.add(mercado);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return mercados;
@@ -125,13 +130,15 @@ public class MercadoDaoImpl implements MercadoDao {
                 //---add na lista
                 mercados.add(mercado);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return mercados;
@@ -165,13 +172,15 @@ public class MercadoDaoImpl implements MercadoDao {
                 //---add na lista
                 mercados.add(mercado);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return mercados;
@@ -188,13 +197,15 @@ public class MercadoDaoImpl implements MercadoDao {
             while (rs.next()) {
                 validado = true;
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return validado;
@@ -227,15 +238,17 @@ public class MercadoDaoImpl implements MercadoDao {
             pst.setInt(15, mercado.getEstacionamento());
             pst.execute();
             cadastrado = true;
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             cadastrado = false;
-            System.err.println(e);
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cadastrado;

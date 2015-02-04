@@ -1,9 +1,9 @@
 package br.com.schumaker.dao.impl;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.ClienteDao;
 import br.com.schumaker.model.Cliente;
-import br.com.schumaker.util.HsEncryption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,8 +18,8 @@ import java.util.List;
  * @since 1.0.0
  */
 public class ClienteDaoImpl implements ClienteDao {
-    
-    public ClienteDaoImpl(){
+
+    public ClienteDaoImpl() {
     }
 
     @Override
@@ -37,13 +37,15 @@ public class ClienteDaoImpl implements ClienteDao {
                 cliente.setEmail(rs.getString("email"));
                 cliente.setSenha(rs.getString("senha"));//duvida se carregar ou nao 
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cliente;
@@ -63,13 +65,15 @@ public class ClienteDaoImpl implements ClienteDao {
                 cliente.setEmail(rs.getString("email"));
                 cliente.setSenha(rs.getString("senha"));//duvida se carregar ou nao 
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cliente;
@@ -93,13 +97,15 @@ public class ClienteDaoImpl implements ClienteDao {
                 //adiciona a lista
                 clientes.add(cliente);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return clientes;
@@ -123,13 +129,15 @@ public class ClienteDaoImpl implements ClienteDao {
                 //adiciona a lista
                 clientes.add(cliente);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return clientes;
@@ -146,13 +154,15 @@ public class ClienteDaoImpl implements ClienteDao {
             while (rs.next()) {
                 validado = true;
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return validado;
@@ -169,13 +179,15 @@ public class ClienteDaoImpl implements ClienteDao {
             while (rs.next()) {
                 validado = true;
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return validado;
@@ -195,15 +207,17 @@ public class ClienteDaoImpl implements ClienteDao {
             pst.setString(4, cliente.getSenha());// criptografado
             pst.execute();
             cadastrado = true;
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             cadastrado = false;
-            System.err.println(e);
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cadastrado;
@@ -225,15 +239,17 @@ public class ClienteDaoImpl implements ClienteDao {
             pst.setInt(3, cliente.getId());
             pst.executeUpdate();
             atualizado = true;
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             atualizado = false;
-            System.err.println(e);
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return atualizado;

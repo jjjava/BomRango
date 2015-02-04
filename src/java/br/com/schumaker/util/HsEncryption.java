@@ -1,5 +1,6 @@
 package br.com.schumaker.util;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import javax.crypto.BadPaddingException;
@@ -26,8 +27,8 @@ public class HsEncryption {
             cipher.init(Cipher.ENCRYPT_MODE, chave);
             byte criptografada[] = cipher.doFinal(text.getBytes());
             value = new String(criptografada);
-        } catch (NoSuchAlgorithmException e) {
-            System.err.println(e.toString());
+        } catch (NoSuchAlgorithmException ex) {
+            System.err.println(ex.toString());
         } catch (NoSuchPaddingException e) {
             System.err.println(e.toString());
         } catch (InvalidKeyException e) {

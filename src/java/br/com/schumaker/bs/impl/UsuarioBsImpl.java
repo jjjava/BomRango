@@ -59,6 +59,7 @@ public class UsuarioBsImpl implements UsuarioBs {
                 fc.getExternalContext().redirect("index.xhtml");
             } catch (IOException ex) {
                 System.out.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         } else {
             mostrarMensagem(FacesMessage.SEVERITY_INFO, "Login", "Email ou Senha incorretos.");
@@ -71,10 +72,10 @@ public class UsuarioBsImpl implements UsuarioBs {
             mostrarMensagem(FacesMessage.SEVERITY_WARN, "Cadastro - Usuário", "Já existe um ususário com esse email cadastrado.");
         } else {
             if (new UsuarioDaoImpl().cadastrar(usuario)) {
-                if(new HsFiles().criarDirUsuario(usuario.getEmail())){
-                     mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Usuário", "Usuário cadastraso.");
-                }else{
-                     mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Usuário", "Erro ao cadastrar a usuário.");
+                if (new HsFiles().criarDirUsuario(usuario.getEmail())) {
+                    mostrarMensagem(FacesMessage.SEVERITY_INFO, "Cadastro - Usuário", "Usuário cadastraso.");
+                } else {
+                    mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Usuário", "Erro ao cadastrar a usuário.");
                 }
             } else {
                 mostrarMensagem(FacesMessage.SEVERITY_ERROR, "Cadastro - Usuário", "Erro ao cadastrar a usuário.");

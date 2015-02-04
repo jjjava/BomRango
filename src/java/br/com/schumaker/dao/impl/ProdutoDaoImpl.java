@@ -1,5 +1,6 @@
 package br.com.schumaker.dao.impl;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.bs.impl.PesquisaBsImpl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.ProdutoDao;
@@ -50,13 +51,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 produto.setImagem(rs.getString("imagem"));
                 produto.setAtivo(rs.getInt("ativo"));
             }
-        } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return produto;
@@ -88,13 +91,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 //---add na lista
                 produtos.add(produto);
             }
-        } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return produtos;
@@ -126,13 +131,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 //---add na lista
                 produtos.add(produto);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return produtos;
@@ -164,13 +171,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 //---add na lista
                 produtos.add(produto);
             }
-        } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return produtos;
@@ -202,13 +211,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 //---add na lista
                 produtos.add(produto);
             }
-        } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return produtos;
@@ -247,13 +258,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 pesquisaBS.start();
             }
 
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return produtos;
@@ -291,13 +304,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 PesquisaBsImpl pesquisaBS = new PesquisaBsImpl(s);//fora do while para ser incrementado em 1x
                 pesquisaBS.start();
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return produtos;
@@ -328,13 +343,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
                 //---add na lista
                 produtos.add(produto);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return produtos;
@@ -351,13 +368,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
             while (rs.next()) {
                 validado = true;
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return validado;
@@ -374,13 +393,15 @@ public class ProdutoDaoImpl implements ProdutoDao {
             while (rs.next()) {
                 validado = true;
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return validado;
@@ -408,15 +429,17 @@ public class ProdutoDaoImpl implements ProdutoDao {
 
             pst.execute();
             cadastrado = true;
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             cadastrado = false;
-            System.err.println(e);
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cadastrado;
@@ -444,15 +467,17 @@ public class ProdutoDaoImpl implements ProdutoDao {
             pst.setInt(8, produto.getId());
             pst.executeUpdate();
             cadastrado = true;
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             cadastrado = false;
-            System.err.println(e);
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cadastrado;
@@ -482,5 +507,4 @@ public class ProdutoDaoImpl implements ProdutoDao {
         UnidadeDaoImpl unidadeDaoImpl = new UnidadeDaoImpl();
         return unidadeDaoImpl.obter(id);
     }
-
 }

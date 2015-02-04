@@ -1,5 +1,6 @@
 package br.com.schumaker.mail;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -46,9 +47,11 @@ public class SendBrief {
             res = true;
         } catch (AddressException ex) {
             System.out.println("Adress: " + ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             res = false;
         } catch (MessagingException ex) {
             System.out.println("Message: " + ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             res = false;
         }
         return res;

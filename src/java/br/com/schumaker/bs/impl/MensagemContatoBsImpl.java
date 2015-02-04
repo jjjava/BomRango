@@ -32,6 +32,7 @@ public class MensagemContatoBsImpl implements MensagemContatoBs {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
             } catch (IOException ex) {
                 System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         } else {
             mRetorno = "Erro ao enviar a mensagem.";

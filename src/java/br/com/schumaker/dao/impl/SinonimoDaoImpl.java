@@ -1,5 +1,6 @@
 package br.com.schumaker.dao.impl;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.SinonimoDao;
 import br.com.schumaker.model.Sinonimo;
@@ -37,8 +38,9 @@ public class SinonimoDaoImpl implements SinonimoDao {
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return sinonimo;
@@ -58,13 +60,14 @@ public class SinonimoDaoImpl implements SinonimoDao {
                 sinonimo.add(rs.getString("sin1"));
                 sinonimo.add(rs.getString("sin2"));
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
             }
         }
         return sinonimo;
@@ -87,13 +90,15 @@ public class SinonimoDaoImpl implements SinonimoDao {
                 //add na lsita
                 lista.add(sinonimo);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return lista;
@@ -116,13 +121,14 @@ public class SinonimoDaoImpl implements SinonimoDao {
                 //add na lsita
                 lista.add(sinonimo);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return lista;
@@ -139,13 +145,15 @@ public class SinonimoDaoImpl implements SinonimoDao {
             while (rs.next()) {
                 validado = true;
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return validado;

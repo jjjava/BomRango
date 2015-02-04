@@ -1,5 +1,6 @@
 package br.com.schumaker.gfx;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.hsfiles.HsFiles;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
@@ -67,6 +68,7 @@ public class GfxEngine implements Runnable {
             image = ImageIO.read(new File(path));
         } catch (IOException ex) {
             System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         }
         return image;
     }
@@ -76,6 +78,7 @@ public class GfxEngine implements Runnable {
             ImageIO.write(img, type, new File(path + "/" + name));
         } catch (IOException ex) {
             System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         }
     }
 

@@ -1,5 +1,6 @@
 package br.com.schumaker.dao.impl;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.CidadeDao;
 import br.com.schumaker.model.Cidade;
@@ -34,13 +35,13 @@ public class CidadeDaoImpl implements CidadeDao {
                 cidade.setIdEstado(rs.getInt("idestado"));
                 cidade.setNome(rs.getString("nome"));
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cidade;
@@ -62,13 +63,15 @@ public class CidadeDaoImpl implements CidadeDao {
                 //---add na lista
                 cidades.add(cidade);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cidades;
@@ -90,13 +93,15 @@ public class CidadeDaoImpl implements CidadeDao {
                 //---add na lista
                 cidades.add(cidade);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cidades;
@@ -115,11 +120,13 @@ public class CidadeDaoImpl implements CidadeDao {
             }
         } catch (SQLException e) {
             System.err.println(e);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), e.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return validado;
@@ -137,15 +144,17 @@ public class CidadeDaoImpl implements CidadeDao {
             pst.setString(2, cidade.getNome());
             pst.execute();
             cadastrado = true;
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             cadastrado = false;
-            System.err.println(e);
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return cadastrado;
@@ -166,15 +175,17 @@ public class CidadeDaoImpl implements CidadeDao {
             pst.setInt(3, cidade.getId());
             pst.executeUpdate();
             atualizado = true;
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             atualizado = false;
-            System.err.println(e);
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return atualizado;

@@ -40,6 +40,7 @@ public class CarregaArquivoBsImpl {
             p.setImagem(uuidStr);
         } catch (IOException ex) {
             System.out.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         }
     }
 }

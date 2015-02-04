@@ -1,5 +1,6 @@
 package br.com.schumaker.dao.impl;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.PesquisaDao;
 import br.com.schumaker.model.Pesquisa;
@@ -17,7 +18,7 @@ import java.util.List;
  * @since 1.0.0
  */
 public class PesquisaDaoImpl implements PesquisaDao {
-    
+
     @Override
     public Pesquisa obter(Integer id) {
         String sql = "select * from compras.pesquisados where pesquisados.id = " + id;
@@ -31,18 +32,20 @@ public class PesquisaDaoImpl implements PesquisaDao {
                 pesquisa.setNome(rs.getString("nome"));
                 pesquisa.setVezes(rs.getInt("vezes"));
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return pesquisa;
     }
-    
+
     @Override
     public List<Pesquisa> listar() {
         List<Pesquisa> pesquisas = new ArrayList<Pesquisa>();
@@ -59,18 +62,20 @@ public class PesquisaDaoImpl implements PesquisaDao {
                 //---add na lista
                 pesquisas.add(pesquisa);
             }
-        } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return pesquisas;
     }
-        
+
     @Override
     public List<Pesquisa> listarTopXX(int x) {
         List<Pesquisa> pesquisas = new ArrayList<Pesquisa>();
@@ -87,23 +92,25 @@ public class PesquisaDaoImpl implements PesquisaDao {
                 //---add na lista
                 pesquisas.add(pesquisa);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return pesquisas;
     }
-    
+
     @Override
     public List<Pesquisa> like(String s) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     @Override
     public void inserir(String p) {
         Pesquisa pesquisa = obter(p);
@@ -115,16 +122,18 @@ public class PesquisaDaoImpl implements PesquisaDao {
                 pst = conn.prepareStatement(sql);
                 pst.setInt(1, (pesquisa.getVezes() + 1));
                 pst.setInt(2, pesquisa.getId());
-                
+
                 pst.executeUpdate();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             } finally {
                 try {
                     pst.close();
                     conn.close();
-                } catch (SQLException e) {
-                    System.err.println(e);
+                } catch (SQLException ex) {
+                    System.err.println(ex);
+                    LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
                 }
             }
         } else {
@@ -138,21 +147,23 @@ public class PesquisaDaoImpl implements PesquisaDao {
                 pst = conn.prepareStatement(sql);
                 pst.setString(1, pesquisa.getNome());
                 pst.setInt(2, pesquisa.getVezes());
-                
+
                 pst.execute();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             } finally {
                 try {
                     pst.close();
                     conn.close();
-                } catch (SQLException e) {
-                    System.err.println(e);
+                } catch (SQLException ex) {
+                    System.err.println(ex);
+                    LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
                 }
             }
         }
     }
-    
+
     @Override
     public Pesquisa obter(String nome) {
         String sql = "select * from compras.pesquisados where pesquisados.nome = '" + nome + "'";
@@ -169,14 +180,16 @@ public class PesquisaDaoImpl implements PesquisaDao {
                 pesquisa.setNome(rs.getString("nome"));
                 pesquisa.setVezes(rs.getInt("vezes"));
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return pesquisa;

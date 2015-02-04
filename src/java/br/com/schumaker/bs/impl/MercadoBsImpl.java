@@ -83,6 +83,7 @@ public class MercadoBsImpl implements MercadoBs {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../gerenciar.xhtml");
             } catch (IOException ex) {
                 System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
     }

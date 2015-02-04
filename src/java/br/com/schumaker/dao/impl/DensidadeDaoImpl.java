@@ -1,5 +1,6 @@
 package br.com.schumaker.dao.impl;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.connection.HsConnection;
 import br.com.schumaker.dao.DensidadeDao;
 import br.com.schumaker.model.Densidade;
@@ -33,13 +34,15 @@ public class DensidadeDaoImpl implements DensidadeDao {
                 densidade.setId(rs.getInt("id"));
                 densidade.setNome(rs.getString("nome"));
             }
-        } catch (SQLException e) {
-            System.err.println(e);//throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);//throw new RuntimeException(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);//throw new RuntimeException(e);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return densidade;
@@ -60,13 +63,15 @@ public class DensidadeDaoImpl implements DensidadeDao {
                 //---add na lista
                 densidades.add(densidade);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return densidades;
@@ -87,13 +92,14 @@ public class DensidadeDaoImpl implements DensidadeDao {
                 //---add na lista
                 densidades.add(densidade);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
             }
         }
         return densidades;
@@ -160,15 +166,17 @@ public class DensidadeDaoImpl implements DensidadeDao {
             pst.setInt(2, densiadade.getId());
             pst.executeUpdate();
             atualizado = true;
-        } catch (SQLException e) {
+        } catch (SQLException ex) {
             atualizado = false;
-            throw new RuntimeException(e);
+            System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         } finally {
             try {
                 pst.close();
                 conn.close();
-            } catch (SQLException e) {
-                System.err.println(e);
+            } catch (SQLException ex) {
+                System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return atualizado;

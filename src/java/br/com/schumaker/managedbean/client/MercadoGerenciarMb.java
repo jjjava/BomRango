@@ -1,5 +1,6 @@
 package br.com.schumaker.managedbean.client;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.bs.impl.MercadoBsImpl;
 import br.com.schumaker.dao.impl.MercadoDaoImpl;
 import br.com.schumaker.model.Cliente;
@@ -33,6 +34,7 @@ public class MercadoGerenciarMb implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../gerenciar.xhtml");
             } catch (IOException ex) {
                 System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         } else {
             clienteSessao = cliente;
@@ -55,6 +57,7 @@ public class MercadoGerenciarMb implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../gerenciar.xhtml");
             } catch (IOException ex) {
                 System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
         return clienteSessao;

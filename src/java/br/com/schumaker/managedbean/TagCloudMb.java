@@ -1,5 +1,6 @@
 package br.com.schumaker.managedbean;
 
+import br.com.schumaker.bs.impl.LogBsImpl;
 import br.com.schumaker.dao.impl.PesquisaDaoImpl;
 import br.com.schumaker.model.Pesquisa;
 import br.com.schumaker.util.HsCommons;
@@ -55,6 +56,7 @@ public class TagCloudMb implements Serializable {
             FacesContext.getCurrentInstance().getExternalContext().redirect("faces/produtos.xhtml");
         } catch (IOException ex) {
             System.err.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         }
     }
     

@@ -13,6 +13,15 @@ import br.com.schumaker.util.HsUtil;
  */
 public class LogBsImpl implements LogBs{
 
+    private static final LogBsImpl INSTANCE = new LogBsImpl();
+    
+    private LogBsImpl(){
+    }
+    
+    public static LogBsImpl getInstance(){
+        return INSTANCE;
+    }
+    
     @Override
     public void inserirLog(String clazz, String error) {
         Log log = new Log();

@@ -118,15 +118,11 @@ public class ProdutoBsImpl implements ProdutoBs {
         p.setIdmercado(new MercadoBsImpl().getMercadoSessao());
         p.setAtivo(1);//validacao com inteiro
 
-        
         setCadProdutoSessao(p);
-
     }
-    
-    public void segundaEtapaCadastro(){
-        System.out.println("parte 2");
+
+    public void segundaEtapaCadastro() {
         Produto p = getCadProdutoSessao();
-        System.out.println(p.toString());
     }
 
     private void setCadProdutoSessao(Produto produto) {
@@ -137,6 +133,7 @@ public class ProdutoBsImpl implements ProdutoBs {
             FacesContext.getCurrentInstance().getExternalContext().redirect("carregafotoproduto.xhtml");
         } catch (IOException ex) {
             System.out.println(ex);
+            LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
         }
     }
 

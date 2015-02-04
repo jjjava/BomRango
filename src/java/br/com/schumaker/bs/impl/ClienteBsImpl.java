@@ -59,6 +59,7 @@ public class ClienteBsImpl implements ClienteBs {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("gerenciador/gerenciarmercado.xhtml");
             } catch (IOException ex) {
                 System.out.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         } else {
             mostrarMensagem(FacesMessage.SEVERITY_INFO, "Login", "Email ou Senha incorretos.");
@@ -112,12 +113,14 @@ public class ClienteBsImpl implements ClienteBs {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../gerenciar.xhtml");
             } catch (IOException ex) {
                 System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         } else {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/index.xhtml");
             } catch (IOException ex) {
                 System.err.println(ex);
+                LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             }
         }
     }
