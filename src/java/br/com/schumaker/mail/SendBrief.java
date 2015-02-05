@@ -46,11 +46,9 @@ public class SendBrief {
             Transport.send(email);
             res = true;
         } catch (AddressException ex) {
-            System.out.println("Adress: " + ex);
             LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             res = false;
         } catch (MessagingException ex) {
-            System.out.println("Message: " + ex);
             LogBsImpl.getInstance().inserirLog(this.getClass().getSimpleName(), ex.getMessage());
             res = false;
         }
